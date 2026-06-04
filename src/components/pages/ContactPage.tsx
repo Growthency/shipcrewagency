@@ -1,0 +1,73 @@
+import { Reveal } from "@/components/fx/Reveal";
+import { Button } from "@/components/ui/Button";
+import { PageHero } from "@/components/ui/PageHero";
+import { Icon, type IconName } from "@/components/icons";
+import { ContactForm } from "@/components/pages/ContactForm";
+import { getDict, type Lang } from "@/i18n";
+
+const INFO_ICONS: IconName[] = ["mail", "phone", "clock", "globe"];
+
+export function ContactPage({ lang }: { lang: Lang }) {
+  const t = getDict(lang);
+  const c = t.contact;
+
+  // Emergency dial target — keep digits, +, and # only.
+  const emergencyTel = c.infoItems[1]?.value.replace(/[^0-9+#]/g, "") || "";
+
+  return (
+    <>
+      <PageHero
+        lang={lang}
+        crumbs={[
+          { label: t.nav[0].label, to: "" },
+          { label: c.breadcrumb },
+        ]}
+        title={c.title}
+        sub={c.sub}
+      />
+
+      <section className="content-block">
+        <div className="container">
+          <div className="contact-grid">
+            <Reveal>
+              <ContactForm lang={lang} />
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                <div className="contact-info-card">
+                  <h3>{c.infoTitle}</h3>
+                  <p>{c.infoText}</p>
+                  {c.infoItems.map((item, i) => (
+                    <div className="ci-item" key={item.label}>
+                      <div className="ci-icon">
+                        <Icon name={INFO_ICONS[i]} />
+                      </div>
+                      <div>
+                        <div className="ci-label">{item.label}</div>
+                        <div className="ci-val">{item.value}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="dark-card">
+                  <h3>{c.emergencyTitle}</h3>
+                  <p style={{ marginBottom: 22 }}>{c.emergencyText}</p>
+                  <Button
+                    lang={lang}
+                    href={`tel:${emergencyTel}`}
+                    variant="primary"
+                    icon="phone"
+                  >
+                    {c.emergencyCta}
+                  </Button>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
