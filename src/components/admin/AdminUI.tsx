@@ -4,15 +4,16 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useRef,
   useState,
   type ReactNode,
 } from "react";
-import { AlertTriangle, CheckCircle2, XCircle, X } from "lucide-react";
+import { AlertTriangle, CheckCircle2, XCircle, X, Pencil } from "lucide-react";
 
 /* ------------------------------------------------------------------
-   Lightweight, dependency-free Toast + Confirm provider for the admin.
-   Replaces sonner / AdminModal from the reference implementation.
+   Dependency-free Toast + Confirm + Prompt provider for the admin.
+   No native browser dialogs anywhere — every popup is on-brand.
 ------------------------------------------------------------------ */
 
 type ToastKind = "success" | "error";
@@ -29,9 +30,19 @@ interface ConfirmOptions {
   tone?: "danger" | "default";
 }
 
+interface PromptOptions {
+  title: string;
+  label?: string;
+  message?: string;
+  defaultValue?: string;
+  placeholder?: string;
+  confirmLabel?: string;
+}
+
 interface AdminUIContextValue {
   toast: { success: (m: string) => void; error: (m: string) => void };
   confirm: (opts: ConfirmOptions) => Promise<boolean>;
+  prompt: (opts: PromptOptions) => Promise<string | null>;
 }
 
 const AdminUIContext = createContext<AdminUIContextValue | null>(null);
@@ -49,7 +60,12 @@ let nextId = 1;
 export function AdminUIProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const [confirmState, setConfirmState] = useState<ConfirmOptions | null>(null);
-  const resolverRef = useRef<((v: boolean) => void) | null>(null);
+  const confirmResolver = useRef<((v: boolean) => void) | null>(null);
+
+  const [promptState, setPromptState] = useState<PromptOptions | null>(null);
+  const [promptValue, setPromptValue] = useState("");
+  const promptResolver = useRef<((v: string | null) => void) | null>(null);
+  const promptInputRef = useRef<HTMLInputElement | null>(null);
 
   const push = useCallback((kind: ToastKind, message: string) => {
     const id = nextId++;
@@ -67,18 +83,39 @@ export function AdminUIProvider({ children }: { children: ReactNode }) {
   const confirm = useCallback((opts: ConfirmOptions): Promise<boolean> => {
     setConfirmState(opts);
     return new Promise<boolean>((resolve) => {
-      resolverRef.current = resolve;
+      confirmResolver.current = resolve;
     });
   }, []);
 
-  const settle = useCallback((value: boolean) => {
-    resolverRef.current?.(value);
-    resolverRef.current = null;
+  const settleConfirm = useCallback((value: boolean) => {
+    confirmResolver.current?.(value);
+    confirmResolver.current = null;
     setConfirmState(null);
   }, []);
 
+  const prompt = useCallback((opts: PromptOptions): Promise<string | null> => {
+    setPromptValue(opts.defaultValue ?? "");
+    setPromptState(opts);
+    return new Promise<string | null>((resolve) => {
+      promptResolver.current = resolve;
+    });
+  }, []);
+
+  const settlePrompt = useCallback((value: string | null) => {
+    promptResolver.current?.(value);
+    promptResolver.current = null;
+    setPromptState(null);
+  }, []);
+
+  useEffect(() => {
+    if (promptState) {
+      const id = setTimeout(() => promptInputRef.current?.focus(), 40);
+      return () => clearTimeout(id);
+    }
+  }, [promptState]);
+
   return (
-    <AdminUIContext.Provider value={{ toast, confirm }}>
+    <AdminUIContext.Provider value={{ toast, confirm, prompt }}>
       {children}
 
       {/* Toasts */}
@@ -95,24 +132,18 @@ export function AdminUIProvider({ children }: { children: ReactNode }) {
       {confirmState && (
         <div
           className="a-modal-overlay"
-          onClick={() => settle(false)}
+          onClick={() => settleConfirm(false)}
           role="dialog"
           aria-modal="true"
         >
-          <div
-            className="a-modal a-modal--sm"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="a-modal a-modal--sm" onClick={(e) => e.stopPropagation()}>
             <div className="a-modal__head">
               <div className="a-modal__title">
                 <span
                   className="a-modal__title-ico"
                   style={
                     confirmState.tone === "danger"
-                      ? {
-                          background:
-                            "linear-gradient(135deg,#d93939,#ff6b6b)",
-                        }
+                      ? { background: "linear-gradient(135deg,#d93939,#ff6b6b)" }
                       : undefined
                   }
                 >
@@ -123,7 +154,7 @@ export function AdminUIProvider({ children }: { children: ReactNode }) {
               <button
                 type="button"
                 className="a-iconbtn"
-                onClick={() => settle(false)}
+                onClick={() => settleConfirm(false)}
                 aria-label="Close"
               >
                 <X />
@@ -138,7 +169,7 @@ export function AdminUIProvider({ children }: { children: ReactNode }) {
               <button
                 type="button"
                 className="a-btn a-btn--ghost"
-                onClick={() => settle(false)}
+                onClick={() => settleConfirm(false)}
               >
                 Cancel
               </button>
@@ -149,13 +180,78 @@ export function AdminUIProvider({ children }: { children: ReactNode }) {
                     ? "a-btn a-btn--solid-danger"
                     : "a-btn a-btn--primary"
                 }
-                onClick={() => settle(true)}
+                onClick={() => settleConfirm(true)}
                 autoFocus
               >
                 {confirmState.confirmLabel ?? "Confirm"}
               </button>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Prompt dialog (replaces window.prompt) */}
+      {promptState && (
+        <div
+          className="a-modal-overlay"
+          onClick={() => settlePrompt(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <form
+            className="a-modal a-modal--sm"
+            onClick={(e) => e.stopPropagation()}
+            onSubmit={(e) => {
+              e.preventDefault();
+              settlePrompt(promptValue);
+            }}
+          >
+            <div className="a-modal__head">
+              <div className="a-modal__title">
+                <span className="a-modal__title-ico">
+                  <Pencil />
+                </span>
+                {promptState.title}
+              </div>
+              <button
+                type="button"
+                className="a-iconbtn"
+                onClick={() => settlePrompt(null)}
+                aria-label="Close"
+              >
+                <X />
+              </button>
+            </div>
+            <div className="a-modal__body">
+              {promptState.message && (
+                <p className="a-modal__text" style={{ marginBottom: 12 }}>
+                  {promptState.message}
+                </p>
+              )}
+              {promptState.label && (
+                <label className="a-label">{promptState.label}</label>
+              )}
+              <input
+                ref={promptInputRef}
+                className="a-input"
+                value={promptValue}
+                placeholder={promptState.placeholder}
+                onChange={(e) => setPromptValue(e.target.value)}
+              />
+            </div>
+            <div className="a-modal__foot">
+              <button
+                type="button"
+                className="a-btn a-btn--ghost"
+                onClick={() => settlePrompt(null)}
+              >
+                Cancel
+              </button>
+              <button type="submit" className="a-btn a-btn--primary">
+                {promptState.confirmLabel ?? "OK"}
+              </button>
+            </div>
+          </form>
         </div>
       )}
     </AdminUIContext.Provider>

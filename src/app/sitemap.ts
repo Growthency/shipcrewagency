@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { href, LANGS, SERVICE_SLUGS, CATEGORY_SLUGS, type Lang } from "@/i18n";
 import { getAllPublishedSlugs } from "@/lib/blog";
+import { siteUrl } from "@/lib/seo";
 
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://shipcrewagency.com";
+const BASE = siteUrl();
 
 // Static path-keys (without language prefix). Priority/frequency tuned per type.
 const STATIC_PAGES: {

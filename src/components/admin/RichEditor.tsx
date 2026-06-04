@@ -43,7 +43,7 @@ export default function RichEditor({
   resetKey,
   placeholder = "Write your post…",
 }: RichEditorProps) {
-  const { toast } = useAdminUI();
+  const { toast, prompt } = useAdminUI();
   const editorRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = useState(false);
@@ -146,9 +146,15 @@ export default function RichEditor({
     exec("formatBlock", current === tag ? "p" : tag);
   };
 
-  const insertLink = () => {
+  const insertLink = async () => {
     saveSelection();
-    const url = window.prompt("Enter the URL for the link:", "https://");
+    const url = await prompt({
+      title: "Insert Link",
+      label: "Link URL",
+      defaultValue: "https://",
+      placeholder: "https://example.com",
+      confirmLabel: "Insert",
+    });
     if (url) {
       editorRef.current?.focus();
       restoreSelection();
@@ -156,12 +162,23 @@ export default function RichEditor({
     }
   };
 
-  const insertImageUrl = () => {
+  const insertImageUrl = async () => {
     saveSelection();
-    const url = window.prompt("Enter the image URL:", "https://");
+    const url = await prompt({
+      title: "Insert Image by URL",
+      label: "Image URL",
+      defaultValue: "https://",
+      placeholder: "https://…",
+      confirmLabel: "Next",
+    });
     if (!url) return;
     const alt =
-      window.prompt("Alt text (for SEO & accessibility):", "") || "Article image";
+      (await prompt({
+        title: "Image Alt Text",
+        label: "Alt text (for SEO & accessibility)",
+        placeholder: "Describe the image",
+        confirmLabel: "Insert",
+      })) || "Article image";
     editorRef.current?.focus();
     restoreSelection();
     exec(
@@ -174,10 +191,12 @@ export default function RichEditor({
     const file = e.target.files?.[0];
     if (!file) return;
     const alt =
-      window.prompt(
-        "Alt text for this image (SEO & accessibility):",
-        file.name.replace(/\.[^.]+$/, "").replace(/[-_]/g, " "),
-      ) || file.name;
+      (await prompt({
+        title: "Image Alt Text",
+        label: "Alt text for this image (SEO & accessibility)",
+        defaultValue: file.name.replace(/\.[^.]+$/, "").replace(/[-_]/g, " "),
+        confirmLabel: "Upload",
+      })) || file.name;
 
     setUploading(true);
     try {
@@ -210,10 +229,26 @@ export default function RichEditor({
 
   const insertHR = () => exec("insertHTML", "<hr />");
 
-  const insertTable = () => {
-    const rows = parseInt(window.prompt("Number of rows:", "3") || "0", 10);
+  const insertTable = async () => {
+    const rows = parseInt(
+      (await prompt({
+        title: "Insert Table",
+        label: "Number of rows",
+        defaultValue: "3",
+        confirmLabel: "Next",
+      })) || "0",
+      10,
+    );
     if (!rows) return;
-    const cols = parseInt(window.prompt("Number of columns:", "3") || "0", 10);
+    const cols = parseInt(
+      (await prompt({
+        title: "Insert Table",
+        label: "Number of columns",
+        defaultValue: "3",
+        confirmLabel: "Insert",
+      })) || "0",
+      10,
+    );
     if (!cols) return;
     let html =
       '<table><thead><tr>' +

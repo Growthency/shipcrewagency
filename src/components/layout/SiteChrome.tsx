@@ -4,9 +4,11 @@ import { ScrollProgress } from "@/components/fx/ScrollProgress";
 import { SiteHeader } from "./SiteHeader";
 import { Footer } from "./Footer";
 import { FloatingActions } from "./FloatingActions";
+import { ServiceWorkerRegister } from "./ServiceWorkerRegister";
 import { getDict, type Lang } from "@/i18n";
+import { siteUrl } from "@/lib/seo";
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://shipcrewagency.com";
+const SITE = siteUrl();
 
 export function SiteChrome({
   lang,
@@ -45,6 +47,7 @@ export function SiteChrome({
       <main id="main-content">{children}</main>
       <Footer lang={lang} dict={dict} />
       <FloatingActions lang={lang} />
+      <ServiceWorkerRegister />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { siteUrl } from "@/lib/seo";
 import "./globals.css";
 import "./sections.css";
 import "./theme.css";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://shipcrewagency.com";
+const SITE_URL = siteUrl();
 
 // Self-hosted, optimized fonts (no render-blocking external CSS).
 const display = Cormorant_Garamond({
