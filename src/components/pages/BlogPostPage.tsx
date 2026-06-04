@@ -2,7 +2,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import sanitizeHtml from "sanitize-html";
 import { Button } from "@/components/ui/Button";
-import { IMG } from "@/lib/media";
+import { IMG, BLOG_IMAGES } from "@/lib/media";
 import { LocalizedLink } from "@/components/ui/LocalizedLink";
 import { PageHero } from "@/components/ui/PageHero";
 import { Icon } from "@/components/icons";
@@ -85,6 +85,7 @@ export async function BlogPostPage({
         ]}
         title={post.title}
         sub={post.excerpt}
+        image={post.featured_image || BLOG_IMAGES[slug] || IMG.pageHero}
       />
 
       <section className="content-block">

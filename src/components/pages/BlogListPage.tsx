@@ -7,7 +7,7 @@ import { Icon } from "@/components/icons";
 import { getDict, type Lang } from "@/i18n";
 import { getPublishedPosts } from "@/lib/blog";
 import { formatDate } from "@/lib/utils";
-import { IMG } from "@/lib/media";
+import { IMG, BLOG_IMAGES } from "@/lib/media";
 
 function coverKey(category: string): string {
   switch (category) {
@@ -95,7 +95,12 @@ export async function BlogListPage({
                         <div className="blog-card__cover">
                           <Image
                             className="blog-card__photo"
-                            src={post.featured_image || IMG.blog[key] || IMG.blog.default}
+                            src={
+                              post.featured_image ||
+                              BLOG_IMAGES[post.slug] ||
+                              IMG.blog[key] ||
+                              IMG.blog.default
+                            }
                             alt={post.title}
                             fill
                             sizes={

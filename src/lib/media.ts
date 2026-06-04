@@ -35,3 +35,17 @@ export const IMG = {
 export function catImage(slug: string): string {
   return IMG.cat[slug] ?? IMG.pageHero;
 }
+
+// A DISTINCT cover per blog article (keyed by slug) so no two posts share an
+// image. Admin-created posts use their uploaded featured_image; anything not
+// listed here falls back to the category image, then the default.
+export const BLOG_IMAGES: Record<string, string> = {
+  "how-ship-crew-manning-works": "/images/m-01.webp",
+  "stcw-certification-explained": "/images/m-09.webp",
+  "emergency-crew-replacement": "/images/crew-01.webp",
+  "mlc-2006-seafarer-rights": "/images/crew-04.webp",
+  "global-seafarer-supply": "/images/m-10.webp",
+  "maritime-hiring-checklist": "/images/crew-03.webp",
+  "seafarer-welfare-mental-health": "/images/crew-06.webp",
+  "future-fuels-crew-training": "/images/m-03.webp",
+};
