@@ -846,4 +846,306 @@ export const blogSeed: BlogPost[] = [
     created_at: "2026-05-22T09:00:00.000Z",
     published_at: "2026-05-22T09:00:00.000Z",
   },
+
+  // ──────────────────────────────────────────────────────────────────────────
+  // 7. Seafarer Welfare and Mental Health — EN
+  // ──────────────────────────────────────────────────────────────────────────
+  {
+    id: "seed-en-7",
+    language: "en",
+    title: "Seafarer Welfare and Mental Health: A Manning Agency's Duty of Care",
+    slug: "seafarer-welfare-mental-health",
+    excerpt:
+      "Welfare is not a perk — it is a legal and moral obligation that runs from the cabin to the crewing desk. This guide examines MLC 2006, mental health at sea, fatigue and the manning agency's duty of care.",
+    content: `
+<p>A seafarer who joins a ship surrenders, for months at a time, much of the ordinary fabric of life: family, privacy, weekends, a doctor down the road, a walk that does not end at a bulkhead. In exchange, the industry that employs them carries a heightened obligation to protect their health, dignity and safety. <strong>Welfare is not a perk or a recruiting slogan — it is a legal duty under international law and a moral duty that begins long before the gangway.</strong> This guide examines what that duty of care actually requires, and why the manning agency, not just the shipowner, sits squarely inside it.</p>
+
+<h2>Welfare as a legal floor: MLC 2006</h2>
+<p>The Maritime Labour Convention, 2006 — often called the "seafarers' bill of rights" — converts welfare from goodwill into enforceable law. It binds the great majority of the world fleet by gross tonnage, and port state control inspectors check it on every visit. Its provisions are not aspirational; a deficiency can detain a ship.</p>
+<p>For welfare specifically, MLC 2006 sets out concrete entitlements that a manning agency must understand because it helps deliver and document them:</p>
+<ul>
+  <li><strong>Decent accommodation and recreational facilities</strong> — adequate cabin space, ventilation, heating, lighting and sanitary facilities, with recreational provision appropriate to a workplace people also live in.</li>
+  <li><strong>Food and catering of proper quality and quantity</strong>, provided free of charge, prepared by trained catering staff.</li>
+  <li><strong>Medical care on board and ashore</strong>, broadly comparable to what workers receive on land, including access to a doctor and to necessary repatriation for treatment.</li>
+  <li><strong>Health protection, safety and accident prevention</strong>, with a working environment that actively manages occupational risk.</li>
+  <li><strong>Access to shore-based welfare facilities</strong> and to seafarer welfare organisations in port.</li>
+</ul>
+<p>Crucially, MLC also guarantees the financial and contractual scaffolding that makes welfare real: a written Seafarer Employment Agreement, the timely payment of wages, financial security for repatriation, and protection against abandonment. A seafarer worried about an unpaid wage or a stranded crewmate is not a well seafarer.</p>
+
+<blockquote>You cannot screen mental fitness with a checkbox, but you can build a chain of care strong enough that no seafarer has to carry their crisis alone. That chain starts at the crewing desk, not at the cabin door.</blockquote>
+
+<h2>Mental health at sea: the hidden cargo</h2>
+<p>Physical hazards at sea are visible and heavily regulated. Psychological hazards are quieter and, for a long time, were largely ignored. That has changed. Isolation, separation from family, long contracts, confinement to a small steel community, exposure to heavy weather, the pressure of port turnarounds, and — at its worst — bullying or harassment all accumulate. Studies across the past decade have repeatedly placed seafaring among the occupations with elevated rates of anxiety, depression and, tragically, suicide.</p>
+<p>The drivers are now reasonably well understood, and several of them are addressable:</p>
+<ol>
+  <li><strong>Isolation and separation.</strong> Months away from partners, children and ageing parents, often missing births, deaths and milestones, is the single most cited stressor.</li>
+  <li><strong>Workload and fatigue.</strong> Chronic tiredness erodes mood and resilience long before it shows up as an error.</li>
+  <li><strong>Contract length and uncertainty.</strong> Not knowing when relief will come — vividly demonstrated during the crew-change crisis of 2020–2021, when hundreds of thousands were stranded beyond their contracts — is corrosive.</li>
+  <li><strong>Interpersonal climate.</strong> A multinational crew under a poor leader, or one tolerant of harassment, becomes a pressure cooker with no exit.</li>
+  <li><strong>Stigma.</strong> A culture that equates seeking help with weakness keeps the suffering invisible until it becomes a crisis.</li>
+</ol>
+<p>The response is not a single programme but a layered one: psychologically informed leadership training for senior officers, confidential 24/7 helplines staffed by people who understand maritime life, peer-support and mental-health-first-aid schemes aboard, anti-bullying and harassment policies that are actually enforced, and pre-employment briefings that normalise asking for help. None of this works if the crew cannot reach the outside world.</p>
+
+<h3>Connectivity as welfare, not luxury</h3>
+<p>Affordable, reliable internet access has moved from a perk to a core welfare provision, and the spread of low-earth-orbit satellite broadband has made it technically achievable on most ships. A seafarer who can video-call a child at bedtime, message family during a crisis at home, or simply stay connected to the world is measurably more resilient. Connectivity supports mental health, makes confidential helplines and tele-medicine usable, and is increasingly decisive in whether a seafarer accepts or renews a contract. Forward-looking owners now treat it as part of the welfare package, and crewing agencies should ask about it on behalf of the crew they place.</p>
+
+<h2>Fatigue and hours of rest</h2>
+<p>Fatigue sits at the intersection of welfare and safety. It is governed by the minimum hours of rest set out in STCW and reinforced by MLC: as a baseline, a minimum of <strong>10 hours of rest in any 24-hour period and 77 hours in any 7-day period</strong>, with rest divisible into no more than two periods, one of which must be at least six hours, and intervals between rest periods not exceeding 14 hours.</p>
+<p>The rules exist for good reason — fatigue degrades judgement, reaction time and mood, and has been a contributing factor in groundings and collisions. But rules on paper are only as good as the manning level behind them. A vessel manned to the bare minimum, on a demanding trade with frequent port calls, places its watchkeepers under structural pressure to under-record rest. This is exactly where realistic crew-matrix planning becomes a welfare issue, not merely an operational one. Under-manning is a welfare failure with a safety price tag.</p>
+
+<h2>Repatriation: the right to go home</h2>
+<p>The right to be repatriated — to return home at the end of a contract, or in cases of illness, injury, shipwreck or the employer's default — is one of the most fundamental protections in MLC, backed by mandatory financial security so a seafarer is never stranded by an owner's insolvency. The crew-change crisis showed how quickly this right can be tested when borders close and flights vanish, and how severe the human cost becomes when seafarers are kept aboard for a year or more. A responsible manning agency plans reliefs early, holds contract lengths to what was agreed, and escalates hard when repatriation is delayed, because a promise to send someone home is only as good as the logistics behind it.</p>
+
+<h2>The manning agency's duty of care</h2>
+<p>It is tempting to file welfare entirely under the shipowner's responsibilities. That is a mistake. The recruitment and placement service is, under MLC and decent industry practice, an active participant in protecting the seafarer, and its conduct shapes welfare before the crew ever sails. In practice, the agency's duty of care includes:</p>
+<ul>
+  <li><strong>Honest, transparent recruitment</strong> — no recruitment fees charged to the seafarer, clear terms, and a contract the seafarer understands before signing.</li>
+  <li><strong>Placing crew only with reputable owners</strong> who meet MLC standards, pay on time and treat people decently.</li>
+  <li><strong>Realistic manning and rotation planning</strong> that protects hours of rest and brings reliefs on time, so no contract quietly stretches into exhaustion.</li>
+  <li><strong>A genuine point of contact</strong> for the seafarer and their family during the contract — not a number that goes unanswered when something goes wrong at home.</li>
+  <li><strong>Acting decisively on welfare red flags</strong>, from delayed wages to abandonment risk, and connecting seafarers to welfare organisations and support services.</li>
+</ul>
+<p>Welfare, in the end, is not a department. It is a chain that runs from the crewing desk that places the seafarer, through the owner that employs them and the master who leads them, to the helpline that answers at three in the morning. A manning agency that takes its duty of care seriously strengthens every link it touches — and the seafarers it places, and the ships they serve, are safer and steadier for it.</p>
+`,
+    featured_image: null,
+    category: "Welfare",
+    tag: "Welfare",
+    read_time: "9 min read",
+    status: "published",
+    author_name: "Ship Crew Agency",
+    author_role: "Maritime Editorial Team",
+    meta_title: "Seafarer Welfare & Mental Health: Duty of Care",
+    meta_description:
+      "How MLC 2006, mental health support, hours of rest, connectivity and repatriation define a manning agency's duty of care to the seafarers it places.",
+    views: 1740,
+    created_at: "2026-06-02T09:00:00.000Z",
+    published_at: "2026-06-02T09:00:00.000Z",
+  },
+
+  // ──────────────────────────────────────────────────────────────────────────
+  // 7. Seafarer Welfare and Mental Health — ZH
+  // ──────────────────────────────────────────────────────────────────────────
+  {
+    id: "seed-zh-7",
+    language: "zh",
+    title: "船员福祉与心理健康：船员管理公司的关怀义务",
+    slug: "seafarer-welfare-mental-health",
+    excerpt:
+      "福祉并非额外福利，而是一项贯穿从船舱到配员桌的法律与道德义务。本文剖析 MLC 2006、海上心理健康、疲劳与休息时间，以及船员管理公司的关怀义务。",
+    content: `
+<p>船员一旦登轮，便在长达数月的时间里，交出了寻常生活的大部分肌理：家人、隐私、周末、近在咫尺的医生，以及一段不会止于舱壁的散步。作为交换，雇用他们的这个行业，承担起一份格外加重的义务，去守护他们的健康、尊严与安全。<strong>福祉并非额外福利或招聘口号，而是国际法之下的一项法律义务，更是一份早在舷梯之前便已开始的道德义务。</strong>本文将剖析这份关怀义务究竟要求什么，以及为何身处其中的，不只是船东，还有船员管理公司。</p>
+
+<h2>作为法律底线的福祉：MLC 2006</h2>
+<p>《2006 年海事劳工公约》——常被称为"船员权利法案"——把福祉从善意变为可强制执行的法律。按总吨位计，它约束着世界船队的绝大多数，港口国监督检查官在每一次访船时都会查验。它的条款并非可有可无的愿景；一项缺陷，便足以滞留一艘船。</p>
+<p>就福祉而言，MLC 2006 列出了若干具体权益，而船员管理公司必须了解它们，因为它要协助落实并记录这些权益：</p>
+<ul>
+  <li><strong>体面的起居与文娱设施</strong>——充足的舱室空间、通风、采暖、照明与卫生设施，并配备与"人们同时在此生活的工作场所"相称的文娱设施。</li>
+  <li><strong>质与量俱佳、免费提供的膳食</strong>，由受过训练的膳食人员烹制。</li>
+  <li><strong>船上与岸上的医疗照护</strong>，大体可与陆上劳动者所获得的相比，包括就医途径，以及为治疗而进行必要遣返的途径。</li>
+  <li><strong>健康保护、安全与事故预防</strong>，以一种主动管理职业风险的工作环境为依托。</li>
+  <li><strong>使用岸基福利设施</strong>，以及在港口接触船员福利机构的途径。</li>
+</ul>
+<p>尤为关键的是，MLC 还保障着令福祉得以成真的财务与合同支撑：一份书面的船员雇佣协议、工资的及时支付、用于遣返的财务担保，以及对遭遗弃的防护。一名为欠薪或被困船友而忧心的船员，并不是一名安康的船员。</p>
+
+<blockquote>你无法用一个勾选框筛查心理适任，但你能筑起一条足够坚韧的关怀之链，让没有任何一名船员必须独自扛起自己的危机。这条链的起点，在配员桌，而非舱门口。</blockquote>
+
+<h2>海上心理健康：看不见的货物</h2>
+<p>海上的物理性危害看得见，也受到严密监管。心理性危害则更为静默，并在很长一段时间里大体被忽视。如今情况已经改变。隔绝、与家人分离、漫长合同、被困于一个狭小的钢铁社群、遭遇恶劣天气、港口周转的压力，以及最糟时的欺凌或骚扰，这一切层层累积。过去十年间的多项研究反复表明，航海是焦虑、抑郁乃至——令人痛心地——自杀比率偏高的职业之一。</p>
+<p>这些诱因如今已得到相当充分的理解，其中数项是可加以应对的：</p>
+<ol>
+  <li><strong>隔绝与分离。</strong>与伴侣、子女、年迈的父母数月相隔，常常错过新生、离世与人生节点，是被援引最多的单一压力源。</li>
+  <li><strong>工作负荷与疲劳。</strong>慢性的疲惫，早在表现为一次差错之前，便已侵蚀情绪与韧性。</li>
+  <li><strong>合同长度与不确定性。</strong>不知接班何时到来——在 2020 至 2021 年换班危机中，数十万人被困于合同期满之后，这一点被淋漓尽致地展现——其腐蚀性极强。</li>
+  <li><strong>人际氛围。</strong>一支多国籍船员队伍若处于拙劣领导之下，或处于一个纵容骚扰的环境之中，便会变成一只没有出口的高压锅。</li>
+  <li><strong>病耻感。</strong>一种将求助等同于软弱的文化，会让痛苦始终隐而不见，直至演变为危机。</li>
+</ol>
+<p>应对之道并非单一方案，而是一套分层方案：面向高级船员、富含心理学认识的领导力培训，由懂得海上生活之人值守的全天候保密热线，船上的同伴支持与心理急救机制，真正得到执行的反欺凌与反骚扰政策，以及把"开口求助"常态化的入职前简报。而倘若船员无法触及外部世界，这一切都将无从奏效。</p>
+
+<h3>作为福祉而非奢侈的连通性</h3>
+<p>价格可负担、稳定可靠的互联网接入，已从一项额外福利，转变为一项核心福祉供给，而低地球轨道卫星宽带的普及，使其在大多数船舶上已在技术上可以实现。一名能在孩子睡前视频通话、能在家中危机时与家人联络、或仅仅是与世界保持连接的船员，其韧性可被切实测量到更强。连通性支撑心理健康，让保密热线与远程医疗得以实际使用，并日益成为船员是否接受或续签合同的决定性因素。具有前瞻眼光的船东，如今已将其视为福祉方案的一部分，而船员管理公司，也应代其所派遣的船员去过问此事。</p>
+
+<h2>疲劳与休息时间</h2>
+<p>疲劳，恰处于福祉与安全的交汇之处。它受 STCW 所规定、并经 MLC 强化的最低休息时间约束：作为基准，<strong>在任何 24 小时内不少于 10 小时休息，在任何 7 天内不少于 77 小时</strong>；休息至多可分为两段，其中一段不得少于六小时，且各休息时段之间的间隔不得超过 14 小时。</p>
+<p>这些规则的存在自有充分理由——疲劳会削弱判断力、反应时间与情绪，并曾是搁浅与碰撞的促成因素之一。但纸面上的规则，其效力终究取决于其背后的配员水平。一艘按最低限度配员、又行驶于频繁挂靠港口之繁忙航线的船舶，会让其值班人员承受一种结构性压力，被迫少记休息。这恰恰正是切合实际的配员矩阵规划成为一个福祉问题、而不仅仅是运营问题之处。配员不足是一种带着安全价签的福祉失职。</p>
+
+<h2>遣返：回家的权利</h2>
+<p>被遣返的权利——在合同期满之时，或在患病、受伤、海难或雇主违约的情形下返回家中——是 MLC 中最为根本的保护之一，并以强制性财务担保为后盾，使船员绝不会因船东资不抵债而被困。换班危机表明，当边境关闭、航班消失之时，这项权利会多么迅速地受到考验，而当船员被滞留在船一年或更久时，其人道代价会变得何等沉重。一家负责任的船员管理公司，会及早规划接班，将合同长度守在约定之内，并在遣返被延误时强力催促升级，因为一句送人回家的承诺，其分量取决于其背后的物流。</p>
+
+<h2>船员管理公司的关怀义务</h2>
+<p>把福祉整个归入船东职责之下，是颇具诱惑的。然而那是一个错误。依据 MLC 与正派的行业惯例，招募与派遣服务，是守护船员的一个主动参与者，其行事在船员尚未启航之前，便已塑造着福祉。在实务中，该公司的关怀义务包括：</p>
+<ul>
+  <li><strong>诚实、透明的招募</strong>——不向船员收取任何招募费用，条款清晰，并提供一份船员在签署前便已理解的合同。</li>
+  <li><strong>只将船员派往信誉良好的船东</strong>，其符合 MLC 标准、按时支付、并以体面待人。</li>
+  <li><strong>切合实际的配员与轮换规划</strong>，以守护休息时间、按时接班，使没有任何一份合同在不知不觉中拖至力竭。</li>
+  <li><strong>一个真实的联络点</strong>，在合同期内为船员及其家人所用——而非一个家中出事时无人接听的号码。</li>
+  <li><strong>对福祉红色信号果断采取行动</strong>，从延迟支付的工资到遭遗弃的风险，并为船员对接福利机构与支持服务。</li>
+</ul>
+<p>福祉，归根结底，并不是一个部门。它是一条链：从派遣船员的那张配员桌，经由雇用他们的船东与领导他们的船长，直抵凌晨三点接听的那条热线。一家郑重对待其关怀义务的船员管理公司，会强化它所触及的每一个环节——而它所派遣的船员，以及他们所服务的船舶，都会因此而更安全、更稳健。</p>
+`,
+    featured_image: null,
+    category: "福祉",
+    tag: "福祉",
+    read_time: "9 分钟阅读",
+    status: "published",
+    author_name: "环球船员管理",
+    author_role: "海事编辑团队",
+    meta_title: "船员福祉与心理健康：关怀义务",
+    meta_description:
+      "MLC 2006、心理健康支持、休息时间、连通性与遣返，如何共同界定船员管理公司对所派遣船员的关怀义务。",
+    views: 1380,
+    created_at: "2026-06-02T09:00:00.000Z",
+    published_at: "2026-06-02T09:00:00.000Z",
+  },
+
+  // ──────────────────────────────────────────────────────────────────────────
+  // 8. Future Fuels at Sea — EN
+  // ──────────────────────────────────────────────────────────────────────────
+  {
+    id: "seed-en-8",
+    language: "en",
+    title: "Future Fuels at Sea: Training Crews for LNG, Methanol and Ammonia",
+    slug: "future-fuels-crew-training",
+    excerpt:
+      "Decarbonisation is rewriting the engine room. As LNG, methanol, ammonia and hydrogen enter the fleet, the decisive question is whether crews are trained to handle them safely. This guide maps the fuels, the IGF Code and the STCW gap.",
+    content: `
+<p>The hardest part of decarbonising shipping may not be building the ships — it may be crewing them. As the world fleet moves away from heavy fuel oil toward <strong>LNG, methanol, ammonia and hydrogen</strong>, a new generation of vessels is arriving with fuels that behave nothing like the diesel oil seafarers have handled for a century. Some are cryogenic, some are toxic, some burn invisibly, and all of them demand competences that the current training system was never built to deliver at scale. This guide maps the future-fuels landscape, the safety framework that governs it, and the training gap that owners and manning agencies must close.</p>
+
+<h2>Why the engine room is changing: IMO targets</h2>
+<p>The driver is regulation. The International Maritime Organization has set a course toward net-zero greenhouse gas emissions from international shipping by or around 2050, with checkpoint ambitions along the way — meaningful reductions in total emissions and a rising share of zero- or near-zero-emission energy sources through the 2030s. Combined with regional measures and charterer pressure, this has turned alternative fuels from a research topic into a commercial reality. Newbuilding order books now show a substantial and growing share of dual-fuel and alternative-fuel tonnage.</p>
+<p>For the people aboard, the headline is simple: <strong>the fuel is no longer a constant.</strong> A career that once meant mastering one family of products now means being ready for several, often on the same ship, since most of these vessels are dual-fuel and can fall back to conventional oil.</p>
+
+<h2>The fuel candidates and what they demand of crews</h2>
+
+<h3>LNG — the established frontrunner</h3>
+<p>Liquefied natural gas is the most mature alternative fuel, with the largest installed base and bunkering network. It is stored cryogenically at around minus 162 degrees Celsius, which introduces hazards seafarers must respect: <strong>cold burns and brittle-fracture risk from the extreme temperature, asphyxiation in enclosed spaces, and flammable vapour clouds.</strong> Methane slip — unburned methane escaping to atmosphere — also blunts its climate benefit and is a focus of operational discipline. Crews need competence in cryogenic handling, gas detection, inerting and purging, and the management of cargo and fuel containment systems.</p>
+
+<h3>Methanol — the simple liquid with a hidden flame</h3>
+<p>Methanol is attractive because it is liquid at ambient temperature and pressure, so bunkering and storage resemble conventional practice more closely than gas does. Its dangers are different and easy to underestimate: it is <strong>toxic if inhaled, ingested or absorbed through skin, and it burns with a nearly invisible flame in daylight</strong>, making fire detection and firefighting genuinely hazardous. It also has a low flashpoint, placing it outside the assumptions of traditional oil-fuel rules. Crews need training in toxic-substance handling, low-flashpoint fuel safety, and methanol-specific firefighting.</p>
+
+<h3>Ammonia — zero-carbon but toxic</h3>
+<p>Ammonia carries no carbon, so it promises deep decarbonisation, and a wave of ammonia-fuelled designs is in build. But it is <strong>acutely toxic — a serious inhalation hazard at low concentrations — and corrosive</strong>, which makes leak detection, ventilation, personal protective equipment and emergency response matters of life and death rather than mere compliance. It also brings combustion challenges. Of the leading candidates, ammonia demands the most rigorous safety culture, and crew training for it is one of the industry's most active areas of work.</p>
+
+<h3>Hydrogen — the long horizon</h3>
+<p>Hydrogen, whether burned or used in fuel cells, offers genuinely zero-emission operation at the point of use, but its physics are unforgiving: an extremely wide flammability range, a very low ignition energy, an almost invisible flame, and storage as either a deep cryogen or under very high pressure. For most of the fleet it remains a longer-horizon option confined to specialised vessels, but the competences it will require are already being studied.</p>
+
+<blockquote>You can order a methanol-ready engine in eighteen months. You cannot order a methanol-ready crew that fast. The fuel arrives on a shipyard schedule; the competence arrives on a training schedule — and the second one is now the binding constraint.</blockquote>
+
+<h2>The safety framework: the IGF Code</h2>
+<p>The framework that governs these fuels is the <strong>International Code of Safety for Ships using Gases or other Low-flashpoint Fuels (the IGF Code)</strong>, mandatory under SOLAS. The IGF Code sets the technical and operational requirements for ships using low-flashpoint fuels, and — critically for crewing — it carries specific competence and training requirements for the seafarers who operate them. STCW was amended to add mandatory minimum training for crew on IGF-Code ships, structured in two tiers:</p>
+<ul>
+  <li><strong>Basic training</strong> for all crew assigned duties and responsibilities related to the fuel and its systems on board.</li>
+  <li><strong>Advanced training</strong> for masters, engineer officers and others with immediate responsibility for the care and use of fuels — covering the fuel's properties and hazards, containment and bunkering systems, safety and emergency procedures, and the relevant regulations.</li>
+</ul>
+<p>The principle is sound, but the framework was largely shaped around gas and the first generation of low-flashpoint fuels. As methanol and especially ammonia move into service, the industry is actively developing fuel-specific guidance and training to fill the gaps — work that owners and agencies cannot afford to wait on passively.</p>
+
+<h2>The STCW gap</h2>
+<p>Here is the uncomfortable reality. The seafarers who will run the alternative-fuel fleet of the 2030s are sailing today on oil-fuelled ships, and the bulk of training capacity, instructors and approved courses still reflects the conventional fleet. Several gaps stand out:</p>
+<ol>
+  <li><strong>Coverage.</strong> Fuel-specific provisions are most developed for gas; standardised, widely available courses for methanol, ammonia and hydrogen are still maturing.</li>
+  <li><strong>Capacity.</strong> Training centres, simulators and qualified instructors for these fuels are concentrated in a handful of locations, far short of fleet-wide demand.</li>
+  <li><strong>Currency.</strong> A certificate earned years ago may not reflect the fuel a seafarer is now asked to handle, making refresher and conversion training essential rather than optional.</li>
+  <li><strong>Familiarisation.</strong> Generic certification is not the same as competence on a specific ship's systems; vessel-specific familiarisation remains indispensable.</li>
+</ol>
+
+<h2>Upskilling crews: what owners and agencies must do</h2>
+<p>Closing the gap is a shared task, and the manning agency is central to it because it controls the pipeline of people. Practical priorities include:</p>
+<ul>
+  <li><strong>Map competences against the order book.</strong> Know which fuels the fleet is adopting and forecast the certified seafarers needed, by rank, well before delivery.</li>
+  <li><strong>Invest early in IGF-Code training</strong> — basic and advanced — and in approved, fuel-specific courses as they become available, rather than scrambling at delivery.</li>
+  <li><strong>Build retention into the plan.</strong> A seafarer trained at real cost on ammonia or methanol is a scarce, valuable asset; sound terms and career pathways keep that investment in the fleet.</li>
+  <li><strong>Pair certification with familiarisation</strong>, ensuring crew know not just the fuel in principle but the specific ship's containment, bunkering and emergency systems.</li>
+  <li><strong>Treat safety culture as the deliverable.</strong> With toxic and cryogenic fuels, procedural discipline and a genuine speak-up culture are the difference between a near-miss and a fatality.</li>
+</ul>
+<p>The transition to future fuels is often framed as an engineering and financing challenge, and it is both. But steel and capital are not the binding constraint — people are. The owners and manning partners who start building competence now, fuel by fuel and rank by rank, will be the ones whose ships are not just compliant and clean, but safely and confidently crewed. The decarbonised fleet will be only as good as the seafarers trained to run it.</p>
+`,
+    featured_image: null,
+    category: "Industry",
+    tag: "Industry",
+    read_time: "10 min read",
+    status: "published",
+    author_name: "Ship Crew Agency",
+    author_role: "Maritime Editorial Team",
+    meta_title: "Future Fuels at Sea: Training Crews for LNG & More",
+    meta_description:
+      "Decarbonisation, IMO targets and the IGF Code are reshaping the engine room. How to train and upskill crews for LNG, methanol, ammonia and hydrogen.",
+    views: 1490,
+    created_at: "2026-06-09T09:00:00.000Z",
+    published_at: "2026-06-09T09:00:00.000Z",
+  },
+
+  // ──────────────────────────────────────────────────────────────────────────
+  // 8. Future Fuels at Sea — ZH
+  // ──────────────────────────────────────────────────────────────────────────
+  {
+    id: "seed-zh-8",
+    language: "zh",
+    title: "海上未来燃料：为 LNG、甲醇与氨培训船员",
+    slug: "future-fuels-crew-training",
+    excerpt:
+      "脱碳正在重写机舱。随着 LNG、甲醇、氨与氢进入船队，决定性的问题是船员是否受过安全操作它们的训练。本文梳理这些燃料、IGF Code 与 STCW 的缺口。",
+    content: `
+<p>航运脱碳最艰难的部分，或许不是造出这些船——而是为它们配齐船员。随着世界船队从重燃油转向<strong> LNG、甲醇、氨与氢</strong>，新一代船舶正携着一类与船员操作了一个世纪的柴油截然不同的燃料抵达。其中有的是深冷低温，有的具有毒性，有的燃烧时近乎无形，而它们全都要求一套现行培训体系从未被设计来大规模交付的适任能力。本文将梳理未来燃料的图景、规管它的安全框架，以及船东与船员管理公司必须弥合的培训缺口。</p>
+
+<h2>机舱为何在改变：IMO 目标</h2>
+<p>驱动力来自监管。国际海事组织已为国际航运设定航向，要在 2050 年前后实现温室气体净零排放，途中设有若干阶段性雄心目标——在整个 2030 年代实现总排放的实质性削减，并使零排放或近零排放能源所占份额不断上升。再叠加区域性措施与租家压力，这已使替代燃料从一个研究课题，变为一种商业现实。新造船订单簿如今显示，双燃料与替代燃料运力占有相当可观且不断增长的份额。</p>
+<p>对于船上的人而言，要点很简单：<strong>燃料不再是一个常量。</strong>一份职业生涯曾经意味着精通一类产品，如今则意味着要为数种燃料做好准备，而且往往是在同一艘船上——因为这类船舶大多为双燃料，可回退至传统燃油。</p>
+
+<h2>候选燃料及其对船员的要求</h2>
+
+<h3>LNG——已确立的领跑者</h3>
+<p>液化天然气是最成熟的替代燃料，拥有最大的既有装船基数与加注网络。它以约零下 162 摄氏度的深冷状态储存，这带来了船员必须敬畏的危害：<strong>极低温度造成的冷灼伤与脆性断裂风险、封闭舱室内的窒息危险，以及可燃蒸气云。</strong>甲烷逃逸——未燃尽的甲烷逸入大气——也会削弱其气候效益，并成为操作纪律的一个着力点。船员需要在深冷操作、气体探测、惰化与扫舱，以及货物与燃料围护系统管理方面具备适任能力。</p>
+
+<h3>甲醇——藏着暗焰的简单液体</h3>
+<p>甲醇之所以具有吸引力，在于它在常温常压下为液态，因此其加注与储存比气体更接近传统做法。它的危险则不同，且容易被低估：它<strong>经吸入、吞咽或经皮肤吸收均具毒性，并在日光下以近乎无形的火焰燃烧</strong>，使火灾探测与灭火确实充满危险。它还具有低闪点，落在传统燃油规则的设想之外。船员需要接受有毒物质操作、低闪点燃料安全，以及甲醇专项灭火方面的培训。</p>
+
+<h3>氨——零碳却有毒</h3>
+<p>氨不含碳，因而有望实现深度脱碳，一批氨燃料船型正在建造之中。但它<strong>具有急性毒性——在低浓度下即构成严重的吸入危害——并具腐蚀性</strong>，这使得泄漏探测、通风、个人防护装备与应急响应，成为攸关生死之事，而非仅仅是合规之事。它还带来燃烧方面的挑战。在领先的候选燃料之中，氨要求最为严苛的安全文化，而面向它的船员培训，正是全行业最为活跃的工作领域之一。</p>
+
+<h3>氢——遥远的地平线</h3>
+<p>氢，无论是燃烧还是用于燃料电池，都在使用端提供真正零排放的运行，但其物理特性毫不留情：极宽的可燃范围、极低的点火能量、几近无形的火焰，以及或为深冷低温、或为极高压力的储存方式。对船队中的大多数而言，它仍是一个更为遥远、且局限于专用船舶的选项，但它将要求的那些适任能力，已在研究之中。</p>
+
+<blockquote>你可以在十八个月内订到一台可用甲醇的发动机，却无法这么快订到一支能用甲醇的船员队伍。燃料按船厂的进度抵达，适任能力却按培训的进度抵达——而后者，如今才是那道约束性的瓶颈。</blockquote>
+
+<h2>安全框架：IGF Code</h2>
+<p>规管这些燃料的框架，是 SOLAS 之下强制适用的<strong>《使用气体或其他低闪点燃料船舶国际安全规则》（IGF Code）</strong>。IGF Code 为使用低闪点燃料的船舶设定了技术与操作要求，而——对配员而言至关重要的是——它对操作这些燃料的船员，载有具体的适任与培训要求。STCW 经修订，为 IGF Code 船舶上的船员增设了强制性最低培训，按两个层级架构：</p>
+<ul>
+  <li><strong>基础培训</strong>，面向所有被指派承担与船上燃料及其系统相关职责的船员。</li>
+  <li><strong>高级培训</strong>，面向船长、轮机员，以及其他对燃料的照管与使用负有直接责任之人——涵盖燃料的性质与危害、围护与加注系统、安全与应急程序，以及相关法规。</li>
+</ul>
+<p>这一原则是稳健的，但该框架在很大程度上是围绕气体与第一代低闪点燃料而成形的。随着甲醇、尤其是氨投入使用，业界正积极制定针对各类燃料的具体指南与培训，以填补缺口——这是一项船东与公司无法被动等待的工作。</p>
+
+<h2>STCW 的缺口</h2>
+<p>不妨直面这个令人不安的现实：那些将驾驭 2030 年代替代燃料船队的船员，如今正航行在燃油船上，而培训能力、教员与认可课程的主体，仍映照着传统船队。几处缺口尤为突出：</p>
+<ol>
+  <li><strong>覆盖面。</strong>针对各燃料的具体规定，以气体最为完善；面向甲醇、氨与氢的标准化、广泛可得的课程，仍在走向成熟。</li>
+  <li><strong>容量。</strong>面向这些燃料的培训中心、模拟器与合格教员，集中于屈指可数的几个地点，远远满足不了全船队的需求。</li>
+  <li><strong>时效。</strong>多年前考取的一纸证书，未必映照船员如今被要求操作的燃料，这使得复训与转换培训成为必需，而非可选。</li>
+  <li><strong>熟悉。</strong>笼统的发证，并不等同于对某艘具体船舶系统的适任；针对具体船舶的熟悉，依旧不可或缺。</li>
+</ol>
+
+<h2>提升船员技能：船东与公司必须做什么</h2>
+<p>弥合缺口是一项共担的任务，而船员管理公司处于其核心，因为它掌控着人员的供给管道。务实的优先事项包括：</p>
+<ul>
+  <li><strong>对照订单簿盘点适任能力。</strong>弄清船队正在采用哪些燃料，并远在交船之前，便按职级预测所需的持证船员。</li>
+  <li><strong>及早投资于 IGF Code 培训</strong>——基础与高级——并在经认可、针对各燃料的课程可得之时投入其中，而非在交船之际手忙脚乱。</li>
+  <li><strong>把留才纳入规划。</strong>一名以真金白银在氨或甲醇上受过训练的船员，是一项稀缺而宝贵的资产；优厚的条件与职业发展路径，能把这份投资留在船队之内。</li>
+  <li><strong>让发证与熟悉相配套</strong>，确保船员不只在原理上了解燃料，更熟悉具体船舶的围护、加注与应急系统。</li>
+  <li><strong>把安全文化当作交付成果。</strong>面对有毒与深冷燃料，程序纪律与一种真正敢于发声的文化，正是一次险情与一桩死亡事故之间的分野。</li>
+</ul>
+<p>向未来燃料的转型，常被框定为一个工程与融资的挑战，而它确实两者兼具。但钢铁与资本并非那道约束性的瓶颈——人才才是。那些从现在起、一种燃料接一种燃料、一个职级接一个职级地着手培育适任能力的船东与配员伙伴，方能让自己的船舶不只是合规而清洁，更是安全而从容地配齐了船员。脱碳后的船队，其优劣终究取决于受过训练去驾驭它的那些船员。</p>
+`,
+    featured_image: null,
+    category: "行业",
+    tag: "行业",
+    read_time: "10 分钟阅读",
+    status: "published",
+    author_name: "环球船员管理",
+    author_role: "海事编辑团队",
+    meta_title: "海上未来燃料：为 LNG 等燃料培训船员",
+    meta_description:
+      "脱碳、IMO 目标与 IGF Code 正在重塑机舱。如何为 LNG、甲醇、氨与氢培训并提升船员技能。",
+    views: 1180,
+    created_at: "2026-06-09T09:00:00.000Z",
+    published_at: "2026-06-09T09:00:00.000Z",
+  },
 ];

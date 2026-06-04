@@ -8,6 +8,7 @@ import { LocalizedLink } from "@/components/ui/LocalizedLink";
 import { Icon, type IconName } from "@/components/icons";
 import { SERVICE_SLUGS, CATEGORY_SLUGS, type Lang } from "@/i18n";
 import { getDict } from "@/i18n";
+import Image from "next/image";
 import { IMG, catImage } from "@/lib/media";
 
 const SVC_ICONS: IconName[] = [
@@ -45,8 +46,14 @@ export function HomePage({ lang }: { lang: Lang }) {
       {/* ===================== HERO ===================== */}
       <section className="hero">
         <div className="media-layer">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={IMG.hero} alt="" aria-hidden="true" />
+          <Image
+            src={IMG.hero}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: "cover" }}
+          />
         </div>
         <Atmosphere />
         <div className="wave-line" />
@@ -244,12 +251,13 @@ export function HomePage({ lang }: { lang: Lang }) {
                   to={`crew/${CATEGORY_SLUGS[i]}`}
                   className="cat-card"
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     className="cat-card__photo"
                     src={catImage(CATEGORY_SLUGS[i])}
-                    alt=""
-                    aria-hidden="true"
+                    alt={card.title}
+                    fill
+                    sizes="(max-width: 820px) 100vw, (max-width: 1100px) 50vw, 25vw"
+                    style={{ objectFit: "cover" }}
                   />
                   <div className="cat-card__overlay" />
                   <div className="cat-card__content">

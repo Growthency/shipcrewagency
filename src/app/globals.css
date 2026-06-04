@@ -27,9 +27,10 @@
   --text-secondary: #33514e;
   --text-muted: #5f7b77;
   --pure-white: #ffffff; /* never flips — text/icons on dark sections */
-  --font-display: "Cormorant Garamond", Georgia, "Noto Serif SC",
+  --font-display: var(--font-display-src), Georgia, "Songti SC", "Noto Serif SC",
     "Noto Sans SC", serif;
-  --font-body: "DM Sans", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+  --font-body: var(--font-body-src), system-ui, -apple-system, "PingFang SC",
+    "Microsoft YaHei", "Noto Sans SC", sans-serif;
   --radius: 9px;
   --radius-lg: 14px;
   --radius-xl: 22px;
@@ -737,11 +738,12 @@ section {
 }
 .footer__top {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1.1fr;
+  gap: 44px;
   margin-bottom: 64px;
   position: relative;
   z-index: 1;
+  align-items: start;
 }
 .footer__brand p {
   color: rgba(255, 255, 255, 0.6);

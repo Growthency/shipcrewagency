@@ -60,7 +60,7 @@ export function Footer({ lang, dict }: { lang: Lang; dict: Dictionary }) {
             </div>
           </div>
 
-          {/* Categories + Company */}
+          {/* Crew Categories */}
           <div>
             <div className="footer__col-title">{f.categoriesTitle}</div>
             <div className="footer__links">
@@ -70,9 +70,11 @@ export function Footer({ lang, dict }: { lang: Lang; dict: Dictionary }) {
                 </LocalizedLink>
               ))}
             </div>
-            <div className="footer__col-title" style={{ marginTop: 28 }}>
-              {f.companyTitle}
-            </div>
+          </div>
+
+          {/* Company */}
+          <div>
+            <div className="footer__col-title">{f.companyTitle}</div>
             <div className="footer__links">
               {f.company.map((l) => (
                 <LocalizedLink key={l.to} lang={lang} to={l.to} className="footer__link">

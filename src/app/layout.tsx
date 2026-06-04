@@ -1,10 +1,28 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
+import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
 import "./sections.css";
 import "./theme.css";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://shipcrewagency.com";
+
+// Self-hosted, optimized fonts (no render-blocking external CSS).
+const display = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-display-src",
+  display: "swap",
+  preload: true,
+});
+const body = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-body-src",
+  display: "swap",
+  preload: true,
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -14,11 +32,24 @@ export const metadata: Metadata = {
   },
   description:
     "Ship Crew Agency is a trusted global ship crew manning agency with 17 years experience supplying STCW-certified seafarers worldwide.",
-  robots: { index: true, follow: true },
-  openGraph: {
-    type: "website",
-    siteName: "Ship Crew Agency",
+  applicationName: "Ship Crew Agency",
+  authors: [{ name: "Ship Crew Agency" }],
+  creator: "Ship Crew Agency",
+  publisher: "Ship Crew Agency",
+  formatDetection: { email: false, address: false, telephone: false },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
+  openGraph: { type: "website", siteName: "Ship Crew Agency" },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0e6e78",
+  colorScheme: "light dark",
 };
 
 export default async function RootLayout({
@@ -29,23 +60,13 @@ export default async function RootLayout({
   const h = await headers();
   const lang = h.get("x-lang") === "zh" ? "zh-CN" : "en";
   return (
-    <html lang={lang}>
+    <html lang={lang} className={`${display.variable} ${body.variable}`}>
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html:
               "(function(){try{var t=localStorage.getItem('scma-theme')||'light';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();",
           }}
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
-          rel="stylesheet"
         />
       </head>
       <body>{children}</body>

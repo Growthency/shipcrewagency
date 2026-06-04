@@ -3,6 +3,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { CtaStrip } from "@/components/ui/CtaStrip";
 import { LocalizedLink } from "@/components/ui/LocalizedLink";
 import { Icon, type IconName } from "@/components/icons";
+import Image from "next/image";
 import { CATEGORY_SLUGS, getDict, type Lang } from "@/i18n";
 import { catImage } from "@/lib/media";
 
@@ -38,12 +39,13 @@ export function CrewIndexPage({ lang }: { lang: Lang }) {
                     to={`crew/${slug}`}
                     className="cat-card"
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       className="cat-card__photo"
                       src={catImage(slug)}
-                      alt=""
-                      aria-hidden="true"
+                      alt={cat.title}
+                      fill
+                      sizes="(max-width: 820px) 100vw, (max-width: 1100px) 50vw, 25vw"
+                      style={{ objectFit: "cover" }}
                     />
                     <div className="cat-card__overlay" />
                     <div className="cat-card__content">

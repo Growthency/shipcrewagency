@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Atmosphere } from "@/components/fx/Atmosphere";
 import { Reveal } from "@/components/fx/Reveal";
 import { LocalizedLink } from "@/components/ui/LocalizedLink";
@@ -25,8 +26,14 @@ export function PageHero({
   return (
     <section className="page-hero">
       <div className="media-layer">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={image} alt="" aria-hidden="true" />
+        <Image
+          src={image}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: "cover" }}
+        />
       </div>
       <Atmosphere />
       <div className="wave-line" />

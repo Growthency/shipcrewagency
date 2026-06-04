@@ -1,6 +1,8 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import sanitizeHtml from "sanitize-html";
 import { Button } from "@/components/ui/Button";
+import { IMG } from "@/lib/media";
 import { LocalizedLink } from "@/components/ui/LocalizedLink";
 import { PageHero } from "@/components/ui/PageHero";
 import { Icon } from "@/components/icons";
@@ -107,7 +109,13 @@ export async function BlogPostPage({
               <div className="article__meta-bar">
                 <div className="article__author">
                   <span className="article__author-avatar">
-                    {post.author_name.charAt(0)}
+                    <Image
+                      src={IMG.author}
+                      alt={post.author_name}
+                      width={46}
+                      height={46}
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    />
                   </span>
                   <span>
                     <strong style={{ color: "var(--brand-900)" }}>
@@ -130,7 +138,13 @@ export async function BlogPostPage({
                 <h4>{t.blog.writtenBy}</h4>
                 <div className="article__author">
                   <span className="article__author-avatar">
-                    {post.author_name.charAt(0)}
+                    <Image
+                      src={IMG.author}
+                      alt={post.author_name}
+                      width={46}
+                      height={46}
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    />
                   </span>
                   <span>
                     <strong style={{ color: "var(--brand-900)" }}>

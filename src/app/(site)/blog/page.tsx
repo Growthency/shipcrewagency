@@ -13,6 +13,11 @@ export function generateMetadata(): Metadata {
   });
 }
 
-export default async function Page() {
-  return <BlogListPage lang="en" />;
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const { page } = await searchParams;
+  return <BlogListPage lang="en" page={Number(page) || 1} />;
 }

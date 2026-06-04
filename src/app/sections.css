@@ -2024,13 +2024,11 @@
     grid-template-columns: repeat(2, 1fr);
   }
   .footer__top {
-    grid-template-columns: 1.2fr 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px 40px;
   }
-  .footer__top > :last-child {
+  .footer__brand {
     grid-column: 1 / -1;
-    display: flex;
-    gap: 60px;
   }
   .article {
     grid-template-columns: 1fr;
