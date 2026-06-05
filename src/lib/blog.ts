@@ -13,10 +13,13 @@ function bySeed(lang: PostLang): BlogPost[] {
     );
 }
 
-/** Published posts for a language. DB when configured & populated, else the
- *  bundled seed so the site is fully populated out of the box. */
+/** Published posts for a language. ALWAYS includes the bundled starter
+ *  articles, MERGED with anything created in the admin (DB). A DB post with
+ *  the same slug overrides the bundled one; newer posts sort first. This way a
+ *  new admin post never makes the original articles disappear. */
 export async function getPublishedPosts(lang: PostLang): Promise<BlogPost[]> {
-  if (!hasSupabaseConfig()) return bySeed(lang);
+  const seed = bySeed(lang);
+  if (!hasSupabaseConfig()) return seed;
   try {
     const sb = getSupabaseAdmin();
     const { data, error } = await sb
@@ -24,13 +27,19 @@ export async function getPublishedPosts(lang: PostLang): Promise<BlogPost[]> {
       .select("*")
       .eq("language", lang)
       .eq("status", "published")
-      .eq("show_on_blog", true)
-      .order("published_at", { ascending: false, nullsFirst: false })
-      .order("created_at", { ascending: false });
-    if (error || !data || data.length === 0) return bySeed(lang);
-    return data as BlogPost[];
+      .eq("show_on_blog", true);
+    if (error || !data) return seed;
+    const dbPosts = data as BlogPost[];
+    const dbSlugs = new Set(dbPosts.map((p) => p.slug));
+    const merged = [...dbPosts, ...seed.filter((s) => !dbSlugs.has(s.slug))];
+    merged.sort((a, b) =>
+      (b.published_at || b.created_at).localeCompare(
+        a.published_at || a.created_at,
+      ),
+    );
+    return merged;
   } catch {
-    return bySeed(lang);
+    return seed;
   }
 }
 

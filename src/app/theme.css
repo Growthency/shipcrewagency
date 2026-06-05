@@ -517,3 +517,12 @@
     font-size: 10px;
   }
 }
+
+/* Sidebar CTA buttons (e.g. "Call Emergency Line Now") must stay inside their
+   card — go full-width and allow the label to wrap instead of overflowing. */
+.sidebar-card .btn {
+  width: 100%;
+  justify-content: center;
+  white-space: normal;
+  text-align: center;
+}
