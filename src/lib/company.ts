@@ -17,14 +17,16 @@ export const COMPANY = {
   whatsapp: "8801626366030",
 };
 
-// Exact office coordinates — Compass Shipping Service Limited, Chattogram.
-const MAP_LAT = "22.3358863";
-const MAP_LNG = "91.8126155";
+// Shown by the Google Business name so the listing card (not a bare pin) appears
+// at the right spot — Compass Shipping Service Limited, S.K Mujib Road, Chattogram.
+const MAP_PLACE = "Compass Shipping Service Limited, S.K Mujib Road, Chattogram";
 
 /** Keyless Google Maps embed (no API key). Labels follow the page language. */
 export function companyMapEmbed(lang: "en" | "zh"): string {
   const hl = lang === "zh" ? "zh-CN" : "en";
-  return `https://www.google.com/maps?q=${MAP_LAT},${MAP_LNG}&z=16&hl=${hl}&output=embed`;
+  return `https://www.google.com/maps?q=${encodeURIComponent(
+    MAP_PLACE,
+  )}&z=16&hl=${hl}&output=embed`;
 }
 
 /** Full Google Maps place link (opens the office in a new tab). */
