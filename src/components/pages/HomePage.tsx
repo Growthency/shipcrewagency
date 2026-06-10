@@ -10,6 +10,7 @@ import { SERVICE_SLUGS, CATEGORY_SLUGS, type Lang } from "@/i18n";
 import { getDict } from "@/i18n";
 import Image from "next/image";
 import { IMG, catImage } from "@/lib/media";
+import { COMPANY } from "@/lib/company";
 
 const SVC_ICONS: IconName[] = [
   "users",
@@ -81,7 +82,7 @@ export function HomePage({ lang }: { lang: Lang }) {
               <Button lang={lang} to="contact" variant="primary" icon="arrow-right">
                 {h.hero.ctaPrimary}
               </Button>
-              <Button lang={lang} to="contact" variant="outline-white" icon="phone">
+              <Button href={`tel:${COMPANY.callTel}`} variant="outline-white" icon="phone">
                 {h.hero.ctaSecondary}
               </Button>
             </div>

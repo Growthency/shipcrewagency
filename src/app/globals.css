@@ -875,3 +875,105 @@ section {
   letter-spacing: 0.1em;
   color: rgba(255, 255, 255, 0.5);
 }
+.footer__licence {
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--cyan-300);
+}
+
+/* ===================== PRE-FOOTER CTA (two-panel) ===================== */
+.pre-cta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.pre-cta__panel {
+  padding: 56px clamp(24px, 5vw, 72px);
+  display: flex;
+}
+.pre-cta__panel--contact {
+  background: linear-gradient(135deg, var(--brand-800), var(--brand-900));
+  color: #fff;
+  justify-content: flex-end;
+}
+.pre-cta__panel--brochure {
+  background: linear-gradient(135deg, var(--cyan-400), var(--cyan-500));
+  color: var(--brand-900);
+}
+.pre-cta__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px 34px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 600px;
+}
+.pre-cta__text {
+  flex: 1 1 260px;
+}
+.pre-cta__text h2 {
+  font-size: clamp(1.4rem, 2.3vw, 1.95rem);
+  line-height: 1.14;
+  margin: 0 0 10px;
+}
+.pre-cta__panel--contact .pre-cta__text h2 {
+  color: #fff;
+}
+.pre-cta__panel--brochure .pre-cta__text h2 {
+  color: var(--brand-900);
+}
+.pre-cta__text p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.pre-cta__panel--contact .pre-cta__text p {
+  color: rgba(255, 255, 255, 0.86);
+}
+.pre-cta__panel--brochure .pre-cta__text p {
+  color: rgba(7, 52, 58, 0.82);
+}
+.pre-cta__panel .btn {
+  flex: 0 0 auto;
+}
+@media (max-width: 860px) {
+  .pre-cta {
+    grid-template-columns: 1fr;
+  }
+  .pre-cta__panel {
+    padding: 40px 24px;
+    justify-content: center;
+  }
+  .pre-cta__inner {
+    margin: 0 auto;
+  }
+}
+
+/* ===================== CONTACT MAP ===================== */
+.contact-map__title {
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  text-align: center;
+  margin: 0 0 22px;
+}
+.contact-map__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(7, 52, 58, 0.14);
+}
+.contact-map__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+@media (max-width: 640px) {
+  .contact-map__frame {
+    aspect-ratio: 4 / 5;
+  }
+}

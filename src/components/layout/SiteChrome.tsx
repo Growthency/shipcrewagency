@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { SmoothScroll } from "@/components/fx/SmoothScroll";
 import { ScrollProgress } from "@/components/fx/ScrollProgress";
 import { SiteHeader } from "./SiteHeader";
+import { PreFooterCta } from "./PreFooterCta";
 import { Footer } from "./Footer";
 import { FloatingActions } from "./FloatingActions";
 import { ServiceWorkerRegister } from "./ServiceWorkerRegister";
@@ -45,6 +46,7 @@ export function SiteChrome({
       <ScrollProgress />
       <SiteHeader lang={lang} dict={dict} />
       <main id="main-content">{children}</main>
+      <PreFooterCta lang={lang} />
       <Footer lang={lang} dict={dict} />
       <FloatingActions lang={lang} />
       <ServiceWorkerRegister />

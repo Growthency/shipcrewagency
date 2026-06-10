@@ -1,0 +1,13 @@
+# Treat these as binary so Git never applies text / line-ending conversion,
+# which would corrupt the bundled brochure PDF and image assets.
+*.pdf   binary
+*.webp  binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.svg   binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary

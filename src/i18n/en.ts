@@ -107,11 +107,23 @@ export const en: Dictionary = {
     contactEmailLabel: "Email",
     contactEmail: "info@shipcrewagency.com",
     contactEmergencyLabel: "24/7 Emergency",
-    contactEmergency: "+1 (800) SCA-CREW",
+    contactEmergency: "+880 1626 366030",
     contactWebsite: "www.shipcrewagency.com",
+    licenseLabel: "Govt. Manning Licence No.",
     bottomLinks: ["Privacy Policy", "Terms of Service", "Cookie Policy", "Sitemap"],
     copyright:
       "© 2026 Ship Crew Agency. A Global Ship Crew Manning Agency.",
+  },
+
+  preFooter: {
+    leftTitle: "Have a Crew Requirement or a Question?",
+    leftText:
+      "Our maritime staffing specialists are ready to answer your questions and build a reliable, long-term manning partnership with you.",
+    leftCta: "Get in Touch",
+    rightTitle: "Download Our Company Brochure",
+    rightText:
+      "Get a complete overview of our manning services, crew categories and compliance standards in one concise PDF.",
+    rightCta: "Download Brochure",
   },
 
   home: {
@@ -1206,15 +1218,16 @@ export const en: Dictionary = {
     infoText:
       "Our maritime staffing specialists are ready to assist with your crew requirements.",
     infoItems: [
-      { label: "General Inquiries", value: "info@shipcrewagency.com" },
-      { label: "24/7 Emergency Line", value: "+1 (800) SCA-CREW" },
-      { label: "Response Time", value: "Within 24 Hours" },
-      { label: "Website", value: "www.shipcrewagency.com" },
+      { label: "Email", value: "crewing.cssl@gmail.com / info@shipcrewagency.com" },
+      { label: "Phone", value: "+880 1626 366030 / +880 1673 441245" },
+      { label: "Office", value: "Kazi Plaza (2nd Floor), 517/A, S.K Mujib Road, Chattogram 4100, Bangladesh" },
+      { label: "Govt. Manning Licence No.", value: "MLA-0108, MLC 2006" },
     ],
     emergencyTitle: "Emergency Crew Requirement?",
     emergencyText:
-      "For urgent crew replacements and 24/7 emergency requirements, contact our emergency line directly. Our response team is operational around the clock.",
-    emergencyCta: "Call Emergency Line Now",
+      "For urgent crew replacements and 24/7 emergency requirements, contact our specialists directly. Our response team is operational around the clock.",
+    emergencyCta: "Call Our Specialists Now",
+    mapTitle: "Find Us on the Map",
   },
 
   notFound: {

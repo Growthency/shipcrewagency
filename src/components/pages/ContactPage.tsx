@@ -3,16 +3,17 @@ import { Button } from "@/components/ui/Button";
 import { PageHero } from "@/components/ui/PageHero";
 import { Icon, type IconName } from "@/components/icons";
 import { ContactForm } from "@/components/pages/ContactForm";
+import { COMPANY, COMPANY_MAP_EMBED } from "@/lib/company";
 import { getDict, type Lang } from "@/i18n";
 
-const INFO_ICONS: IconName[] = ["mail", "phone", "clock", "globe"];
+const INFO_ICONS: IconName[] = ["mail", "phone", "map-pin", "file"];
 
 export function ContactPage({ lang }: { lang: Lang }) {
   const t = getDict(lang);
   const c = t.contact;
 
-  // Emergency dial target — keep digits, +, and # only.
-  const emergencyTel = c.infoItems[1]?.value.replace(/[^0-9+#]/g, "") || "";
+  // One-tap dial target — the specialists' direct mobile line.
+  const emergencyTel = COMPANY.callTel;
 
   return (
     <>
@@ -66,6 +67,23 @@ export function ContactPage({ lang }: { lang: Lang }) {
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      <section className="content-block" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <Reveal>
+            <h2 className="contact-map__title">{c.mapTitle}</h2>
+            <div className="contact-map__frame">
+              <iframe
+                src={COMPANY_MAP_EMBED}
+                title={c.mapTitle}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+          </Reveal>
         </div>
       </section>
     </>

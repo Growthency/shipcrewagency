@@ -107,11 +107,23 @@ export const zh: Dictionary = {
     contactEmailLabel: "电子邮箱",
     contactEmail: "info@shipcrewagency.com",
     contactEmergencyLabel: "7×24 小时应急热线",
-    contactEmergency: "+1 (800) SCA-CREW",
+    contactEmergency: "+880 1626 366030",
     contactWebsite: "www.shipcrewagency.com",
+    licenseLabel: "政府船员派遣许可证号",
     bottomLinks: ["隐私政策", "服务条款", "Cookie 政策", "网站地图"],
     copyright:
       "© 2026 环球船员管理。一家全球性船员管理机构。",
+  },
+
+  preFooter: {
+    leftTitle: "有船员需求或疑问？",
+    leftText:
+      "我们的海事配员专家随时准备解答您的疑问，并与您建立可靠、长期的配员合作关系。",
+    leftCta: "联系我们",
+    rightTitle: "下载我们的公司手册",
+    rightText:
+      "通过一份简明的 PDF，全面了解我们的配员服务、船员类别与合规标准。",
+    rightCta: "下载手册",
   },
 
   home: {
@@ -1206,15 +1218,16 @@ export const zh: Dictionary = {
     infoText:
       "我们的海事配员专家已准备就绪，随时协助处理您的船员需求。",
     infoItems: [
-      { label: "一般咨询", value: "info@shipcrewagency.com" },
-      { label: "7×24 小时应急热线", value: "+1 (800) SCA-CREW" },
-      { label: "响应时间", value: "24 小时内" },
-      { label: "官方网站", value: "www.shipcrewagency.com" },
+      { label: "电子邮箱", value: "crewing.cssl@gmail.com / info@shipcrewagency.com" },
+      { label: "电话", value: "+880 1626 366030 / +880 1673 441245" },
+      { label: "办公地址", value: "Kazi Plaza (2nd Floor), 517/A, S.K Mujib Road, Chattogram 4100, Bangladesh" },
+      { label: "政府船员派遣许可证号", value: "MLA-0108, MLC 2006" },
     ],
     emergencyTitle: "有紧急船员需求？",
     emergencyText:
-      "如需紧急换员及 7×24 小时应急服务，请直接拨打我们的应急热线。我们的响应团队全天候运转。",
-    emergencyCta: "立即拨打应急热线",
+      "如需紧急换员及 7×24 小时应急服务，请直接联系我们的专家。我们的响应团队全天候运转。",
+    emergencyCta: "立即致电专家",
+    mapTitle: "在地图上找到我们",
   },
 
   notFound: {

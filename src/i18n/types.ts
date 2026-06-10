@@ -145,8 +145,18 @@ export interface Dictionary {
     contactEmergencyLabel: string;
     contactEmergency: string;
     contactWebsite: string;
+    licenseLabel: string;
     bottomLinks: string[];
     copyright: string;
+  };
+
+  preFooter: {
+    leftTitle: string;
+    leftText: string;
+    leftCta: string;
+    rightTitle: string;
+    rightText: string;
+    rightCta: string;
   };
 
   // -------- home --------
@@ -404,6 +414,7 @@ export interface Dictionary {
     emergencyTitle: string;
     emergencyText: string;
     emergencyCta: string;
+    mapTitle: string;
   };
 
   // -------- legal / not found --------

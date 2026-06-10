@@ -2,6 +2,7 @@ import { Atmosphere } from "@/components/fx/Atmosphere";
 import { Icon, LogoMark } from "@/components/icons";
 import { LocalizedLink } from "@/components/ui/LocalizedLink";
 import { Button } from "@/components/ui/Button";
+import { COMPANY } from "@/lib/company";
 import type { Lang } from "@/i18n";
 import type { Dictionary } from "@/i18n/types";
 
@@ -42,6 +43,9 @@ export function Footer({ lang, dict }: { lang: Lang; dict: Dictionary }) {
                   {c}
                 </span>
               ))}
+            </div>
+            <div className="footer__licence">
+              {f.licenseLabel}: {COMPANY.licence}
             </div>
             <div className="footer__socials">
               {SOCIALS.map((s) => (
@@ -99,21 +103,21 @@ export function Footer({ lang, dict }: { lang: Lang; dict: Dictionary }) {
           {/* Contact */}
           <div>
             <div className="footer__col-title">{f.contactTitle}</div>
-            <a className="footer__contact-item" href={`mailto:${f.contactEmail}`}>
-              <Icon name="mail" />
-              <span>{f.contactEmail}</span>
-            </a>
             <div className="footer__contact-item">
+              <Icon name="map-pin" />
+              <span>{COMPANY.address}</span>
+            </div>
+            <a className="footer__contact-item" href={`tel:${COMPANY.callTel}`}>
               <Icon name="phone" />
-              <span>
-                {f.contactEmergencyLabel}:<br />
-                {f.contactEmergency}
-              </span>
-            </div>
-            <div className="footer__contact-item">
-              <Icon name="globe" />
-              <span>{f.contactWebsite}</span>
-            </div>
+              <span>{COMPANY.phones.join(" / ")}</span>
+            </a>
+            <a
+              className="footer__contact-item"
+              href={`mailto:${COMPANY.emails[0]}`}
+            >
+              <Icon name="mail" />
+              <span>{COMPANY.emails.join(" / ")}</span>
+            </a>
             <div style={{ marginTop: 24 }}>
               <Button lang={lang} to="contact" variant="primary" full>
                 {dict.common.requestCrew}
