@@ -125,72 +125,72 @@ export const body = `<div>
       <h2>10 Steps to a Seamless Crew Change</h2>
       <p>A structured, repeatable workflow — from initial request to confirmed embarkation and post-change reporting.</p>
     </div>
-    <div>
-      <div>
-        <div>01</div>
+    <div class="sp-steps">
+      <div class="sp-step">
+        <div class="sp-step-num">01</div>
         <div class="sp-card">
           <h3>Crew Change Planning</h3>
           <p>Review vessel name, type, ETA, port, crew list, joining and signing-off crew, ranks, nationality, and urgency. Confirm planned, urgent, or emergency basis.</p>
         </div>
       </div>
-      <div>
-        <div>02</div>
+      <div class="sp-step">
+        <div class="sp-step-num">02</div>
         <div class="sp-card">
           <h3>Travel Coordination</h3>
           <p>Arrange flights, routing, arrival timing, backup travel options, and return travel considering port restrictions, vessel ETA, immigration rules, and crew readiness.</p>
         </div>
       </div>
-      <div>
-        <div>03</div>
+      <div class="sp-step">
+        <div class="sp-step-num">03</div>
         <div class="sp-card">
           <h3>Visa &amp; Documentation</h3>
           <p>Check passport, seaman book, visa, transit visa, STCW certificates, medical certification, employment agreement, joining letter, and flag-state documents.</p>
         </div>
       </div>
-      <div>
-        <div>04</div>
+      <div class="sp-step">
+        <div class="sp-step-num">04</div>
         <div class="sp-card">
           <h3>Immigration &amp; Port Clearance</h3>
           <p>Coordinate immigration formalities, crew list updates, port access, local authority requirements, and all necessary clearance procedures for joining and signing-off crew.</p>
         </div>
       </div>
-      <div>
-        <div>05</div>
+      <div class="sp-step">
+        <div class="sp-step-num">05</div>
         <div class="sp-card">
           <h3>Hotel &amp; Accommodation</h3>
           <p>Arrange accommodation for joining or signing-off crew when needed. Covers crew welfare, rest time, and practical shore-side support at the port of change.</p>
         </div>
       </div>
-      <div>
-        <div>06</div>
+      <div class="sp-step">
+        <div class="sp-step-num">06</div>
         <div class="sp-card">
           <h3>Airport Pickup &amp; Transfers</h3>
           <p>Arrange airport pickup, hotel transfer, port transfer, and onward crew movement — timed precisely to vessel ETA and port access requirements.</p>
         </div>
       </div>
-      <div>
-        <div>07</div>
+      <div class="sp-step">
+        <div class="sp-step-num">07</div>
         <div class="sp-card">
           <h3>Vessel Boarding Coordination</h3>
           <p>Coordinate gangway access, launch boat where required, port agent communication, vessel arrival timing, and onboard transfer planning for joining crew.</p>
         </div>
       </div>
-      <div>
-        <div>08</div>
+      <div class="sp-step">
+        <div class="sp-step-num">08</div>
         <div class="sp-card">
           <h3>Sign-On / Sign-Off Management</h3>
           <p>Manage practical movement of joining and relieving crew. Coordinate vessel, port agent, immigration, crew manager, and local logistics providers simultaneously.</p>
         </div>
       </div>
-      <div>
-        <div>09</div>
+      <div class="sp-step">
+        <div class="sp-step-num">09</div>
         <div class="sp-card">
           <h3>Port Agent Coordination</h3>
           <p>Work with port agents for port formalities, local transport, launch boat services, immigration processing, gate access, and documentation submission requirements.</p>
         </div>
       </div>
-      <div>
-        <div>10</div>
+      <div class="sp-step">
+        <div class="sp-step-num">10</div>
         <div class="sp-card">
           <h3>Post-Crew Change Support</h3>
           <p>Confirm successful embarkation and disembarkation. Provide updates, handle issue resolution, follow up on documents, and support post-change operational reporting.</p>
@@ -206,71 +206,71 @@ export const body = `<div>
       <h2>Crew Change Support for Every Vessel Type</h2>
       <p>Crew change logistics vary by vessel, cargo type, terminal access, port rules, and sailing schedule. We match coordination to your specific vessel requirements.</p>
     </div>
-    <div>
-      <div>
+    <div class="sp-tiles">
+      <div class="sp-tile">
         <span>🛢️</span>
         <div class="sp-card">
           <h3>Oil Tankers</h3>
           <p>Terminal access coordination, safety procedures, crew certification review, and tanker-specific documentation for safe sign-on and sign-off at restricted terminals.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🧊</span>
         <div class="sp-card">
           <h3>LNG Carriers</h3>
           <p>Strict terminal access, tight schedules, specialist documentation, and high accuracy requirements for LNG carrier crew changes managed with precision.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>💨</span>
         <div class="sp-card">
           <h3>LPG Carriers</h3>
           <p>Gas terminal procedures, safety requirements, cargo operation timing, and local port rules aligned for efficient LPG carrier crew change coordination.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⚓</span>
         <div class="sp-card">
           <h3>Bulk Carriers</h3>
           <p>Crew changes coordinated around loading, unloading, anchorage, berth availability, and cargo schedules for bulk carrier fleet operations.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>📦</span>
         <div class="sp-card">
           <h3>Container Ships</h3>
           <p>Fast turnaround port timing demands precise sign-on and sign-off coordination to protect schedule-sensitive container ship operations and port slot commitments.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🚢</span>
         <div class="sp-card">
           <h3>General Cargo Ships</h3>
           <p>Flexible crew change support across different port types, cargo operations, and vessel sizes for general cargo fleet requirements.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🔧</span>
         <div class="sp-card">
           <h3>Offshore Support Vessels</h3>
           <p>Crew boat coordination, launch boat logistics, project rotation schedules, and remote port support for offshore crew changes.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⛵</span>
         <div class="sp-card">
           <h3>Tugboats</h3>
           <p>Short-notice crew change logistics in harbors, terminals, and service zones with flexible coordination for harbor tug operations.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⛴️</span>
         <div class="sp-card">
           <h3>Passenger Ships</h3>
           <p>Safety schedules, service role documentation, accommodation coordination, and careful timing for passenger vessel crew sign-on and sign-off.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏗️</span>
         <div class="sp-card">
           <h3>Heavy Lift Vessels</h3>
@@ -287,10 +287,10 @@ export const body = `<div>
       <h2>Sign-On &amp; Sign-Off Across All Departments</h2>
       <p>Full sign-on and sign-off support for officers, ratings, engineering crew, and catering staff across every shipboard department.</p>
     </div>
-    <div>
-      <div>
+    <div class="sp-depts sp-depts--card">
+      <div class="sp-dept2">
         <div class="sp-card"><div class="sp-check">🧭</div><h3>Deck Department</h3></div>
-        <div>
+        <div class="sp-dept2-body">
           <div>Captain / Master — Command handover, certification, voyage timing, and port authority clearance for sign-on.</div>
           <div>Chief Officer — Cargo operation continuity, stability documentation, and deck team handover coordination.</div>
           <div>Second Officer — Passage plan handover, chart documentation, and navigation watch scheduling on sign-on.</div>
@@ -300,9 +300,9 @@ export const body = `<div>
           <div>Ordinary Seaman — Travel logistics, signing documentation, and vessel boarding support.</div>
         </div>
       </div>
-      <div>
+      <div class="sp-dept2">
         <div class="sp-card"><div class="sp-check">⚙️</div><h3>Engine Department</h3></div>
-        <div>
+        <div class="sp-dept2-body">
           <div>Chief Engineer — Engine room technical handover, planned maintenance system, and compliance documentation on sign-on.</div>
           <div>Second Engineer — Machinery operations continuity, maintenance scheduling, and technical records transfer.</div>
           <div>Third Engineer — Assigned system handover, watch schedule, and maintenance task coordination.</div>
@@ -312,9 +312,9 @@ export const body = `<div>
           <div>Wiper — Travel coordination, signing documentation, and boarding assistance.</div>
         </div>
       </div>
-      <div>
+      <div class="sp-dept2">
         <div class="sp-card"><div class="sp-check">🍽️</div><h3>Catering Department</h3></div>
-        <div>
+        <div class="sp-dept2-body">
           <div>Chief Cook — Galley continuity planning, food stock handover, and catering team briefing coordination on sign-on.</div>
           <div>Steward — Accommodation handover, cleaning standards brief, and onboard living continuity support.</div>
           <div>Messman — Mess room service continuity, galley assistance handover, and crew support coordination.</div>
@@ -330,48 +330,48 @@ export const body = `<div>
       <h2>Maritime Compliance Standards We Uphold</h2>
       <p>Every crew change is managed in alignment with international maritime law, seafarer certification requirements, and local immigration and port regulations.</p>
     </div>
-    <div>
-      <div>
+    <div class="sp-tiles">
+      <div class="sp-tile">
         <span>📜</span>
         <span>STCW Convention</span>
         <p>Joining crew hold valid STCW certifications for rank and duty — certificates of competency, watchkeeping, safety training, and rank-specific documents verified.</p>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⚓</span>
         <span>MLC 2006</span>
         <p>Crew change supports contract completion, seafarer welfare, fair working conditions, repatriation, and maritime labor standards throughout the process.</p>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🌐</span>
         <span>IMO Regulations</span>
         <p>Compliant crew movement supports safe and orderly maritime operations. Crew documentation, certification, and safety expectations met on every placement.</p>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🛡️</span>
         <span>ISM Code</span>
         <p>Crew change supports the vessel's safety management system — onboard familiarization, handover procedures, procedural control, and operational readiness assured.</p>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🔴</span>
         <span>SOLAS</span>
         <p>Joining crew are ready for safe vessel operations, emergency response, safety drills, and onboard duties from the moment they sign on.</p>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🛂</span>
         <span>Immigration Compliance</span>
         <p>Immigration clearance, transit visas, crew entry and exit rules, passport control, and local port authority requirements handled for every crew change.</p>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>📋</span>
         <span>Travel Documentation</span>
         <p>Passports, seaman books, visas, flight tickets, hotel confirmations, joining letters, crew lists, port passes, and clearance papers coordinated end-to-end.</p>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏅</span>
         <span>Crew Certification</span>
         <p>STCW certificates, flag-state endorsements, tanker endorsements where applicable, and all rank-specific documents verified before crew sign-on.</p>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏥</span>
         <span>Medical Requirements</span>
         <p>Medical certification, fitness for duty, illness-related sign-off support, medical coordination, and emergency health situations handled with care.</p>
@@ -387,29 +387,29 @@ export const body = `<div>
         <h2>When Operations Change Without Warning, We Respond</h2>
         <p>ShipCrewAgency provides rapid emergency crew change coordination for urgent maritime situations — without compromising compliance, documentation, or seafarer welfare.</p>
       </div>
-      <div>
-        <div>
-          <div>01</div>
+      <div class="sp-steps">
+        <div class="sp-step">
+          <div class="sp-step-num">01</div>
           <div><strong>Urgent Sign-On &amp; Sign-Off</strong>Emergency crew boarding and departure when vessel schedules or operational conditions change suddenly.</div>
         </div>
-        <div>
-          <div>02</div>
+        <div class="sp-step">
+          <div class="sp-step-num">02</div>
           <div><strong>Delayed Flights</strong>Missed connections managed: rebooking, revised pickup, hotel changes, and updated port coordination handled immediately.</div>
         </div>
-        <div>
-          <div>03</div>
+        <div class="sp-step">
+          <div class="sp-step-num">03</div>
           <div><strong>Visa Issues</strong>Contingency planning for visa delays, rejected applications, transit restrictions, and nationality-based entry complications.</div>
         </div>
-        <div>
-          <div>04</div>
+        <div class="sp-step">
+          <div class="sp-step-num">04</div>
           <div><strong>Medical Emergencies</strong>Medical sign-off coordination, local movement, hospital liaison where applicable, replacement travel, and welfare support.</div>
         </div>
-        <div>
-          <div>05</div>
+        <div class="sp-step">
+          <div class="sp-step-num">05</div>
           <div><strong>Last-Minute Coordination</strong>Sudden vessel ETA changes, port switches, crew availability shifts, and immigration delays responded to without delay.</div>
         </div>
-        <div>
-          <div>06</div>
+        <div class="sp-step">
+          <div class="sp-step-num">06</div>
           <div><strong>Replacement Travel</strong>Travel arrangements for replacement crew when original joining seafarers become unavailable — urgent deployment supported.</div>
         </div>
       </div>
@@ -472,13 +472,13 @@ export const body = `<div>
       <div class="sp-head">
         <span class="sp-eyebrow">Industries &amp; Clients</span>
         <h2>Maritime Clients We Serve</h2>
-        <div>
-          <div><span>🛢️</span><h4>Tanker Fleets</h4><p>Crew change for oil tankers, LNG, LPG carriers, and specialized tanker operations globally.</p></div>
-          <div><span>🔧</span><h4>Offshore Operations</h4><p>Crew change logistics for OSVs, supply vessels, and rotation-based offshore operations.</p></div>
-          <div><span>📦</span><h4>Cargo Fleets</h4><p>Bulk carriers, container ships, and general cargo vessel crew change coordination.</p></div>
-          <div><span>🏢</span><h4>Shipping Companies</h4><p>Shipowners, ship managers, fleet operators, crew managers, and marine HR teams.</p></div>
-          <div><span>⛵</span><h4>Maritime Logistics</h4><p>Tugboats, service vessels, port operations, and marine logistics crew change support.</p></div>
-          <div><span>⛴️</span><h4>Passenger Vessels</h4><p>Crew change logistics for deck, engine, and catering staff on passenger and service fleets.</p></div>
+        <div class="sp-tiles">
+          <div class="sp-tile"><span>🛢️</span><h4>Tanker Fleets</h4><p>Crew change for oil tankers, LNG, LPG carriers, and specialized tanker operations globally.</p></div>
+          <div class="sp-tile"><span>🔧</span><h4>Offshore Operations</h4><p>Crew change logistics for OSVs, supply vessels, and rotation-based offshore operations.</p></div>
+          <div class="sp-tile"><span>📦</span><h4>Cargo Fleets</h4><p>Bulk carriers, container ships, and general cargo vessel crew change coordination.</p></div>
+          <div class="sp-tile"><span>🏢</span><h4>Shipping Companies</h4><p>Shipowners, ship managers, fleet operators, crew managers, and marine HR teams.</p></div>
+          <div class="sp-tile"><span>⛵</span><h4>Maritime Logistics</h4><p>Tugboats, service vessels, port operations, and marine logistics crew change support.</p></div>
+          <div class="sp-tile"><span>⛴️</span><h4>Passenger Vessels</h4><p>Crew change logistics for deck, engine, and catering staff on passenger and service fleets.</p></div>
         </div>
       </div>
     </div>

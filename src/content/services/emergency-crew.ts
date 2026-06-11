@@ -144,53 +144,53 @@ export const body = `<div>
     <p>Fleet Coverage</p>
     <h2>Vessel Types We Support<br>for Emergency Deployment</h2>
     <p>Emergency crew capability across all major vessel types and operating conditions, including specialized and offshore fleets.</p>
-    <div>
-      <div>
+    <div class="sp-tiles">
+      <div class="sp-tile">
         <span>🛢️</span>
         <div>Oil Tankers</div>
         <div>Tanker documentation, pollution prevention, cargo safety discipline</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🧊</span>
         <div>LNG Carriers</div>
         <div>Gas carrier experience, documentation accuracy, safety readiness</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>💨</span>
         <div>LPG Carriers</div>
         <div>Gas carrier familiarity, cargo system awareness, compliance ops</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⚓</span>
         <div>Bulk Carriers</div>
         <div>Cargo loading, ballast ops, hatch handling, voyage continuity</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>📦</span>
         <div>Container Ships</div>
         <div>Short port calls, tight schedules, fast turnaround requirements</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🚢</span>
         <div>General Cargo</div>
         <div>Flexible deck, engine, and catering crew for multipurpose vessels</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🔧</span>
         <div>Offshore Support</div>
         <div>Offshore logistics, crew rotation gaps, emergency relief support</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🪝</span>
         <div>Tugboats</div>
         <div>Towing, harbor operations, port services, close-quarter handling</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏖️</span>
         <div>Passenger Ships</div>
         <div>Safety continuity, service readiness, emergency response compliance</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏗️</span>
         <div>Heavy Lift Vessels</div>
         <div>Specialized cargo ops, heavy lift planning, technical coordination</div>
@@ -203,45 +203,45 @@ export const body = `<div>
     <p>How It Works</p>
     <h2>Our Emergency Crew<br>Deployment Process</h2>
     <p>A ten-step coordinated workflow from initial assessment to successful vessel embarkation — fast, documented, and fully compliant.</p>
-    <div>
-      <div>
-        <div><div>1</div></div>
+    <div class="sp-steps">
+      <div class="sp-step">
+        <div><div class="sp-step-num">1</div></div>
         <div class="sp-card"><h3>Emergency Request Assessment</h3><p>Review vessel type, required rank, joining port, vessel ETA, urgency level, safe manning need, contract duration, nationality preference, and documentation requirements. Confirm the nature of the emergency: urgent sign-on, medical sign-off, failed joining, or temporary staffing.</p></div>
       </div>
-      <div>
-        <div><div>2</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">2</div></div>
         <div class="sp-card"><h3>Immediate Crew Matching</h3><p>Match available seafarers based on rank, certification, vessel experience, geographic location, travel readiness, and deployment timeline. Standby crew and candidates with valid documents are prioritized wherever possible.</p></div>
       </div>
-      <div>
-        <div><div>3</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">3</div></div>
         <div class="sp-card"><h3>Certification Verification</h3><p>Check STCW certificates, certificates of competency, flag-state endorsements, tanker certificates where required, and all role-specific credentials before any crew is confirmed.</p></div>
       </div>
-      <div>
-        <div><div>4</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">4</div></div>
         <div class="sp-card"><h3>Medical &amp; Compliance Checks</h3><p>Confirm medical certification, fitness for duty, MLC 2006 compliance, safe manning suitability, and any client-specific standards required for the vessel type or trade.</p></div>
       </div>
-      <div>
-        <div><div>5</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">5</div></div>
         <div class="sp-card"><h3>Emergency Documentation Handling</h3><p>Prepare and review required crew documentation including joining letters, employment agreements, seaman book, passport, visa papers, travel documents, and crew list details.</p></div>
       </div>
-      <div>
-        <div><div>6</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">6</div></div>
         <div class="sp-card"><h3>Fast Travel Coordination</h3><p>Arrange urgent flight routes, ticketing, return planning, schedule adjustments, and emergency travel instructions tailored to the joining port and vessel ETA.</p></div>
       </div>
-      <div>
-        <div><div>7</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">7</div></div>
         <div class="sp-card"><h3>Visa &amp; Immigration Support</h3><p>Support transit visa documentation, immigration clearance, port entry requirements, and nationality-based immigration needs where applicable to the joining route.</p></div>
       </div>
-      <div>
-        <div><div>8</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">8</div></div>
         <div class="sp-card"><h3>Airport-to-Port Logistics</h3><p>Coordinate airport pickup, hotel accommodation if required, local transport, port access arrangements, agent communication, and transfer timing to the vessel.</p></div>
       </div>
-      <div>
-        <div><div>9</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">9</div></div>
         <div class="sp-card"><h3>Vessel Embarkation</h3><p>Support gangway access, port formalities, launch boat coordination where needed, onboarding logistics, and confirmation of successful crew joining with the vessel operator.</p></div>
       </div>
-      <div>
-        <div><div>10</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">10</div></div>
         <div class="sp-card"><h3>Ongoing Crew Support</h3><p>Continue communication after deployment covering replacement feedback, document follow-up, future relief planning, and emergency crew scheduling if further support is required.</p></div>
       </div>
     </div>
@@ -253,29 +253,29 @@ export const body = `<div>
     <h2>24/7 Rapid Crew<br>Mobilization Capability</h2>
     <p>Emergency crew deployment requires coordinated action across recruitment, documentation, travel, immigration, port access, and vessel boarding — all moving simultaneously.</p>
     <div>
-      <div>
-        <div>
+      <div class="sp-rows">
+        <div class="sp-row">
           <div>📡</div>
           <div>
             <h4>Fast Response System</h4>
             <p>Emergency requests are prioritized and quickly reviewed. Candidate availability checks, document status, travel feasibility, and deployment planning begin immediately upon receipt.</p>
           </div>
         </div>
-        <div>
+        <div class="sp-row">
           <div>🌍</div>
           <div>
             <h4>Global Workforce Access</h4>
             <p>International candidate reach supports faster emergency deployment across different vessel types, ranks, and joining ports regardless of geographic location.</p>
           </div>
         </div>
-        <div>
+        <div class="sp-row">
           <div>📢</div>
           <div>
             <h4>Emergency Communication</h4>
             <p>Clear real-time updates to shipowners, crew managers, vessel operators, port agents, and seafarers on candidate status, documentation, travel progress, and embarkation.</p>
           </div>
         </div>
-        <div>
+        <div class="sp-row">
           <div>⚓</div>
           <div>
             <h4>Operational Continuity</h4>
@@ -416,43 +416,43 @@ export const body = `<div>
     <p>Commercial Value</p>
     <h2>Benefits of Outsourcing<br>Emergency Crew Deployment</h2>
     <p>Handing emergency crew deployment to a maritime specialist frees your operations team to manage the vessel — not the logistics of finding, verifying, and moving crew.</p>
-    <div>
-      <div>
+    <div class="sp-rows">
+      <div class="sp-row">
         <div>✓</div>
         <div>
           <h4>Reduced Vessel Downtime</h4>
           <p>Emergency deployment helps reduce vessel waiting time, missed departures, off-hire risk, and the cascading operational disruption that follows an unresolved crew gap.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-row">
         <div>✓</div>
         <div>
           <h4>Faster Crew Sourcing</h4>
           <p>Access to available crew, immediate screening, and rapid deployment planning shortens response time compared to internal emergency sourcing under pressure.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-row">
         <div>✓</div>
         <div>
           <h4>Lower Operational Risk</h4>
           <p>Compliance-focused crew matching reduces the risk of unsuitable or undocumented crew joining — protecting the vessel, flag-state standing, and client relationships.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-row">
         <div>✓</div>
         <div>
           <h4>Operational Continuity</h4>
           <p>Emergency relief crew maintains navigation, engineering operations, cargo work, safety routines, catering support, and onboard performance throughout the transition.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-row">
         <div>✓</div>
         <div>
           <h4>Reduced Internal HR Pressure</h4>
           <p>Internal crew managers avoid handling emergency sourcing, certification review, travel arrangements, visa coordination, and embarkation logistics alone during a crisis.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-row">
         <div>✓</div>
         <div>
           <h4>Emergency Preparedness</h4>
@@ -506,76 +506,76 @@ export const body = `<div>
     <p>Common Questions</p>
     <h2>Frequently Asked Questions<br>About Emergency Crew Deployment</h2>
     <div><span>FAQ</span></div>
-    <div>
-      <div>
-        <button>
+    <div class="sp-acc">
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>What is emergency crew deployment?</span>
           <div>+</div>
         </button>
-        <div>Emergency crew deployment is the rapid sourcing, verification, travel coordination, and embarkation of qualified seafarers when a vessel faces an urgent staffing gap that cannot be resolved through normal recruitment channels.</div>
+        <div class="sp-acc-a">Emergency crew deployment is the rapid sourcing, verification, travel coordination, and embarkation of qualified seafarers when a vessel faces an urgent staffing gap that cannot be resolved through normal recruitment channels.</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>When do shipowners need emergency crew deployment?</span>
           <div>+</div>
         </button>
-        <div>Shipowners may need emergency deployment due to illness, failed crew joining, visa delays, missed flights, resignation, medical sign-off, contract complications, or safe manning concerns that create an immediate crew gap aboard the vessel.</div>
+        <div class="sp-acc-a">Shipowners may need emergency deployment due to illness, failed crew joining, visa delays, missed flights, resignation, medical sign-off, contract complications, or safe manning concerns that create an immediate crew gap aboard the vessel.</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>How fast can emergency crew be deployed?</span>
           <div>+</div>
         </button>
-        <div>Deployment timing depends on the rank required, vessel type, joining port location, crew availability, visa requirements, documentation status, medical certification validity, and travel route feasibility. Each case is assessed individually for the fastest realistic timeline.</div>
+        <div class="sp-acc-a">Deployment timing depends on the rank required, vessel type, joining port location, crew availability, visa requirements, documentation status, medical certification validity, and travel route feasibility. Each case is assessed individually for the fastest realistic timeline.</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>Do you provide standby maritime crew?</span>
           <div>+</div>
         </button>
-        <div>ShipCrewAgency can support access to available and standby maritime crew where possible, depending on rank, location, certification validity, medical status, and travel readiness at the time of the request.</div>
+        <div class="sp-acc-a">ShipCrewAgency can support access to available and standby maritime crew where possible, depending on rank, location, certification validity, medical status, and travel readiness at the time of the request.</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>Can you provide emergency officer and ratings replacement?</span>
           <div>+</div>
         </button>
-        <div>Yes. ShipCrewAgency supports urgent deployment for Masters, Chief Officers, Second and Third Officers, Chief Engineers, and Second through Fourth Engineers. Emergency ratings support includes Bosun, Able Seaman, Ordinary Seaman, Oiler, Motorman, and Wiper.</div>
+        <div class="sp-acc-a">Yes. ShipCrewAgency supports urgent deployment for Masters, Chief Officers, Second and Third Officers, Chief Engineers, and Second through Fourth Engineers. Emergency ratings support includes Bosun, Able Seaman, Ordinary Seaman, Oiler, Motorman, and Wiper.</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>Do emergency crew have STCW certification and medical clearance?</span>
           <div>+</div>
         </button>
-        <div>Yes. Emergency crew are checked for required STCW certification based on rank, duties, and vessel type. Medical certification and fitness for duty are also reviewed as part of the standard emergency deployment process before any confirmation is issued.</div>
+        <div class="sp-acc-a">Yes. Emergency crew are checked for required STCW certification based on rank, duties, and vessel type. Medical certification and fitness for duty are also reviewed as part of the standard emergency deployment process before any confirmation is issued.</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>Can you arrange emergency travel, visas, and port logistics?</span>
           <div>+</div>
         </button>
-        <div>Yes. ShipCrewAgency supports urgent flight arrangements, route planning, ticket changes, airport pickup, hotel if required, and airport-to-port logistics. Visa coordination, transit documentation, immigration clearance, and port entry requirements are also supported where applicable.</div>
+        <div class="sp-acc-a">Yes. ShipCrewAgency supports urgent flight arrangements, route planning, ticket changes, airport pickup, hotel if required, and airport-to-port logistics. Visa coordination, transit documentation, immigration clearance, and port entry requirements are also supported where applicable.</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>What information is needed to request emergency crew deployment?</span>
           <div>+</div>
         </button>
-        <div>Required details typically include vessel type, vessel name, rank needed, joining port, vessel ETA, contract duration, nationality preference, documentation requirements, and urgency level. Providing this information upfront allows the team to assess and coordinate crew options quickly.</div>
+        <div class="sp-acc-a">Required details typically include vessel type, vessel name, rank needed, joining port, vessel ETA, contract duration, nationality preference, documentation requirements, and urgency level. Providing this information upfront allows the team to assess and coordinate crew options quickly.</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>What factors affect emergency crew deployment cost?</span>
           <div>+</div>
         </button>
-        <div>Cost depends on urgency, rank required, vessel type, travel route, visa requirements, joining port, contract duration, documentation complexity, and crew availability at the time of the request. Each case is quoted based on specific circumstances.</div>
+        <div class="sp-acc-a">Cost depends on urgency, rank required, vessel type, travel route, visa requirements, joining port, contract duration, documentation complexity, and crew availability at the time of the request. Each case is quoted based on specific circumstances.</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>Can emergency crew be deployed internationally?</span>
           <div>+</div>
         </button>
-        <div>Yes. International emergency crew deployment is supported through global candidate access, travel coordination, visa support, and port logistics for joining locations across major shipping routes and regions worldwide.</div>
+        <div class="sp-acc-a">Yes. International emergency crew deployment is supported through global candidate access, travel coordination, visa support, and port logistics for joining locations across major shipping routes and regions worldwide.</div>
       </div>
     </div>
   </div>

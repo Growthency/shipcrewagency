@@ -209,11 +209,11 @@ export const body = `<div>
       <div class="sp-head">
         <span class="sp-eyebrow">服务对象</span>
         <h2>行业与客户</h2>
-        <div>
-          <div><span>🚢</span><h4>船东与营运方</h4><p>油轮、集装箱船队与散货船的整船船员管理。</p></div>
-          <div><span>⛽</span><h4>海上油气</h4><p>海工支持船及定期船员轮换周期。</p></div>
-          <div><span>⚓</span><h4>客运船舶</h4><p>为渡轮与邮轮提供完整的甲板、轮机与餐饮船员。</p></div>
-          <div><span>📋</span><h4>海事人力资源经理</h4><p>船队层面的可扩展配员、合规与薪酬解决方案。</p></div>
+        <div class="sp-tiles">
+          <div class="sp-tile"><span>🚢</span><h4>船东与营运方</h4><p>油轮、集装箱船队与散货船的整船船员管理。</p></div>
+          <div class="sp-tile"><span>⛽</span><h4>海上油气</h4><p>海工支持船及定期船员轮换周期。</p></div>
+          <div class="sp-tile"><span>⚓</span><h4>客运船舶</h4><p>为渡轮与邮轮提供完整的甲板、轮机与餐饮船员。</p></div>
+          <div class="sp-tile"><span>📋</span><h4>海事人力资源经理</h4><p>船队层面的可扩展配员、合规与薪酬解决方案。</p></div>
         </div>
       </div>
     </div>

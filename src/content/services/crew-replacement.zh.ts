@@ -196,71 +196,71 @@ export const body = `<div>
       <h2>我们支持船员更换的船型</h2>
       <p>接替船员按船型、货物风险特征、航线要求与运营条件匹配。</p>
     </div>
-    <div>
-      <div>
+    <div class="sp-tiles">
+      <div class="sp-tile">
         <span>🛢️</span>
         <div class="sp-card">
           <h3>油轮</h3>
           <p>持有油轮签注的接替高级船员与普通船员，具备货物安全意识、防污染与油轮专属应急程序。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🧊</span>
         <div class="sp-card">
           <h3>液化天然气船</h3>
           <p>具备气体运输船经验、液化天然气货物操作意识、安全文化与全套文件合规的专业接替船员。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>💨</span>
         <div class="sp-card">
           <h3>液化石油气船</h3>
           <p>熟悉气体运输船货物系统、安全要求与液化石油气专属操作程序的接替海员。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⚓</span>
         <div class="sp-card">
           <h3>散货船</h3>
           <p>在货物装卸、压载操作、舱盖管理与航次连续性方面经验丰富的接替船员。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>📦</span>
         <div class="sp-card">
           <h3>集装箱船</h3>
           <p>面向班期敏感作业的接替船员：快速周转港口、可靠的驾驶台值班、机舱性能与货物支持。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🚢</span>
         <div class="sp-card">
           <h3>杂货船</h3>
           <p>适用于多用途与杂货作业、覆盖各类贸易航线的灵活接替甲板与轮机船员。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🔧</span>
         <div class="sp-card">
           <h3>海工支持船</h3>
           <p>具备快速调派、海上安全资质、轮换规划与动力定位经验的海上平台换班船员。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⛵</span>
         <div class="sp-card">
           <h3>拖轮</h3>
           <p>用于拖带、港内操纵、近距离操船与海上协助作业的接替船员。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⛴️</span>
         <div class="sp-card">
           <h3>客船</h3>
           <p>具备高度安全意识、客运服务纪律与应急准备的甲板、轮机与餐饮接替船员。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏗️</span>
         <div class="sp-card">
           <h3>重吊船</h3>
@@ -278,29 +278,29 @@ export const body = `<div>
         <h2>以运营精度处理临时换班</h2>
         <p>环球船员管理在任何时刻支持紧急船舶配员，绝不在证书标准、旅行后勤或法规合规上妥协。</p>
       </div>
-      <div>
-        <div>
-          <div>01</div>
+      <div class="sp-steps">
+        <div class="sp-step">
+          <div class="sp-step-num">01</div>
           <div><strong>临时换班</strong>误登轮、文件被拒、体检不合格或突然辞职均作为优先案件处理。</div>
         </div>
-        <div>
-          <div>02</div>
+        <div class="sp-step">
+          <div class="sp-step-num">02</div>
           <div><strong>备班海员</strong>预筛选的高级船员与普通船员可视职级、签证与船型在短时间内调派。</div>
         </div>
-        <div>
-          <div>03</div>
+        <div class="sp-step">
+          <div class="sp-step-num">03</div>
           <div><strong>快速调派流程</strong>人选甄选、文件核验、旅行预订与登轮规划同步进行。</div>
         </div>
-        <div>
-          <div>04</div>
+        <div class="sp-step">
+          <div class="sp-step-num">04</div>
           <div><strong>全球调派</strong>支持国际船员流动：签证、航班、港口代理联络与全球登轮协调。</div>
         </div>
-        <div>
-          <div>05</div>
+        <div class="sp-step">
+          <div class="sp-step-num">05</div>
           <div><strong>紧急船舶配员</strong>面向因安全配员要求、港口班期压力或租约承诺而无法延误的船舶。</div>
         </div>
-        <div>
-          <div>06</div>
+        <div class="sp-step">
+          <div class="sp-step-num">06</div>
           <div><strong>备选人选</strong>若选定海员临时无法到岗，立即识别其他合适人选。</div>
         </div>
       </div>

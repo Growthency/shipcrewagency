@@ -120,53 +120,53 @@ export const body = `<div>
       <h2>Vessel-Specific Recruitment Expertise</h2>
       <p>Each vessel type demands specific experience, certifications, and operational knowledge. We recruit for the vessel — not just the rank.</p>
     </div>
-    <div>
-      <div>
+    <div class="sp-tiles">
+      <div class="sp-tile">
         <span>🛢</span>
         <div>Oil Tankers</div>
         <div>Tanker endorsements, cargo safety, pollution prevention, MARPOL compliance</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🔵</span>
         <div>LPG Carriers</div>
         <div>Gas carrier operations, cargo handling safety, specialised documentation</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>❄️</span>
         <div>LNG Carriers</div>
         <div>Highly specialised seafarers with LNG training and advanced technical competence</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⚓</span>
         <div>Bulk Carriers</div>
         <div>Cargo loading, hatch cover ops, ballast management, deck safety</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>📦</span>
         <div>Container Ships</div>
         <div>Fast port turnaround, container ops, navigation, onboard maintenance</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🚢</span>
         <div>General Cargo</div>
         <div>Flexible crew for multipurpose and general cargo operations worldwide</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏗</span>
         <div>Offshore Support</div>
         <div>Offshore safety culture, marine logistics, rotation-based deployment</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⛵</span>
         <div>Tugboats</div>
         <div>Maneuvering, towing expertise, port operations, close-quarter handling</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🛳</span>
         <div>Passenger Ships</div>
         <div>Safety awareness, service standards, passenger vessel discipline</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏋</span>
         <div>Heavy Lift Vessels</div>
         <div>Complex cargo handling, deck coordination, voyage-specific planning</div>
@@ -179,9 +179,9 @@ export const body = `<div>
     <span class="sp-eyebrow">Who We Recruit</span>
     <h2>Seafarer Positions We Recruit</h2>
     <p>All departments, every rank — from Master to Messman.</p>
-    <div>
-      <div>
-        <div>
+    <div class="sp-depts">
+      <div class="sp-dept2">
+        <div class="sp-dept2-head">
           Deck Department
         </div>
         <ul class="sp-list">
@@ -194,8 +194,8 @@ export const body = `<div>
           <li><div>Ordinary Seaman</div><div>Entry-level deck support — maintenance, cleaning, safety tasks, and general vessel operations.</div></li>
         </ul>
       </div>
-      <div>
-        <div>
+      <div class="sp-dept2">
+        <div class="sp-dept2-head">
           Engine Department
         </div>
         <ul class="sp-list">
@@ -208,8 +208,8 @@ export const body = `<div>
           <li><div>Wiper</div><div>Entry-level engine room role — cleaning, maintenance assistance, and basic technical duties.</div></li>
         </ul>
       </div>
-      <div>
-        <div>
+      <div class="sp-dept2">
+        <div class="sp-dept2-head">
           Catering Department
         </div>
         <ul class="sp-list">
@@ -228,15 +228,15 @@ export const body = `<div>
       <h2>How ShipCrewAgency Ensures Crew Quality</h2>
       <p>We are not a CV provider. We are a recruitment partner that understands crew quality, vessel operations, compliance risk, and long-term maritime workforce planning.</p>
     </div>
-    <div>
-      <div><div>01</div><div class="sp-faq-item"><div class="sp-q">Structured Candidate Screening</div><div class="sp-a">Every applicant goes through a consistent, rank-specific evaluation before entering our active database.</div></div></div>
-      <div><div>02</div><div class="sp-faq-item"><div class="sp-q">Certificate Verification</div><div class="sp-a">STCW certificates, endorsements, and flag-state requirements verified against current regulatory standards.</div></div></div>
-      <div><div>03</div><div class="sp-faq-item"><div class="sp-q">Sea Service Record Check</div><div class="sp-a">Vessel-type experience, trading routes, and sea time confirmed against discharge books and employment records.</div></div></div>
-      <div><div>04</div><div class="sp-faq-item"><div class="sp-q">Background &amp; Reference Checks</div><div class="sp-a">Employer references and professional background verification to confirm reliability and performance history.</div></div></div>
-      <div><div>05</div><div class="sp-faq-item"><div class="sp-q">Vessel-Type Experience Matching</div><div class="sp-a">Candidates matched specifically to your vessel type, cargo operations, and route requirements.</div></div></div>
-      <div><div>06</div><div class="sp-faq-item"><div class="sp-q">Communication Assessment</div><div class="sp-a">Evaluation of SMCP proficiency, onboard communication competence, and teamwork capability.</div></div></div>
-      <div><div>07</div><div class="sp-faq-item"><div class="sp-q">Safety Culture Review</div><div class="sp-a">Assessment of safety awareness, ISM compliance understanding, and professional discipline standards.</div></div></div>
-      <div><div>08</div><div class="sp-faq-item"><div class="sp-q">Post-Placement Performance Feedback</div><div class="sp-a">Feedback from vessel operators improves database quality and informs future retention-focused recruitment.</div></div></div>
+    <div class="sp-steps">
+      <div class="sp-step"><div class="sp-step-num">01</div><div class="sp-faq-item"><div class="sp-q">Structured Candidate Screening</div><div class="sp-a">Every applicant goes through a consistent, rank-specific evaluation before entering our active database.</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">02</div><div class="sp-faq-item"><div class="sp-q">Certificate Verification</div><div class="sp-a">STCW certificates, endorsements, and flag-state requirements verified against current regulatory standards.</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">03</div><div class="sp-faq-item"><div class="sp-q">Sea Service Record Check</div><div class="sp-a">Vessel-type experience, trading routes, and sea time confirmed against discharge books and employment records.</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">04</div><div class="sp-faq-item"><div class="sp-q">Background &amp; Reference Checks</div><div class="sp-a">Employer references and professional background verification to confirm reliability and performance history.</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">05</div><div class="sp-faq-item"><div class="sp-q">Vessel-Type Experience Matching</div><div class="sp-a">Candidates matched specifically to your vessel type, cargo operations, and route requirements.</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">06</div><div class="sp-faq-item"><div class="sp-q">Communication Assessment</div><div class="sp-a">Evaluation of SMCP proficiency, onboard communication competence, and teamwork capability.</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">07</div><div class="sp-faq-item"><div class="sp-q">Safety Culture Review</div><div class="sp-a">Assessment of safety awareness, ISM compliance understanding, and professional discipline standards.</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">08</div><div class="sp-faq-item"><div class="sp-q">Post-Placement Performance Feedback</div><div class="sp-a">Feedback from vessel operators improves database quality and informs future retention-focused recruitment.</div></div></div>
     </div>
   </div>
 </section>

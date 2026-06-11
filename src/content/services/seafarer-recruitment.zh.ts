@@ -120,53 +120,53 @@ export const body = `<div>
       <h2>针对特定船型的招聘专长</h2>
       <p>每一种船型都要求特定的经验、证书与运营知识。我们为船舶招聘 — 而不仅是为职级。</p>
     </div>
-    <div>
-      <div>
+    <div class="sp-tiles">
+      <div class="sp-tile">
         <span>🛢</span>
         <div>油轮</div>
         <div>油轮签注、货物安全、防污染、MARPOL 合规</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🔵</span>
         <div>液化石油气船</div>
         <div>气体运输船作业、货物操作安全、专项文件</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>❄️</span>
         <div>液化天然气船</div>
         <div>持有液化天然气培训与高级技术能力的高度专业海员</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⚓</span>
         <div>散货船</div>
         <div>货物装载、舱盖作业、压载管理、甲板安全</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>📦</span>
         <div>集装箱船</div>
         <div>快速港口周转、集装箱作业、航行、船上维护</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🚢</span>
         <div>杂货船</div>
         <div>适用于多用途与杂货作业的灵活船员，覆盖全球</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏗</span>
         <div>海工支持船</div>
         <div>海上安全文化、海事后勤、基于轮换的部署</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⛵</span>
         <div>拖轮</div>
         <div>操纵、拖带专长、港口作业、近距离操船</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🛳</span>
         <div>客船</div>
         <div>安全意识、服务标准、客运船舶纪律</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏋</span>
         <div>重吊船</div>
         <div>复杂货物操作、甲板协调、针对航次的专项规划</div>
@@ -179,9 +179,9 @@ export const body = `<div>
     <span class="sp-eyebrow">招聘对象</span>
     <h2>我们招聘的海员职位</h2>
     <p>覆盖全部部门、每一职级 — 从船长到餐厅服务员。</p>
-    <div>
-      <div>
-        <div>
+    <div class="sp-depts">
+      <div class="sp-dept2">
+        <div class="sp-dept2-head">
           甲板部
         </div>
         <ul class="sp-list">
@@ -194,8 +194,8 @@ export const body = `<div>
           <li><div>普通水手</div><div>入门级甲板支持 — 维护、清洁、安全工作与一般船舶操作。</div></li>
         </ul>
       </div>
-      <div>
-        <div>
+      <div class="sp-dept2">
+        <div class="sp-dept2-head">
           轮机部
         </div>
         <ul class="sp-list">
@@ -208,8 +208,8 @@ export const body = `<div>
           <li><div>清洁工</div><div>入门级机舱岗位 — 清洁、维护协助与基础技术工作。</div></li>
         </ul>
       </div>
-      <div>
-        <div>
+      <div class="sp-dept2">
+        <div class="sp-dept2-head">
           餐饮部
         </div>
         <ul class="sp-list">
@@ -228,15 +228,15 @@ export const body = `<div>
       <h2>环球船员管理如何确保船员素质</h2>
       <p>我们不是简历供应商。我们是真正理解船员素质、船舶运营、合规风险与长期海事人力规划的招聘伙伴。</p>
     </div>
-    <div>
-      <div><div>01</div><div class="sp-faq-item"><div class="sp-q">结构化人选甄选</div><div class="sp-a">每一位申请人在进入我们的活跃数据库前，都要经过一致、针对职级的评估。</div></div></div>
-      <div><div>02</div><div class="sp-faq-item"><div class="sp-q">证书核验</div><div class="sp-a">STCW 证书、签注与船旗国要求均对照现行法规标准进行核验。</div></div></div>
-      <div><div>03</div><div class="sp-faq-item"><div class="sp-q">海上资历核查</div><div class="sp-a">船型经验、贸易航线与海上工作时间对照船员服务簿与雇佣记录进行确认。</div></div></div>
-      <div><div>04</div><div class="sp-faq-item"><div class="sp-q">背景与资历调查</div><div class="sp-a">通过雇主推荐与专业背景核实，确认可靠性与履历表现。</div></div></div>
-      <div><div>05</div><div class="sp-faq-item"><div class="sp-q">船型经验匹配</div><div class="sp-a">人选专门匹配您的船型、货物作业与航线要求。</div></div></div>
-      <div><div>06</div><div class="sp-faq-item"><div class="sp-q">沟通能力评估</div><div class="sp-a">评估 SMCP 标准航海通信用语水平、船上沟通能力与团队协作能力。</div></div></div>
-      <div><div>07</div><div class="sp-faq-item"><div class="sp-q">安全文化审查</div><div class="sp-a">评估安全意识、对 ISM 合规的理解与职业纪律标准。</div></div></div>
-      <div><div>08</div><div class="sp-faq-item"><div class="sp-q">派遣后表现反馈</div><div class="sp-a">来自船舶营运方的反馈提升数据库质量，并为未来注重留任的招聘提供依据。</div></div></div>
+    <div class="sp-steps">
+      <div class="sp-step"><div class="sp-step-num">01</div><div class="sp-faq-item"><div class="sp-q">结构化人选甄选</div><div class="sp-a">每一位申请人在进入我们的活跃数据库前，都要经过一致、针对职级的评估。</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">02</div><div class="sp-faq-item"><div class="sp-q">证书核验</div><div class="sp-a">STCW 证书、签注与船旗国要求均对照现行法规标准进行核验。</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">03</div><div class="sp-faq-item"><div class="sp-q">海上资历核查</div><div class="sp-a">船型经验、贸易航线与海上工作时间对照船员服务簿与雇佣记录进行确认。</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">04</div><div class="sp-faq-item"><div class="sp-q">背景与资历调查</div><div class="sp-a">通过雇主推荐与专业背景核实，确认可靠性与履历表现。</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">05</div><div class="sp-faq-item"><div class="sp-q">船型经验匹配</div><div class="sp-a">人选专门匹配您的船型、货物作业与航线要求。</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">06</div><div class="sp-faq-item"><div class="sp-q">沟通能力评估</div><div class="sp-a">评估 SMCP 标准航海通信用语水平、船上沟通能力与团队协作能力。</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">07</div><div class="sp-faq-item"><div class="sp-q">安全文化审查</div><div class="sp-a">评估安全意识、对 ISM 合规的理解与职业纪律标准。</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">08</div><div class="sp-faq-item"><div class="sp-q">派遣后表现反馈</div><div class="sp-a">来自船舶营运方的反馈提升数据库质量，并为未来注重留任的招聘提供依据。</div></div></div>
     </div>
   </div>
 </section>

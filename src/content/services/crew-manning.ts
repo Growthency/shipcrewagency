@@ -209,11 +209,11 @@ export const body = `<div>
       <div class="sp-head">
         <span class="sp-eyebrow">Who We Serve</span>
         <h2>Industries &amp; Clients</h2>
-        <div>
-          <div><span>🚢</span><h4>Shipowners &amp; Operators</h4><p>Tankers, container fleets, and bulk carrier full crew management.</p></div>
-          <div><span>⛽</span><h4>Offshore Oil &amp; Gas</h4><p>Offshore support vessels and scheduled crew rotation cycles.</p></div>
-          <div><span>⚓</span><h4>Passenger Vessels</h4><p>Complete deck, engine, and catering crews for ferries and cruises.</p></div>
-          <div><span>📋</span><h4>Maritime HR Managers</h4><p>Scalable staffing, compliance, and payroll solutions at fleet level.</p></div>
+        <div class="sp-tiles">
+          <div class="sp-tile"><span>🚢</span><h4>Shipowners &amp; Operators</h4><p>Tankers, container fleets, and bulk carrier full crew management.</p></div>
+          <div class="sp-tile"><span>⛽</span><h4>Offshore Oil &amp; Gas</h4><p>Offshore support vessels and scheduled crew rotation cycles.</p></div>
+          <div class="sp-tile"><span>⚓</span><h4>Passenger Vessels</h4><p>Complete deck, engine, and catering crews for ferries and cruises.</p></div>
+          <div class="sp-tile"><span>📋</span><h4>Maritime HR Managers</h4><p>Scalable staffing, compliance, and payroll solutions at fleet level.</p></div>
         </div>
       </div>
     </div>

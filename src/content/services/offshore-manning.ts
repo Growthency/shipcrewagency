@@ -106,53 +106,53 @@ export const body = `<div>
       <h2>Offshore Vessel Types We Serve</h2>
       <p>Each offshore asset has distinct crew requirements. We source and verify specifically for vessel type, operational profile, and project demands.</p>
     </div>
-    <div>
-      <div>
+    <div class="sp-tiles">
+      <div class="sp-tile">
         <span>⚓</span>
         <div>OSV</div>
         <div>Offshore support vessels — logistics, supply, standby, and offshore operational support</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>📦</span>
         <div>PSV</div>
         <div>Platform supply vessels — cargo ops, deck safety, bulk/liquid cargo, supply runs</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⛓</span>
         <div>AHTS Vessels</div>
         <div>Anchor handling, towing, winch ops, high-risk deck operations, offshore safety</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🛢</span>
         <div>Drill Ships</div>
         <div>Marine officers, DP crew, engineers, ETOs, HSE, technical offshore specialists</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🔵</span>
         <div>FPSO Units</div>
         <div>Long-term workforce, technical maintenance, marine crew, safety teams, production support</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏗</span>
         <div>Semi-Sub Rigs</div>
         <div>Drilling support, marine systems, maintenance, safety, harsh-environment readiness</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🔧</span>
         <div>Jack-Up Rigs</div>
         <div>Marine crew, riggers, welders, safety supervisors, technical support, rotation planning</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏋</span>
         <div>Construction Vessels</div>
         <div>Lifting, installation, welding, scaffolding, survey, subsea ops, HSE supervision</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🌊</span>
         <div>Subsea Support</div>
         <div>ROV technicians, surveyors, DPOs, marine crew, ETOs, precision offshore operations</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>💨</span>
         <div>Wind Farm Support</div>
         <div>Crew transfer, maintenance logistics, offshore wind safety, technicians, CTV crew</div>
@@ -165,9 +165,9 @@ export const body = `<div>
     <span class="sp-eyebrow">Crew Supply</span>
     <h2>Offshore Crew Positions We Supply</h2>
     <p>From vessel command to subsea operations — we cover all departments across offshore marine and technical roles.</p>
-    <div>
-      <div>
-        <div>
+    <div class="sp-depts">
+      <div class="sp-dept2">
+        <div class="sp-dept2-head">
           Deck &amp; Marine Crew
         </div>
         <ul class="sp-list">
@@ -197,8 +197,8 @@ export const body = `<div>
           </li>
         </ul>
       </div>
-      <div>
-        <div>
+      <div class="sp-dept2">
+        <div class="sp-dept2-head">
           Engineering Crew
         </div>
         <ul class="sp-list">
@@ -228,8 +228,8 @@ export const body = `<div>
           </li>
         </ul>
       </div>
-      <div>
-        <div>
+      <div class="sp-dept2">
+        <div class="sp-dept2-head">
           Technical Offshore Personnel
         </div>
         <ul class="sp-list">
@@ -277,17 +277,17 @@ export const body = `<div>
       <h2>Our Offshore Crew Manning Process</h2>
       <p>A structured, 10-step process from workforce assessment through to ongoing rotation support — every step built around offshore safety and operational continuity.</p>
     </div>
-    <div>
-      <div><div>01</div><div class="sp-faq-item"><div class="sp-q">Offshore Workforce Assessment</div><div class="sp-a">Review project scope, vessel type, offshore location, rotation cycle, certification requirements, client standards, HSE needs, and mobilization timeline.</div></div></div>
-      <div><div>02</div><div class="sp-faq-item"><div class="sp-q">Candidate Sourcing</div><div class="sp-a">Source from offshore crew database, maritime networks, offshore project pools, DP crew contacts, and verified technician and safety personnel pools.</div></div></div>
-      <div><div>03</div><div class="sp-faq-item"><div class="sp-q">Certification Verification</div><div class="sp-a">Verify STCW, DP certificates, OPITO, BOSIET, HUET, offshore medicals, flag-state documents, and role-specific qualifications for validity and suitability.</div></div></div>
-      <div><div>04</div><div class="sp-faq-item"><div class="sp-q">Offshore Safety Qualification Checks</div><div class="sp-a">Review offshore safety training, emergency response readiness, HSE awareness, permit-to-work familiarity, and offshore survival certification.</div></div></div>
-      <div><div>05</div><div class="sp-faq-item"><div class="sp-q">Medical Fitness Assessment</div><div class="sp-a">Check offshore medical certification, fitness for duty, harsh-environment readiness, shift work suitability, and travel fitness.</div></div></div>
-      <div><div>06</div><div class="sp-faq-item"><div class="sp-q">Technical Skill Evaluation</div><div class="sp-a">Assess vessel-type experience, DP exposure, crane operation, rigging, ROV capability, maintenance skills, and project-specific technical competence.</div></div></div>
-      <div><div>07</div><div class="sp-faq-item"><div class="sp-q">Background Screening</div><div class="sp-a">Review employment history, sea service records, offshore project experience, safety record, references, and prior client feedback.</div></div></div>
-      <div><div>08</div><div class="sp-faq-item"><div class="sp-q">Offshore Readiness Assessment</div><div class="sp-a">Confirm availability, travel readiness, offshore mindset, communication ability, teamwork approach, and readiness for rotation-based offshore work.</div></div></div>
-      <div><div>09</div><div class="sp-faq-item"><div class="sp-q">Deployment Planning</div><div class="sp-a">Coordinate travel, visa requirements, offshore joining instructions, client onboarding, PPE requirements, accommodation, and crew transfer logistics.</div></div></div>
-      <div><div>10</div><div class="sp-faq-item"><div class="sp-q">Crew Rotation Support</div><div class="sp-a">Support ongoing rotation planning, relief crew preparation, contract completion, and long-term offshore workforce continuity management.</div></div></div>
+    <div class="sp-steps">
+      <div class="sp-step"><div class="sp-step-num">01</div><div class="sp-faq-item"><div class="sp-q">Offshore Workforce Assessment</div><div class="sp-a">Review project scope, vessel type, offshore location, rotation cycle, certification requirements, client standards, HSE needs, and mobilization timeline.</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">02</div><div class="sp-faq-item"><div class="sp-q">Candidate Sourcing</div><div class="sp-a">Source from offshore crew database, maritime networks, offshore project pools, DP crew contacts, and verified technician and safety personnel pools.</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">03</div><div class="sp-faq-item"><div class="sp-q">Certification Verification</div><div class="sp-a">Verify STCW, DP certificates, OPITO, BOSIET, HUET, offshore medicals, flag-state documents, and role-specific qualifications for validity and suitability.</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">04</div><div class="sp-faq-item"><div class="sp-q">Offshore Safety Qualification Checks</div><div class="sp-a">Review offshore safety training, emergency response readiness, HSE awareness, permit-to-work familiarity, and offshore survival certification.</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">05</div><div class="sp-faq-item"><div class="sp-q">Medical Fitness Assessment</div><div class="sp-a">Check offshore medical certification, fitness for duty, harsh-environment readiness, shift work suitability, and travel fitness.</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">06</div><div class="sp-faq-item"><div class="sp-q">Technical Skill Evaluation</div><div class="sp-a">Assess vessel-type experience, DP exposure, crane operation, rigging, ROV capability, maintenance skills, and project-specific technical competence.</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">07</div><div class="sp-faq-item"><div class="sp-q">Background Screening</div><div class="sp-a">Review employment history, sea service records, offshore project experience, safety record, references, and prior client feedback.</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">08</div><div class="sp-faq-item"><div class="sp-q">Offshore Readiness Assessment</div><div class="sp-a">Confirm availability, travel readiness, offshore mindset, communication ability, teamwork approach, and readiness for rotation-based offshore work.</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">09</div><div class="sp-faq-item"><div class="sp-q">Deployment Planning</div><div class="sp-a">Coordinate travel, visa requirements, offshore joining instructions, client onboarding, PPE requirements, accommodation, and crew transfer logistics.</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">10</div><div class="sp-faq-item"><div class="sp-q">Crew Rotation Support</div><div class="sp-a">Support ongoing rotation planning, relief crew preparation, contract completion, and long-term offshore workforce continuity management.</div></div></div>
     </div>
   </div>
 </section>
@@ -298,53 +298,53 @@ export const body = `<div>
       <h2>Offshore Safety &amp; Compliance Standards</h2>
       <p>Every offshore crew decision is made with these standards in mind. Certification is verified — not assumed.</p>
     </div>
-    <div>
-      <div>
+    <div class="sp-tiles sp-tiles--standard">
+      <div class="sp-tile">
         <div>STCW</div>
         <span>Standards of Training, Certification &amp; Watchkeeping</span>
         <div>Marine crew must hold valid STCW certificates for rank, duties, and vessel type — safety training, watchkeeping, and competency certificates included.</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>MLC 2006</div>
         <span>Maritime Labour Convention</span>
         <div>Offshore manning practices cover seafarer welfare, fair recruitment, employment terms, repatriation, working conditions, and labour compliance.</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>IMO</div>
         <span>International Maritime Organization</span>
         <div>Crew must support compliant maritime operations including marine safety, pollution prevention, and international operational standards.</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>ISM</div>
         <span>International Safety Management Code</span>
         <div>Crew operate within the vessel's safety management system — procedures, risk control, audits, incident reporting, and emergency response.</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>SOLAS</div>
         <span>Safety of Life at Sea</span>
         <div>Offshore personnel support emergency readiness, lifesaving equipment awareness, fire safety, drills, and onboard safety standards.</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>OPITO</div>
         <span>Offshore Petroleum Industry Training Organization</span>
         <div>Widely required for offshore safety training including offshore survival, emergency response, and client-specific offshore induction requirements.</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>BOSIET</div>
         <span>Basic Offshore Safety Induction &amp; Emergency Training</span>
         <div>Sea survival, firefighting, first aid, helicopter safety, and offshore emergency response — often required for offshore roles depending on project and client.</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>HUET</div>
         <span>Helicopter Underwater Escape Training</span>
         <div>Required for personnel travelling by helicopter to offshore installations — offshore transfer safety and underwater emergency preparedness.</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>DP Cert</div>
         <span>Dynamic Positioning Certification</span>
         <div>DP-certified officers for drill ships, subsea support vessels, offshore construction, and station-keeping-critical operations.</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>HSE</div>
         <span>Health, Safety &amp; Environment Protocols</span>
         <div>Crew must understand risk assessment, toolbox talks, permit-to-work, stop-work authority, incident reporting, and environmental protection.</div>
@@ -483,33 +483,33 @@ export const body = `<div>
       <h2>Industries &amp; Offshore Clients We Serve</h2>
       <p>ShipCrewAgency serves offshore maritime and energy sector clients across six key industry segments.</p>
     </div>
-    <div>
-      <div>
+    <div class="sp-tiles">
+      <div class="sp-tile">
         <span>🛢</span>
         <div>Oil &amp; Gas</div>
         <div>Offshore crew manning for drilling operations, production support, OSV operations, FPSO marine activities, maintenance campaigns, and offshore logistics across oil and gas fields.</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>💨</span>
         <div>Offshore Wind Energy</div>
         <div>Offshore crew and technical personnel for wind farm support vessels, maintenance support, crew transfer operations, technician transport, and renewable energy marine logistics.</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏗</span>
         <div>Marine Construction</div>
         <div>Crew and technical staffing for offshore construction vessels, lifting support, installation work, welding, scaffolding, inspection, and project maintenance operations.</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>📦</span>
         <div>Offshore Logistics</div>
         <div>Crew support for PSVs, AHTS vessels, supply operations, offshore cargo movement, vessel-based logistics, and marine support to offshore installations.</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🌊</span>
         <div>Subsea Engineering</div>
         <div>Staffing for subsea support vessels, ROV operations, survey work, subsea inspection, repair, intervention, and underwater project operations.</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🔵</span>
         <div>Offshore Drilling</div>
         <div>Marine crew and technical personnel for drill ships, jack-up rigs, semi-submersible rigs, drilling support, DP operations, and safety supervision.</div>

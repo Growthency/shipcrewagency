@@ -144,53 +144,53 @@ export const body = `<div>
     <p>船队覆盖</p>
     <h2>我们支持应急调派的<br>船型</h2>
     <p>覆盖所有主要船型与作业条件的应急船员能力，包括特种与海工船队。</p>
-    <div>
-      <div>
+    <div class="sp-tiles">
+      <div class="sp-tile">
         <span>🛢️</span>
         <div>油轮</div>
         <div>油轮文件、防污染、货物安全纪律</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🧊</span>
         <div>液化天然气船</div>
         <div>气体运输船经验、文件准确、安全就绪</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>💨</span>
         <div>液化石油气船</div>
         <div>气体运输船熟悉度、货物系统意识、合规作业</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⚓</span>
         <div>散货船</div>
         <div>货物装载、压载作业、舱口操作、航次连续性</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>📦</span>
         <div>集装箱船</div>
         <div>短暂挂靠、紧凑班期、快速周转要求</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🚢</span>
         <div>杂货船</div>
         <div>适用于多用途船舶的灵活甲板、轮机与餐饮船员</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🔧</span>
         <div>海工支持船</div>
         <div>海工后勤、船员轮换空档、应急换班支持</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🪝</span>
         <div>拖轮</div>
         <div>拖带、港口作业、港口服务、近距离操船</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏖️</span>
         <div>客船</div>
         <div>安全连续性、服务就绪、应急响应合规</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏗️</span>
         <div>重吊船</div>
         <div>特种货物作业、重吊规划、技术协调</div>
@@ -203,45 +203,45 @@ export const body = `<div>
     <p>运作方式</p>
     <h2>我们的应急船员<br>调派流程</h2>
     <p>从初步评估到成功登轮的十步协调工作流 — 快速、有据可查且完全合规。</p>
-    <div>
-      <div>
-        <div><div>1</div></div>
+    <div class="sp-steps">
+      <div class="sp-step">
+        <div><div class="sp-step-num">1</div></div>
         <div class="sp-card"><h3>应急请求评估</h3><p>审核船型、所需职级、登轮港、船舶到港时间、紧急程度、安全配员需求、合同期限、国籍偏好与文件要求。确认紧急情况的性质：紧急登轮、医疗离轮、登轮失败或临时配员。</p></div>
       </div>
-      <div>
-        <div><div>2</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">2</div></div>
         <div class="sp-card"><h3>即时船员匹配</h3><p>根据职级、证书、船舶经验、地理位置、旅行就绪与调派时间表匹配可用海员。尽可能优先考虑备班船员与持有效文件的人选。</p></div>
       </div>
-      <div>
-        <div><div>3</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">3</div></div>
         <div class="sp-card"><h3>证书核验</h3><p>在确认任何船员前，核查 STCW 证书、适任证书、船旗国签注、必要时的油轮证书，以及所有岗位专属凭证。</p></div>
       </div>
-      <div>
-        <div><div>4</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">4</div></div>
         <div class="sp-card"><h3>健康与合规检查</h3><p>确认健康证明、适任能力、MLC 2006 合规、安全配员适配，以及船型或航线所需的任何客户专属标准。</p></div>
       </div>
-      <div>
-        <div><div>5</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">5</div></div>
         <div class="sp-card"><h3>应急文件处理</h3><p>准备并审核所需船员文件，包括登轮函、雇佣协议、海员证、护照、签证文件、旅行证件与船员名单细节。</p></div>
       </div>
-      <div>
-        <div><div>6</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">6</div></div>
         <div class="sp-card"><h3>快速旅行协调</h3><p>安排紧急航班路线、出票、返程规划、班期调整与针对登轮港和船舶到港时间定制的应急旅行须知。</p></div>
       </div>
-      <div>
-        <div><div>7</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">7</div></div>
         <div class="sp-card"><h3>签证与移民支持</h3><p>在适用于登轮路线时，支持过境签证文件、移民清关、口岸入境要求与基于国籍的移民需求。</p></div>
       </div>
-      <div>
-        <div><div>8</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">8</div></div>
         <div class="sp-card"><h3>机场至港口后勤</h3><p>协调机场接机、必要时的酒店住宿、当地交通、港口通行安排、代理沟通与至船舶的接送时机。</p></div>
       </div>
-      <div>
-        <div><div>9</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">9</div></div>
         <div class="sp-card"><h3>船舶登轮</h3><p>支持舷梯通行、港口手续、必要时的交通艇协调、登轮后勤，并与船舶营运方确认船员顺利登轮。</p></div>
       </div>
-      <div>
-        <div><div>10</div></div>
+      <div class="sp-step">
+        <div><div class="sp-step-num">10</div></div>
         <div class="sp-card"><h3>持续船员支持</h3><p>部署后持续沟通，涵盖替补反馈、文件跟进、未来换班规划，以及在需要进一步支持时的应急船员排期。</p></div>
       </div>
     </div>
@@ -253,29 +253,29 @@ export const body = `<div>
     <h2>24/7 快速船员<br>调派能力</h2>
     <p>应急船员调派需要在招聘、文件、旅行、移民、港口通行与登轮之间协调行动 — 全部同步推进。</p>
     <div>
-      <div>
-        <div>
+      <div class="sp-rows">
+        <div class="sp-row">
           <div>📡</div>
           <div>
             <h4>快速响应系统</h4>
             <p>应急请求被优先处理并迅速审核。人选可用性检查、文件状态、旅行可行性与调派规划在收到请求时立即启动。</p>
           </div>
         </div>
-        <div>
+        <div class="sp-row">
           <div>🌍</div>
           <div>
             <h4>全球人力网络</h4>
             <p>国际化的人选触达，支持跨不同船型、职级与登轮港的更快应急调派，不受地理位置限制。</p>
           </div>
         </div>
-        <div>
+        <div class="sp-row">
           <div>📢</div>
           <div>
             <h4>应急沟通</h4>
             <p>就人选状态、文件、旅行进度与登轮，向船东、配员经理、船舶营运方、港口代理与海员提供清晰的实时更新。</p>
           </div>
         </div>
-        <div>
+        <div class="sp-row">
           <div>⚓</div>
           <div>
             <h4>运营连续性</h4>
@@ -416,43 +416,43 @@ export const body = `<div>
     <p>商业价值</p>
     <h2>外包应急船员调派<br>的益处</h2>
     <p>将应急船员调派交给海事专家，可让您的运营团队专注于管理船舶 — 而非寻找、核验与调动船员的后勤事务。</p>
-    <div>
-      <div>
+    <div class="sp-rows">
+      <div class="sp-row">
         <div>✓</div>
         <div>
           <h4>减少船舶停工</h4>
           <p>应急调派有助于减少船舶等待时间、错失离港、离租风险，以及船员空缺未解决后随之而来的连锁运营扰乱。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-row">
         <div>✓</div>
         <div>
           <h4>更快船员搜寻</h4>
           <p>可用船员的调用、即时甄选与快速调派规划，相比压力下的内部应急搜寻缩短了响应时间。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-row">
         <div>✓</div>
         <div>
           <h4>更低运营风险</h4>
           <p>以合规为本的船员匹配降低了不适配或无证船员登轮的风险 — 保护船舶、船旗国信誉与客户关系。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-row">
         <div>✓</div>
         <div>
           <h4>运营连续性</h4>
           <p>应急换班船员在过渡期间维持航行、轮机作业、货物工作、安全例程、餐饮支持与船上表现。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-row">
         <div>✓</div>
         <div>
           <h4>减轻内部人力压力</h4>
           <p>内部配员经理在危机中无需独自处理应急搜寻、证书审核、旅行安排、签证协调与登轮后勤。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-row">
         <div>✓</div>
         <div>
           <h4>应急准备</h4>
@@ -506,76 +506,76 @@ export const body = `<div>
     <p>常见问题</p>
     <h2>关于应急船员调派<br>的常见问答</h2>
     <div><span>常见问答</span></div>
-    <div>
-      <div>
-        <button>
+    <div class="sp-acc">
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>什么是应急船员调派？</span>
           <div>+</div>
         </button>
-        <div>应急船员调派是指当船舶面临无法通过常规招聘渠道解决的紧急配员空缺时，对合格海员进行快速搜寻、核验、旅行协调与登轮的过程。</div>
+        <div class="sp-acc-a">应急船员调派是指当船舶面临无法通过常规招聘渠道解决的紧急配员空缺时，对合格海员进行快速搜寻、核验、旅行协调与登轮的过程。</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>船东何时需要应急船员调派？</span>
           <div>+</div>
         </button>
-        <div>船东可能因疾病、登轮失败、签证延误、误机、辞职、医疗离轮、合同复杂情况或安全配员问题，在船上造成即时船员空缺时需要应急调派。</div>
+        <div class="sp-acc-a">船东可能因疾病、登轮失败、签证延误、误机、辞职、医疗离轮、合同复杂情况或安全配员问题，在船上造成即时船员空缺时需要应急调派。</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>应急船员能多快调派？</span>
           <div>+</div>
         </button>
-        <div>调派时间取决于所需职级、船型、登轮港位置、船员可用性、签证要求、文件状态、健康证明有效性与旅行路线可行性。每一案例均单独评估，以确定最快的现实时间表。</div>
+        <div class="sp-acc-a">调派时间取决于所需职级、船型、登轮港位置、船员可用性、签证要求、文件状态、健康证明有效性与旅行路线可行性。每一案例均单独评估，以确定最快的现实时间表。</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>你们提供备班海事船员吗？</span>
           <div>+</div>
         </button>
-        <div>环球船员管理可在可能时支持调用可用与备班海事船员，具体取决于请求时的职级、所在地、证书有效性、健康状态与旅行就绪。</div>
+        <div class="sp-acc-a">环球船员管理可在可能时支持调用可用与备班海事船员，具体取决于请求时的职级、所在地、证书有效性、健康状态与旅行就绪。</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>你们能提供应急高级船员与普通船员替换吗？</span>
           <div>+</div>
         </button>
-        <div>可以。环球船员管理支持紧急调派船长、大副、二副与三副、轮机长，以及二管轮至四管轮。应急普通船员支持包括水手长、一级水手、普通水手、机工、机匠与清洁工。</div>
+        <div class="sp-acc-a">可以。环球船员管理支持紧急调派船长、大副、二副与三副、轮机长，以及二管轮至四管轮。应急普通船员支持包括水手长、一级水手、普通水手、机工、机匠与清洁工。</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>应急船员是否持有 STCW 证书与健康许可？</span>
           <div>+</div>
         </button>
-        <div>是的。应急船员会根据职级、职责与船型核查所需的 STCW 证书。健康证明与适任能力也作为标准应急调派流程的一部分，在出具任何确认前予以审查。</div>
+        <div class="sp-acc-a">是的。应急船员会根据职级、职责与船型核查所需的 STCW 证书。健康证明与适任能力也作为标准应急调派流程的一部分，在出具任何确认前予以审查。</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>你们能安排应急旅行、签证与港口后勤吗？</span>
           <div>+</div>
         </button>
-        <div>可以。环球船员管理支持紧急航班安排、路线规划、改签、机场接机、必要时的酒店与机场至港口后勤。在适用时也支持签证协调、过境文件、移民清关与口岸入境要求。</div>
+        <div class="sp-acc-a">可以。环球船员管理支持紧急航班安排、路线规划、改签、机场接机、必要时的酒店与机场至港口后勤。在适用时也支持签证协调、过境文件、移民清关与口岸入境要求。</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>申请应急船员调派需要哪些信息？</span>
           <div>+</div>
         </button>
-        <div>通常所需细节包括船型、船名、所需职级、登轮港、船舶到港时间、合同期限、国籍偏好、文件要求与紧急程度。预先提供这些信息可让团队迅速评估并协调船员方案。</div>
+        <div class="sp-acc-a">通常所需细节包括船型、船名、所需职级、登轮港、船舶到港时间、合同期限、国籍偏好、文件要求与紧急程度。预先提供这些信息可让团队迅速评估并协调船员方案。</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>哪些因素影响应急船员调派成本？</span>
           <div>+</div>
         </button>
-        <div>成本取决于紧急程度、所需职级、船型、旅行路线、签证要求、登轮港、合同期限、文件复杂度与请求时的船员可用性。每一案例均按具体情况报价。</div>
+        <div class="sp-acc-a">成本取决于紧急程度、所需职级、船型、旅行路线、签证要求、登轮港、合同期限、文件复杂度与请求时的船员可用性。每一案例均按具体情况报价。</div>
       </div>
-      <div>
-        <button>
+      <div class="sp-acc-item">
+        <button class="sp-acc-q">
           <span>应急船员能在国际范围内调派吗？</span>
           <div>+</div>
         </button>
-        <div>可以。通过全球人选触达、旅行协调、签证支持与港口后勤，支持面向全球主要航线与区域登轮地点的国际应急船员调派。</div>
+        <div class="sp-acc-a">可以。通过全球人选触达、旅行协调、签证支持与港口后勤，支持面向全球主要航线与区域登轮地点的国际应急船员调派。</div>
       </div>
     </div>
   </div>

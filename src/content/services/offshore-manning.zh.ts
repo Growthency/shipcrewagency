@@ -106,53 +106,53 @@ export const body = `<div>
       <h2>我们服务的海工船型</h2>
       <p>每一类海工资产都有独特的船员需求。我们专门针对船型、作业特征与项目需求进行搜寻与核验。</p>
     </div>
-    <div>
-      <div>
+    <div class="sp-tiles">
+      <div class="sp-tile">
         <span>⚓</span>
         <div>海工支持船</div>
         <div>海洋工程支持船 — 后勤、补给、值守与海上作业支持</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>📦</span>
         <div>平台供应船</div>
         <div>平台供应船 — 货物作业、甲板安全、散装/液体货物、补给航次</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⛓</span>
         <div>三用工作船</div>
         <div>抛锚操作、拖带、绞车作业、高风险甲板作业、海上安全</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🛢</span>
         <div>钻井船</div>
         <div>海务船员、动力定位船员、轮机员、电子电气员、HSE、海工技术专才</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🔵</span>
         <div>浮式生产储卸油装置</div>
         <div>长期人员、技术维护、海务船员、安全团队、生产支持</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏗</span>
         <div>半潜式钻井平台</div>
         <div>钻井支持、船舶系统、维护、安全、严酷环境适应</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🔧</span>
         <div>自升式钻井平台</div>
         <div>海务船员、索具工、焊工、安全主管、技术支持、轮换规划</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏋</span>
         <div>海洋工程船</div>
         <div>吊装、安装、焊接、脚手架、勘测、水下作业、HSE 监督</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🌊</span>
         <div>水下支持船</div>
         <div>水下机器人技术员、勘测员、动力定位操作员、海务船员、电子电气员、精密海工作业</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>💨</span>
         <div>风场支持船</div>
         <div>船员转运、维护后勤、海上风电安全、技术员、船员转运船船员</div>
@@ -165,9 +165,9 @@ export const body = `<div>
     <span class="sp-eyebrow">船员供应</span>
     <h2>我们供应的海工船员职位</h2>
     <p>从船舶指挥到水下作业 — 我们覆盖海工海务与技术岗位的所有部门。</p>
-    <div>
-      <div>
-        <div>
+    <div class="sp-depts">
+      <div class="sp-dept2">
+        <div class="sp-dept2-head">
           甲板与海务船员
         </div>
         <ul class="sp-list">
@@ -197,8 +197,8 @@ export const body = `<div>
           </li>
         </ul>
       </div>
-      <div>
-        <div>
+      <div class="sp-dept2">
+        <div class="sp-dept2-head">
           轮机船员
         </div>
         <ul class="sp-list">
@@ -228,8 +228,8 @@ export const body = `<div>
           </li>
         </ul>
       </div>
-      <div>
-        <div>
+      <div class="sp-dept2">
+        <div class="sp-dept2-head">
           海工技术人员
         </div>
         <ul class="sp-list">
@@ -277,17 +277,17 @@ export const body = `<div>
       <h2>我们的海工船员配备流程</h2>
       <p>从人员评估到持续的轮换支持，一套结构化的 10 步流程 — 每一步都围绕海工安全与运营连续性而构建。</p>
     </div>
-    <div>
-      <div><div>01</div><div class="sp-faq-item"><div class="sp-q">海工人员评估</div><div class="sp-a">审核项目范围、船型、海上位置、轮换周期、证书要求、客户标准、HSE 需求与动员时间表。</div></div></div>
-      <div><div>02</div><div class="sp-faq-item"><div class="sp-q">人选搜寻</div><div class="sp-a">从海工船员数据库、海事网络、海工项目储备、动力定位船员人脉，以及经核实的技术与安全人员储备中搜寻。</div></div></div>
-      <div><div>03</div><div class="sp-faq-item"><div class="sp-q">证书核验</div><div class="sp-a">核验 STCW、DP 证书、OPITO、BOSIET、HUET、海工体检、船旗国文件与岗位专属资质的有效性与适配性。</div></div></div>
-      <div><div>04</div><div class="sp-faq-item"><div class="sp-q">海工安全资质检查</div><div class="sp-a">审查海工安全培训、应急响应就绪、HSE 意识、作业许可熟悉度与海上求生证书。</div></div></div>
-      <div><div>05</div><div class="sp-faq-item"><div class="sp-q">健康适任评估</div><div class="sp-a">检查海工体检证书、适任能力、严酷环境适应、倒班适应与旅行适任。</div></div></div>
-      <div><div>06</div><div class="sp-faq-item"><div class="sp-q">技术技能评估</div><div class="sp-a">评估船型经验、动力定位接触、吊机操作、索具、水下机器人能力、维护技能与项目专属技术胜任力。</div></div></div>
-      <div><div>07</div><div class="sp-faq-item"><div class="sp-q">背景筛查</div><div class="sp-a">审查雇佣历史、海上资历记录、海工项目经验、安全记录、推荐人与既往客户反馈。</div></div></div>
-      <div><div>08</div><div class="sp-faq-item"><div class="sp-q">海工就绪评估</div><div class="sp-a">确认可用性、旅行就绪、海工心态、沟通能力、团队协作方式，以及对轮换制海工作业的适应。</div></div></div>
-      <div><div>09</div><div class="sp-faq-item"><div class="sp-q">部署规划</div><div class="sp-a">协调旅行、签证要求、海工登轮须知、客户入职、个人防护装备要求、住宿与船员转运后勤。</div></div></div>
-      <div><div>10</div><div class="sp-faq-item"><div class="sp-q">船员轮换支持</div><div class="sp-a">支持持续的轮换规划、换班船员准备、合同期满与长期海工人员连续性管理。</div></div></div>
+    <div class="sp-steps">
+      <div class="sp-step"><div class="sp-step-num">01</div><div class="sp-faq-item"><div class="sp-q">海工人员评估</div><div class="sp-a">审核项目范围、船型、海上位置、轮换周期、证书要求、客户标准、HSE 需求与动员时间表。</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">02</div><div class="sp-faq-item"><div class="sp-q">人选搜寻</div><div class="sp-a">从海工船员数据库、海事网络、海工项目储备、动力定位船员人脉，以及经核实的技术与安全人员储备中搜寻。</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">03</div><div class="sp-faq-item"><div class="sp-q">证书核验</div><div class="sp-a">核验 STCW、DP 证书、OPITO、BOSIET、HUET、海工体检、船旗国文件与岗位专属资质的有效性与适配性。</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">04</div><div class="sp-faq-item"><div class="sp-q">海工安全资质检查</div><div class="sp-a">审查海工安全培训、应急响应就绪、HSE 意识、作业许可熟悉度与海上求生证书。</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">05</div><div class="sp-faq-item"><div class="sp-q">健康适任评估</div><div class="sp-a">检查海工体检证书、适任能力、严酷环境适应、倒班适应与旅行适任。</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">06</div><div class="sp-faq-item"><div class="sp-q">技术技能评估</div><div class="sp-a">评估船型经验、动力定位接触、吊机操作、索具、水下机器人能力、维护技能与项目专属技术胜任力。</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">07</div><div class="sp-faq-item"><div class="sp-q">背景筛查</div><div class="sp-a">审查雇佣历史、海上资历记录、海工项目经验、安全记录、推荐人与既往客户反馈。</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">08</div><div class="sp-faq-item"><div class="sp-q">海工就绪评估</div><div class="sp-a">确认可用性、旅行就绪、海工心态、沟通能力、团队协作方式，以及对轮换制海工作业的适应。</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">09</div><div class="sp-faq-item"><div class="sp-q">部署规划</div><div class="sp-a">协调旅行、签证要求、海工登轮须知、客户入职、个人防护装备要求、住宿与船员转运后勤。</div></div></div>
+      <div class="sp-step"><div class="sp-step-num">10</div><div class="sp-faq-item"><div class="sp-q">船员轮换支持</div><div class="sp-a">支持持续的轮换规划、换班船员准备、合同期满与长期海工人员连续性管理。</div></div></div>
     </div>
   </div>
 </section>
@@ -298,53 +298,53 @@ export const body = `<div>
       <h2>海工安全与合规标准</h2>
       <p>每一项海工船员决策都以这些标准为准绳。证书经过核验 — 绝不臆断。</p>
     </div>
-    <div>
-      <div>
+    <div class="sp-tiles sp-tiles--standard">
+      <div class="sp-tile">
         <div>STCW</div>
         <span>海员培训、发证与值班标准</span>
         <div>海务船员必须持有与职级、职责及船型相符的有效 STCW 证书 — 含安全培训、值班与适任证书。</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>MLC 2006</div>
         <span>海事劳工公约</span>
         <div>海工配员实践涵盖海员福祉、公平招聘、雇佣条款、遣返、工作条件与劳工合规。</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>IMO</div>
         <span>国际海事组织</span>
         <div>船员必须支持合规的海事运营，包括海上安全、防污染与国际操作标准。</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>ISM</div>
         <span>国际安全管理规则</span>
         <div>船员在船舶安全管理体系内作业 — 程序、风险管控、审核、事故报告与应急响应。</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>SOLAS</div>
         <span>国际海上人命安全公约</span>
         <div>海工人员支持应急就绪、救生设备意识、消防安全、演习与船上安全标准。</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>OPITO</div>
         <span>海上石油工业培训组织</span>
         <div>广泛要求的海工安全培训，包括海上求生、应急响应与客户专属海工入场要求。</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>BOSIET</div>
         <span>海上基本安全入职与应急培训</span>
         <div>海上求生、消防、急救、直升机安全与海工应急响应 — 视项目与客户常为海工岗位所必需。</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>HUET</div>
         <span>直升机水下逃生训练</span>
         <div>乘直升机前往海上设施的人员所必需 — 海上转运安全与水下应急准备。</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>DP 证书</div>
         <span>动力定位认证</span>
         <div>为钻井船、水下支持船、海洋工程施工与定位保持关键作业提供持 DP 证书的高级船员。</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <div>HSE</div>
         <span>健康、安全与环境规程</span>
         <div>船员必须理解风险评估、班前安全会、作业许可、停工权、事故报告与环境保护。</div>
@@ -483,33 +483,33 @@ export const body = `<div>
       <h2>我们服务的行业与海工客户</h2>
       <p>环球船员管理服务海工海事与能源领域的客户，覆盖六大关键行业细分。</p>
     </div>
-    <div>
-      <div>
+    <div class="sp-tiles">
+      <div class="sp-tile">
         <span>🛢</span>
         <div>油气</div>
         <div>为油气田的钻井作业、生产支持、海工支持船作业、FPSO 海务活动、维护项目与海工后勤提供海工船员配备。</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>💨</span>
         <div>海上风电</div>
         <div>为风场支持船、维护支持、船员转运作业、技术员运送与可再生能源海事后勤提供海工船员与技术人员。</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏗</span>
         <div>海洋工程施工</div>
         <div>为海洋工程施工船、吊装支持、安装作业、焊接、脚手架、检验与项目维护作业提供船员与技术配员。</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>📦</span>
         <div>海工后勤</div>
         <div>为平台供应船、三用工作船、补给作业、海工货物运输、船基后勤与海上设施的海务支持提供船员支持。</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🌊</span>
         <div>水下工程</div>
         <div>为水下支持船、水下机器人作业、勘测工作、水下检验、修理、干预与水下项目作业提供配员。</div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🔵</span>
         <div>海上钻井</div>
         <div>为钻井船、自升式钻井平台、半潜式钻井平台、钻井支持、动力定位作业与安全监督提供海务船员与技术人员。</div>

@@ -125,72 +125,72 @@ export const body = `<div>
       <h2>顺畅换班的 10 个步骤</h2>
       <p>结构化、可复用的工作流 — 从初始请求到确认登轮与换班后报告。</p>
     </div>
-    <div>
-      <div>
-        <div>01</div>
+    <div class="sp-steps">
+      <div class="sp-step">
+        <div class="sp-step-num">01</div>
         <div class="sp-card">
           <h3>换班规划</h3>
           <p>审核船名、船型、预计到港时间、港口、船员名单、上船与离轮船员、职级、国籍与紧急程度。确认按计划性、紧急或应急基础办理。</p>
         </div>
       </div>
-      <div>
-        <div>02</div>
+      <div class="sp-step">
+        <div class="sp-step-num">02</div>
         <div class="sp-card">
           <h3>旅行协调</h3>
           <p>安排航班、路线、抵达时间、备用旅行方案与返程，并兼顾港口限制、船舶到港时间、移民规则与船员就绪情况。</p>
         </div>
       </div>
-      <div>
-        <div>03</div>
+      <div class="sp-step">
+        <div class="sp-step-num">03</div>
         <div class="sp-card">
           <h3>签证与文件</h3>
           <p>核查护照、海员证、签证、过境签证、STCW 证书、健康证明、雇佣协议、登轮函与船旗国文件。</p>
         </div>
       </div>
-      <div>
-        <div>04</div>
+      <div class="sp-step">
+        <div class="sp-step-num">04</div>
         <div class="sp-card">
           <h3>移民与港口清关</h3>
           <p>协调移民手续、船员名单更新、港口通行、当地当局要求，以及上船与离轮船员所需的全部清关程序。</p>
         </div>
       </div>
-      <div>
-        <div>05</div>
+      <div class="sp-step">
+        <div class="sp-step-num">05</div>
         <div class="sp-card">
           <h3>酒店与住宿</h3>
           <p>在需要时为上船或离轮船员安排住宿。涵盖船员福利、休息时间与换班港口的岸侧切实支持。</p>
         </div>
       </div>
-      <div>
-        <div>06</div>
+      <div class="sp-step">
+        <div class="sp-step-num">06</div>
         <div class="sp-card">
           <h3>机场接机与接送</h3>
           <p>安排机场接机、酒店接送、港口接送与后续船员行程 — 精准衔接船舶到港时间与港口通行要求。</p>
         </div>
       </div>
-      <div>
-        <div>07</div>
+      <div class="sp-step">
+        <div class="sp-step-num">07</div>
         <div class="sp-card">
           <h3>登轮协调</h3>
           <p>为上船船员协调舷梯通行、必要时的交通艇、港口代理沟通、船舶抵达时间与登轮转运规划。</p>
         </div>
       </div>
-      <div>
-        <div>08</div>
+      <div class="sp-step">
+        <div class="sp-step-num">08</div>
         <div class="sp-card">
           <h3>登轮 / 离轮管理</h3>
           <p>管理上船与接替船员的实际行程。同步协调船舶、港口代理、移民、配员经理与当地后勤供应商。</p>
         </div>
       </div>
-      <div>
-        <div>09</div>
+      <div class="sp-step">
+        <div class="sp-step-num">09</div>
         <div class="sp-card">
           <h3>港口代理协调</h3>
           <p>与港口代理协作处理港口手续、当地交通、交通艇服务、移民办理、闸口通行与文件提交要求。</p>
         </div>
       </div>
-      <div>
-        <div>10</div>
+      <div class="sp-step">
+        <div class="sp-step-num">10</div>
         <div class="sp-card">
           <h3>换班后支持</h3>
           <p>确认登轮与离船顺利完成。提供进展更新、处理问题解决、跟进文件，并支持换班后的运营报告。</p>
@@ -206,71 +206,71 @@ export const body = `<div>
       <h2>覆盖每一种船型的换班支持</h2>
       <p>换班后勤因船舶、货物类型、码头通行、港口规则与开航班期而异。我们使协调与您的具体船舶要求相匹配。</p>
     </div>
-    <div>
-      <div>
+    <div class="sp-tiles">
+      <div class="sp-tile">
         <span>🛢️</span>
         <div class="sp-card">
           <h3>油轮</h3>
           <p>码头通行协调、安全程序、船员证书审核，以及在受限码头安全登轮与离轮所需的油轮专属文件。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🧊</span>
         <div class="sp-card">
           <h3>液化天然气船</h3>
           <p>严格的码头通行、紧凑的班期、专项文件与高精度要求，液化天然气船的换班均以精准管理。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>💨</span>
         <div class="sp-card">
           <h3>液化石油气船</h3>
           <p>气体码头程序、安全要求、货物作业时机与当地港口规则相互衔接，实现高效的液化石油气船换班协调。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⚓</span>
         <div class="sp-card">
           <h3>散货船</h3>
           <p>围绕装货、卸货、锚地、泊位可用性与货物班期协调散货船队的换班作业。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>📦</span>
         <div class="sp-card">
           <h3>集装箱船</h3>
           <p>快速周转的港口时机要求精准的登轮与离轮协调，以保护班期敏感的集装箱船作业与港口船位承诺。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🚢</span>
         <div class="sp-card">
           <h3>杂货船</h3>
           <p>为杂货船队需求提供跨不同港口类型、货物作业与船舶尺寸的灵活换班支持。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🔧</span>
         <div class="sp-card">
           <h3>海工支持船</h3>
           <p>交通艇协调、登陆艇后勤、项目轮换班期与偏远港口支持，服务海上平台换班。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⛵</span>
         <div class="sp-card">
           <h3>拖轮</h3>
           <p>在港口、码头与服务区域内提供短时通知的换班后勤，以灵活协调港作拖轮作业。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⛴️</span>
         <div class="sp-card">
           <h3>客船</h3>
           <p>安全班期、服务岗位文件、住宿协调与审慎的时机安排，服务客运船舶的登轮与离轮。</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏗️</span>
         <div class="sp-card">
           <h3>重吊船</h3>
@@ -287,10 +287,10 @@ export const body = `<div>
       <h2>覆盖全部部门的登轮与离轮</h2>
       <p>为船上每一个部门的高级船员、普通船员、轮机船员与餐饮人员提供完整的登轮与离轮支持。</p>
     </div>
-    <div>
-      <div>
+    <div class="sp-depts sp-depts--card">
+      <div class="sp-dept2">
         <div class="sp-card"><div class="sp-check">🧭</div><h3>甲板部</h3></div>
-        <div>
+        <div class="sp-dept2-body">
           <div>船长 — 指挥交接、证书、航次时机与登轮的港口当局清关。</div>
           <div>大副 — 货物作业连续性、稳性文件与甲板班组交接协调。</div>
           <div>二副 — 航次计划交接、海图文件与登轮后的航行值班排班。</div>
@@ -300,9 +300,9 @@ export const body = `<div>
           <div>普通水手 — 旅行后勤、签署文件与登轮支持。</div>
         </div>
       </div>
-      <div>
+      <div class="sp-dept2">
         <div class="sp-card"><div class="sp-check">⚙️</div><h3>轮机部</h3></div>
-        <div>
+        <div class="sp-dept2-body">
           <div>轮机长 — 机舱技术交接、计划维护体系与登轮的合规文件。</div>
           <div>二管轮 — 机械操作连续性、维护排程与技术记录交接。</div>
           <div>三管轮 — 指定系统交接、值班排班与维护任务协调。</div>
@@ -312,9 +312,9 @@ export const body = `<div>
           <div>清洁工 — 旅行协调、签署文件与登轮协助。</div>
         </div>
       </div>
-      <div>
+      <div class="sp-dept2">
         <div class="sp-card"><div class="sp-check">🍽️</div><h3>餐饮部</h3></div>
-        <div>
+        <div class="sp-dept2-body">
           <div>厨师长 — 厨房连续性规划、食品库存交接与登轮的餐饮班组说明协调。</div>
           <div>乘务员 — 起居舱交接、清洁标准说明与船上生活连续性支持。</div>
           <div>餐厅服务员 — 餐厅服务连续性、厨房协助交接与船员支持协调。</div>
@@ -330,48 +330,48 @@ export const body = `<div>
       <h2>我们恪守的海事合规标准</h2>
       <p>每一次换班都依照国际海事法、海员证书要求，以及当地移民与港口法规进行管理。</p>
     </div>
-    <div>
-      <div>
+    <div class="sp-tiles">
+      <div class="sp-tile">
         <span>📜</span>
         <span>STCW 公约</span>
         <p>上船船员持有与职级和职责相符的有效 STCW 证书 — 适任证书、值班、安全培训与职级专属文件均经核验。</p>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⚓</span>
         <span>MLC 2006</span>
         <p>换班支持合同期满、海员福祉、公平工作条件、遣返与整个流程中的海事劳工标准。</p>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🌐</span>
         <span>IMO 法规</span>
         <p>合规的船员流动支持安全有序的海事运营。每一次派遣均满足船员文件、证书与安全要求。</p>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🛡️</span>
         <span>ISM 规则</span>
         <p>换班支持船舶的安全管理体系 — 确保船上熟悉、交接程序、程序管控与运营就绪。</p>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🔴</span>
         <span>SOLAS 公约</span>
         <p>上船船员从登轮一刻起便为安全船舶作业、应急响应、安全演习与船上职责做好准备。</p>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🛂</span>
         <span>移民合规</span>
         <p>每一次换班均处理移民清关、过境签证、船员进出境规则、护照查验与当地港口当局要求。</p>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>📋</span>
         <span>旅行文件</span>
         <p>护照、海员证、签证、机票、酒店确认、登轮函、船员名单、港口通行证与清关文件端到端协调。</p>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏅</span>
         <span>船员证书</span>
         <p>在船员登轮前核验 STCW 证书、船旗国签注、适用时的油轮签注，以及所有职级专属文件。</p>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏥</span>
         <span>健康要求</span>
         <p>健康证明、适任体检、与疾病相关的离轮支持、医疗协调与紧急健康状况均予以审慎处理。</p>
@@ -387,29 +387,29 @@ export const body = `<div>
         <h2>当作业毫无预警地变化，我们即刻响应</h2>
         <p>环球船员管理为紧急海事情况提供快速的应急换班协调 — 绝不在合规、文件或海员福祉上妥协。</p>
       </div>
-      <div>
-        <div>
-          <div>01</div>
+      <div class="sp-steps">
+        <div class="sp-step">
+          <div class="sp-step-num">01</div>
           <div><strong>紧急登轮与离轮</strong>当船舶班期或运营条件突然变化时，紧急安排船员登轮与离船。</div>
         </div>
-        <div>
-          <div>02</div>
+        <div class="sp-step">
+          <div class="sp-step-num">02</div>
           <div><strong>航班延误</strong>处理错失的衔接：改签、调整接机、变更酒店与立即更新港口协调。</div>
         </div>
-        <div>
-          <div>03</div>
+        <div class="sp-step">
+          <div class="sp-step-num">03</div>
           <div><strong>签证问题</strong>为签证延误、申请被拒、过境限制与基于国籍的入境障碍制定应急预案。</div>
         </div>
-        <div>
-          <div>04</div>
+        <div class="sp-step">
+          <div class="sp-step-num">04</div>
           <div><strong>医疗紧急情况</strong>医疗离轮协调、当地行程、适用时的医院联络、替换旅行与福利支持。</div>
         </div>
-        <div>
-          <div>05</div>
+        <div class="sp-step">
+          <div class="sp-step-num">05</div>
           <div><strong>临时协调</strong>对船舶到港时间突变、港口更改、船员可用性变动与移民延误即刻响应。</div>
         </div>
-        <div>
-          <div>06</div>
+        <div class="sp-step">
+          <div class="sp-step-num">06</div>
           <div><strong>替换旅行</strong>当原定上船海员无法到岗时，为替换船员安排旅行 — 支持紧急调派。</div>
         </div>
       </div>
@@ -472,13 +472,13 @@ export const body = `<div>
       <div class="sp-head">
         <span class="sp-eyebrow">行业与客户</span>
         <h2>我们服务的海事客户</h2>
-        <div>
-          <div><span>🛢️</span><h4>油轮船队</h4><p>为全球油轮、液化天然气船、液化石油气船及特种油轮作业提供换班。</p></div>
-          <div><span>🔧</span><h4>海上平台作业</h4><p>为海工支持船、补给船及基于轮换的海上作业提供换班后勤。</p></div>
-          <div><span>📦</span><h4>货运船队</h4><p>散货船、集装箱船与杂货船的换班协调。</p></div>
-          <div><span>🏢</span><h4>航运公司</h4><p>船东、船舶管理者、船队营运方、配员经理与海事人力团队。</p></div>
-          <div><span>⛵</span><h4>海事后勤</h4><p>拖轮、服务船舶、港口作业与海事后勤的换班支持。</p></div>
-          <div><span>⛴️</span><h4>客运船舶</h4><p>为客运与服务船队的甲板、轮机与餐饮人员提供换班后勤。</p></div>
+        <div class="sp-tiles">
+          <div class="sp-tile"><span>🛢️</span><h4>油轮船队</h4><p>为全球油轮、液化天然气船、液化石油气船及特种油轮作业提供换班。</p></div>
+          <div class="sp-tile"><span>🔧</span><h4>海上平台作业</h4><p>为海工支持船、补给船及基于轮换的海上作业提供换班后勤。</p></div>
+          <div class="sp-tile"><span>📦</span><h4>货运船队</h4><p>散货船、集装箱船与杂货船的换班协调。</p></div>
+          <div class="sp-tile"><span>🏢</span><h4>航运公司</h4><p>船东、船舶管理者、船队营运方、配员经理与海事人力团队。</p></div>
+          <div class="sp-tile"><span>⛵</span><h4>海事后勤</h4><p>拖轮、服务船舶、港口作业与海事后勤的换班支持。</p></div>
+          <div class="sp-tile"><span>⛴️</span><h4>客运船舶</h4><p>为客运与服务船队的甲板、轮机与餐饮人员提供换班后勤。</p></div>
         </div>
       </div>
     </div>

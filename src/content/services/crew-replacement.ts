@@ -204,71 +204,71 @@ export const body = `<div>
       <h2>Vessel Types We Support for Crew Replacement</h2>
       <p>Replacement crew matched to vessel type, cargo risk profile, route requirements, and operational conditions.</p>
     </div>
-    <div>
-      <div>
+    <div class="sp-tiles">
+      <div class="sp-tile">
         <span>🛢️</span>
         <div class="sp-card">
           <h3>Oil Tankers</h3>
           <p>Replacement officers and ratings with tanker endorsements, cargo safety awareness, pollution prevention, and tanker-specific emergency procedures.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🧊</span>
         <div class="sp-card">
           <h3>LNG Carriers</h3>
           <p>Specialist replacement crew with gas carrier experience, LNG cargo handling awareness, safety culture, and full documentation compliance.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>💨</span>
         <div class="sp-card">
           <h3>LPG Carriers</h3>
           <p>Replacement seafarers familiar with gas carrier cargo systems, safety requirements, and LPG-specific operational procedures.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⚓</span>
         <div class="sp-card">
           <h3>Bulk Carriers</h3>
           <p>Replacement crew experienced in cargo loading, unloading, ballast operations, hatch cover management, and voyage continuity.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>📦</span>
         <div class="sp-card">
           <h3>Container Ships</h3>
           <p>Replacement crew for schedule-sensitive operations: fast turnaround ports, bridge watchkeeping reliability, engine performance, and cargo support.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🚢</span>
         <div class="sp-card">
           <h3>General Cargo Ships</h3>
           <p>Flexible replacement deck and engine crew for multipurpose and general cargo operations across varied trade routes.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🔧</span>
         <div class="sp-card">
           <h3>Offshore Support Vessels</h3>
           <p>Offshore crew relief with rapid mobilization, offshore safety credentials, rotation planning, and dynamic positioning experience.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⛵</span>
         <div class="sp-card">
           <h3>Tugboats</h3>
           <p>Replacement crew for towing, harbor maneuvering, close-quarter vessel handling, and marine assist operations.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>⛴️</span>
         <div class="sp-card">
           <h3>Passenger Ships</h3>
           <p>Deck, engine, and catering replacement crew with strong safety awareness, passenger service discipline, and emergency readiness.</p>
         </div>
       </div>
-      <div>
+      <div class="sp-tile">
         <span>🏗️</span>
         <div class="sp-card">
           <h3>Heavy Lift Vessels</h3>
@@ -286,29 +286,29 @@ export const body = `<div>
         <h2>Last-Minute Crew Changes Handled with Operational Precision</h2>
         <p>ShipCrewAgency supports urgent vessel staffing without compromising certification standards, travel logistics, or regulatory compliance — at any hour.</p>
       </div>
-      <div>
-        <div>
-          <div>01</div>
+      <div class="sp-steps">
+        <div class="sp-step">
+          <div class="sp-step-num">01</div>
           <div><strong>Last-Minute Crew Changes</strong>Missed joining, rejected documents, failed medical, or sudden resignation handled as a priority case.</div>
         </div>
-        <div>
-          <div>02</div>
+        <div class="sp-step">
+          <div class="sp-step-num">02</div>
           <div><strong>Standby Seafarers</strong>Pre-screened officers and ratings available for short-notice deployment depending on rank, visa, and vessel type.</div>
         </div>
-        <div>
-          <div>03</div>
+        <div class="sp-step">
+          <div class="sp-step-num">03</div>
           <div><strong>Rapid Deployment Process</strong>Candidate selection, document verification, travel booking, and embarkation planning running simultaneously.</div>
         </div>
-        <div>
-          <div>04</div>
+        <div class="sp-step">
+          <div class="sp-step-num">04</div>
           <div><strong>Global Mobilization</strong>International crew movement supported: visas, flights, port agent liaison, and embarkation coordination worldwide.</div>
         </div>
-        <div>
-          <div>05</div>
+        <div class="sp-step">
+          <div class="sp-step-num">05</div>
           <div><strong>Urgent Vessel Staffing</strong>For ships that cannot delay due to safe manning requirements, port schedule pressure, or charter commitments.</div>
         </div>
-        <div>
-          <div>06</div>
+        <div class="sp-step">
+          <div class="sp-step-num">06</div>
           <div><strong>Alternative Candidates</strong>If a selected seafarer becomes unavailable, alternative suitable candidates are identified immediately.</div>
         </div>
       </div>
