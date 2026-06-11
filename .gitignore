@@ -35,6 +35,8 @@ yarn-error.log*
 
 # client reference material (do not publish)
 /reference/
+# source content pages — extracted into src/content, kept locally for reference
+/*.html
 
 # local tooling / logs (not for the repo)
 .claude/
