@@ -755,8 +755,8 @@ section {
 }
 .footer__socials {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-wrap: nowrap;
+  gap: 8px;
   margin-top: 8px;
 }
 .footer__social {
