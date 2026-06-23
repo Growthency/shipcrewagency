@@ -6,6 +6,7 @@ import { adminGetMenu, adminSaveMenu } from "@/lib/menu/store";
 import type { MenuNode } from "@/lib/menu/types";
 import { adminListServices } from "@/lib/services/store";
 import { getDict } from "@/i18n";
+import { siteUrl } from "@/lib/seo";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -110,6 +111,35 @@ function nextId(): string {
   return `n${idCounter}_${idCounter * 7 + 3}`;
 }
 
+// Normalise a URL on save: a same-site absolute URL becomes an internal path
+// key, an off-site absolute URL becomes an external link, a plain path is kept.
+function cleanUrl(
+  raw: string,
+  external: boolean,
+): { url: string; external: boolean } {
+  const url = raw.trim();
+  if (!url) return { url: "", external: false };
+  if (external) return { url, external: true };
+  if (/^(mailto:|tel:|#)/i.test(url)) return { url, external: true };
+  if (/^(https?:\/\/|\/\/)/i.test(url)) {
+    try {
+      const u = new URL(url.startsWith("//") ? `https:${url}` : url);
+      if (u.host === new URL(siteUrl()).host) {
+        return {
+          url: `${u.pathname}${u.search}${u.hash}`
+            .replace(/^\/+/, "")
+            .replace(/^zh\/?/, ""),
+          external: false,
+        };
+      }
+    } catch {
+      /* fall through */
+    }
+    return { url, external: true };
+  }
+  return { url: url.replace(/^\/+/, ""), external: false };
+}
+
 function sanitize(input: unknown, depth = 0): MenuNode[] {
   if (!Array.isArray(input) || depth > 8) return [];
   const out: MenuNode[] = [];
@@ -119,15 +149,15 @@ function sanitize(input: unknown, depth = 0): MenuNode[] {
     const labelEn = typeof r.labelEn === "string" ? r.labelEn.trim() : "";
     const labelZh = typeof r.labelZh === "string" ? r.labelZh.trim() : "";
     if (!labelEn && !labelZh) continue;
-    const url = typeof r.url === "string" ? r.url.trim() : "";
-    const external = Boolean(r.external);
+    const rawUrl = typeof r.url === "string" ? r.url.trim() : "";
+    const { url, external } = cleanUrl(rawUrl, Boolean(r.external));
     const id =
       typeof r.id === "string" && r.id ? r.id.slice(0, 40) : nextId();
     const node: MenuNode = {
       id,
       labelEn: labelEn || labelZh,
       labelZh: labelZh || labelEn,
-      url: external ? url : url.replace(/^\/+/, ""),
+      url,
       external,
     };
     const children = sanitize(r.children, depth + 1);

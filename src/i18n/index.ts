@@ -22,7 +22,11 @@ export function isLang(value: string): value is Lang {
  * zh: "" -> "/zh", "about" -> "/zh/about"
  */
 export function href(lang: Lang, to: string): string {
-  const clean = (to || "").replace(/^\/+/, "");
+  const raw = (to || "").trim();
+  // Absolute URLs and special schemes are used verbatim — never prefix them
+  // with the language/origin (a menu item may hold a full https:// link).
+  if (/^(https?:\/\/|\/\/|mailto:|tel:|#)/i.test(raw)) return raw;
+  const clean = raw.replace(/^\/+/, "");
   if (lang === "zh") {
     return clean ? `/zh/${clean}` : "/zh";
   }

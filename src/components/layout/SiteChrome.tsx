@@ -17,12 +17,44 @@ import { siteUrl } from "@/lib/seo";
 
 const SITE = siteUrl();
 
+// Normalise a stored menu URL. A same-site absolute URL (e.g. someone pasted
+// "https://shipcrewagency.com/blog") becomes an internal, language-aware path
+// key ("blog"); an off-site absolute URL is treated as an external link; a
+// plain path key is kept as-is. This prevents the origin being prefixed onto
+// an already-absolute URL (which produced a doubled, 404-ing link).
+function normalizeMenuUrl(
+  raw: string,
+  external?: boolean,
+): { to: string; external: boolean } {
+  const url = (raw || "").trim();
+  if (!url) return { to: "", external: false };
+  if (external) return { to: url, external: true };
+  if (/^(mailto:|tel:|#)/i.test(url)) return { to: url, external: true };
+  if (/^(https?:\/\/|\/\/)/i.test(url)) {
+    try {
+      const u = new URL(url.startsWith("//") ? `https:${url}` : url);
+      const site = new URL(SITE);
+      if (u.host === site.host) {
+        const path = `${u.pathname}${u.search}${u.hash}`
+          .replace(/^\/+/, "")
+          .replace(/^zh\/?/, ""); // drop a leading /zh; nav re-adds it per language
+        return { to: path, external: false };
+      }
+    } catch {
+      /* fall through to external */
+    }
+    return { to: url, external: true };
+  }
+  return { to: url.replace(/^\/+/, ""), external: false };
+}
+
 // Convert a custom menu tree into nav items (label chosen per language).
 function toNavChild(n: MenuNode, lang: Lang): NavChild {
+  const { to, external } = normalizeMenuUrl(n.url, n.external);
   return {
     label: lang === "en" ? n.labelEn : n.labelZh || n.labelEn,
-    to: n.url,
-    external: n.external,
+    to,
+    external,
     children: n.children?.length
       ? n.children.map((c) => toNavChild(c, lang))
       : undefined,
@@ -35,7 +67,7 @@ function navFromMenu(menu: MenuNode[], lang: Lang): NavItem[] {
       : undefined;
     return {
       label: lang === "en" ? n.labelEn : n.labelZh || n.labelEn,
-      to: n.url,
+      to: normalizeMenuUrl(n.url, n.external).to,
       children: kids,
       wide: (n.children?.length ?? 0) >= 5,
     };
