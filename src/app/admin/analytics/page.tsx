@@ -15,11 +15,11 @@ import {
 import {
   getAnalyticsDashboard,
   normalizeRange,
+  rangeLabel,
   type Overview,
 } from "@/lib/analytics/data";
 import { AnalyticsChart } from "@/components/admin/AnalyticsChart";
 import { AnalyticsHeaderActions } from "@/components/admin/AnalyticsHeaderActions";
-import { AnalyticsSetupGuide } from "@/components/admin/AnalyticsSetupGuide";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -191,7 +191,7 @@ export default async function AnalyticsPage({
           <AnalyticsChart
             daily={d.daily}
             dailyClicks={d.dailyClicks}
-            rangeDays={d.rangeDays}
+            rangeDays={30}
           />
         </>
       )}
@@ -202,7 +202,7 @@ export default async function AnalyticsPage({
             <ListCard
               title="Top 25 Pages"
               icon={<FileText size={16} />}
-              note={`by page views · ${range}d`}
+              note={`by page views · ${rangeLabel(range)}`}
               accent="teal"
               emptyLabel="No page data yet."
               items={d.topPages.map((p) => ({
@@ -214,7 +214,7 @@ export default async function AnalyticsPage({
             <ListCard
               title="Top 25 Countries"
               icon={<Globe2 size={16} />}
-              note={`by active users · ${range}d`}
+              note={`by active users · ${rangeLabel(range)}`}
               accent="teal"
               emptyLabel="No country data yet."
               items={d.topCountries.map((c) => ({
@@ -231,7 +231,7 @@ export default async function AnalyticsPage({
             <ListCard
               title="Top 25 Search Keywords"
               icon={<Search size={16} />}
-              note={`Search Console · ${range}d`}
+              note={`Search Console · ${rangeLabel(range)}`}
               accent="gold"
               emptyLabel="No keyword data yet."
               items={d.keywords.map((k) => ({
@@ -244,7 +244,7 @@ export default async function AnalyticsPage({
             <ListCard
               title="Top 25 Search Pages"
               icon={<FileText size={16} />}
-              note={`Search Console · ${range}d`}
+              note={`Search Console · ${rangeLabel(range)}`}
               accent="gold"
               emptyLabel="No search page data yet."
               items={d.searchPages.map((p) => ({
@@ -257,8 +257,6 @@ export default async function AnalyticsPage({
           </>
         )}
       </div>
-
-      <AnalyticsSetupGuide />
     </div>
   );
 }

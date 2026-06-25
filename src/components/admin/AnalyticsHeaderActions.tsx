@@ -4,14 +4,20 @@ import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { RefreshCw } from "lucide-react";
 import { MiniDropdown } from "./MiniDropdown";
+import type { RangeKey } from "@/lib/analytics/data";
 
-const RANGES = [
-  { value: "7", label: "Last 7 Days" },
-  { value: "30", label: "Last 30 Days" },
-  { value: "90", label: "Last 90 Days" },
+// Kept in sync with RANGES in lib/analytics/data.ts (which is server-only, so
+// its runtime value can't be imported into this client component).
+const RANGE_OPTIONS = [
+  { value: "7d", label: "Last 7 Days" },
+  { value: "30d", label: "Last 30 Days" },
+  { value: "month", label: "This Month" },
+  { value: "lastmonth", label: "Last Month" },
+  { value: "365d", label: "Last 365 Days" },
+  { value: "lifetime", label: "Lifetime" },
 ];
 
-export function AnalyticsHeaderActions({ range }: { range: number }) {
+export function AnalyticsHeaderActions({ range }: { range: RangeKey }) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [clearing, setClearing] = useState(false);
@@ -30,7 +36,6 @@ export function AnalyticsHeaderActions({ range }: { range: number }) {
       /* ignore — refresh below still re-pulls */
     } finally {
       router.refresh();
-      // brief spinner so the action feels acknowledged
       setTimeout(() => setClearing(false), 600);
     }
   };
@@ -48,8 +53,8 @@ export function AnalyticsHeaderActions({ range }: { range: number }) {
       </button>
       <div className={pending ? "an-dd-wrap is-pending" : "an-dd-wrap"}>
         <MiniDropdown
-          value={String(range)}
-          options={RANGES}
+          value={range}
+          options={RANGE_OPTIONS}
           onChange={changeRange}
           ariaLabel="Date range"
         />

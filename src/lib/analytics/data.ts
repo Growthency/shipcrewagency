@@ -10,15 +10,74 @@ import {
 
 export const ANALYTICS_TAG = "analytics";
 
-/** Allowed chart / table windows (days). Stat cards stay fixed at 30d/7d/today. */
-export const RANGE_OPTIONS = [7, 30, 90] as const;
-export type RangeDays = (typeof RANGE_OPTIONS)[number];
+// Selectable date windows for the top tables / search data. Stat cards stay
+// fixed (30d / 7d / today) and the daily chart stays the last 30 days.
+export const RANGES = [
+  { key: "7d", label: "Last 7 Days" },
+  { key: "30d", label: "Last 30 Days" },
+  { key: "month", label: "This Month" },
+  { key: "lastmonth", label: "Last Month" },
+  { key: "365d", label: "Last 365 Days" },
+  { key: "lifetime", label: "Lifetime" },
+] as const;
+export type RangeKey = (typeof RANGES)[number]["key"];
 
-export function normalizeRange(input: unknown): RangeDays {
-  const n = Number(input);
-  return (RANGE_OPTIONS as readonly number[]).includes(n)
-    ? (n as RangeDays)
-    : 30;
+export function normalizeRange(input: unknown): RangeKey {
+  return RANGES.some((r) => r.key === input) ? (input as RangeKey) : "30d";
+}
+export function rangeLabel(key: RangeKey): string {
+  return RANGES.find((r) => r.key === key)?.label ?? "Last 30 Days";
+}
+
+function fmtDate(d: Date): string {
+  return d.toISOString().slice(0, 10);
+}
+function daysAgo(n: number): Date {
+  const d = new Date();
+  d.setUTCDate(d.getUTCDate() - n);
+  return d;
+}
+/** GA date window (YYYY-MM-DD) for a range. */
+function rangeDates(key: RangeKey): { startDate: string; endDate: string } {
+  const today = new Date();
+  const end = fmtDate(today);
+  switch (key) {
+    case "7d":
+      return { startDate: fmtDate(daysAgo(6)), endDate: end };
+    case "365d":
+      return { startDate: fmtDate(daysAgo(364)), endDate: end };
+    case "month":
+      return {
+        startDate: fmtDate(
+          new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), 1)),
+        ),
+        endDate: end,
+      };
+    case "lastmonth":
+      return {
+        startDate: fmtDate(
+          new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, 1)),
+        ),
+        endDate: fmtDate(
+          new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), 0)),
+        ),
+      };
+    case "lifetime":
+      return { startDate: "2018-01-01", endDate: end };
+    case "30d":
+    default:
+      return { startDate: fmtDate(daysAgo(29)), endDate: end };
+  }
+}
+/** Search Console window — data lags ~2 days and only ~16 months are kept. */
+function gscDates(key: RangeKey): { startDate: string; endDate: string } {
+  const r = rangeDates(key);
+  const lagEnd = fmtDate(daysAgo(2));
+  const earliest = fmtDate(daysAgo(485));
+  return {
+    startDate: r.startDate > earliest ? r.startDate : earliest,
+    endDate: r.endDate < lagEnd ? r.endDate : lagEnd,
+  };
 }
 
 export type Overview = {
@@ -55,7 +114,7 @@ export type AnalyticsDashboard = {
   gsc: boolean;
   gaError: string | null;
   gscError: string | null;
-  rangeDays: RangeDays;
+  range: RangeKey;
   overview: Overview | null;
   daily: DailyPoint[];
   dailyClicks: DailyClick[];
@@ -69,12 +128,10 @@ function num(v: string | undefined): number {
   const n = Number(v);
   return Number.isFinite(n) ? n : 0;
 }
-
 function metric(rows: GaRow[]): string[] {
   return rows[0]?.metricValues?.map((m) => m.value) ?? [];
 }
 
-// GA4 accepts relative dates like "30daysAgo" / "today".
 async function rangeTotals(start: string): Promise<number[]> {
   const r = await ga4RunReport({
     metrics: [
@@ -88,7 +145,7 @@ async function rangeTotals(start: string): Promise<number[]> {
   return metric(r.rows).map(num);
 }
 
-async function loadGa(rangeDays: RangeDays): Promise<{
+async function loadGa(range: RangeKey): Promise<{
   overview: Overview | null;
   daily: DailyPoint[];
   topPages: PageRow[];
@@ -96,14 +153,9 @@ async function loadGa(rangeDays: RangeDays): Promise<{
   error: string | null;
 }> {
   if (!hasGaConfig())
-    return {
-      overview: null,
-      daily: [],
-      topPages: [],
-      topCountries: [],
-      error: null,
-    };
+    return { overview: null, daily: [], topPages: [], topCountries: [], error: null };
   try {
+    const rd = rangeDates(range);
     const [t30, t7, tToday, dailyRep, pagesRep, countriesRep] =
       await Promise.all([
         rangeTotals("30daysAgo"),
@@ -112,24 +164,20 @@ async function loadGa(rangeDays: RangeDays): Promise<{
         ga4RunReport({
           dimensions: [{ name: "date" }],
           metrics: [{ name: "activeUsers" }],
-          dateRanges: [
-            { startDate: `${rangeDays - 1}daysAgo`, endDate: "today" },
-          ],
+          dateRanges: [{ startDate: "29daysAgo", endDate: "today" }],
           orderBys: [{ dimension: { dimensionName: "date" } }],
         }),
         ga4RunReport({
           dimensions: [{ name: "pagePath" }],
           metrics: [{ name: "screenPageViews" }],
-          dateRanges: [{ startDate: `${rangeDays}daysAgo`, endDate: "today" }],
-          orderBys: [
-            { metric: { metricName: "screenPageViews" }, desc: true },
-          ],
+          dateRanges: [rd],
+          orderBys: [{ metric: { metricName: "screenPageViews" }, desc: true }],
           limit: 25,
         }),
         ga4RunReport({
           dimensions: [{ name: "country" }],
           metrics: [{ name: "activeUsers" }],
-          dateRanges: [{ startDate: `${rangeDays}daysAgo`, endDate: "today" }],
+          dateRanges: [rd],
           orderBys: [{ metric: { metricName: "activeUsers" }, desc: true }],
           limit: 25,
         }),
@@ -148,9 +196,7 @@ async function loadGa(rangeDays: RangeDays): Promise<{
     const daily: DailyPoint[] = dailyRep.rows.map((r) => {
       const d = r.dimensionValues?.[0]?.value ?? "";
       const date =
-        d.length === 8
-          ? `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`
-          : d;
+        d.length === 8 ? `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}` : d;
       return { date, users: num(r.metricValues?.[0]?.value) };
     });
 
@@ -158,7 +204,6 @@ async function loadGa(rangeDays: RangeDays): Promise<{
       path: r.dimensionValues?.[0]?.value ?? "/",
       views: num(r.metricValues?.[0]?.value),
     }));
-
     const topCountries: CountryRow[] = countriesRep.rows.map((r) => ({
       country: r.dimensionValues?.[0]?.value ?? "—",
       users: num(r.metricValues?.[0]?.value),
@@ -176,13 +221,7 @@ async function loadGa(rangeDays: RangeDays): Promise<{
   }
 }
 
-function ymd(daysAgo: number): string {
-  const d = new Date();
-  d.setUTCDate(d.getUTCDate() - daysAgo);
-  return d.toISOString().slice(0, 10);
-}
-
-async function loadGsc(rangeDays: RangeDays): Promise<{
+async function loadGsc(range: RangeKey): Promise<{
   keywords: KeywordRow[];
   searchPages: SearchPageRow[];
   dailyClicks: DailyClick[];
@@ -191,13 +230,18 @@ async function loadGsc(rangeDays: RangeDays): Promise<{
   if (!hasGscConfig())
     return { keywords: [], searchPages: [], dailyClicks: [], error: null };
   try {
-    // Search Console data lags ~2-3 days; end a couple of days back.
-    const startDate = ymd(rangeDays);
-    const endDate = ymd(2);
+    const { startDate, endDate } = gscDates(range);
+    const dailyStart = fmtDate(daysAgo(30));
+    const dailyEnd = fmtDate(daysAgo(2));
     const [kw, pg, daily] = await Promise.all([
       gscQuery({ startDate, endDate, dimensions: ["query"], rowLimit: 25 }),
       gscQuery({ startDate, endDate, dimensions: ["page"], rowLimit: 25 }),
-      gscQuery({ startDate, endDate, dimensions: ["date"], rowLimit: 100 }),
+      gscQuery({
+        startDate: dailyStart,
+        endDate: dailyEnd,
+        dimensions: ["date"],
+        rowLimit: 100,
+      }),
     ]);
     return {
       keywords: kw.map((r) => ({
@@ -230,14 +274,14 @@ async function loadGsc(rangeDays: RangeDays): Promise<{
   }
 }
 
-async function loadDashboard(rangeDays: RangeDays): Promise<AnalyticsDashboard> {
-  const [ga, gsc] = await Promise.all([loadGa(rangeDays), loadGsc(rangeDays)]);
+async function loadDashboard(range: RangeKey): Promise<AnalyticsDashboard> {
+  const [ga, gsc] = await Promise.all([loadGa(range), loadGsc(range)]);
   return {
     ga: hasGaConfig(),
     gsc: hasGscConfig(),
     gaError: ga.error,
     gscError: gsc.error,
-    rangeDays,
+    range,
     overview: ga.overview,
     daily: ga.daily,
     dailyClicks: gsc.dailyClicks,
@@ -248,14 +292,13 @@ async function loadDashboard(rangeDays: RangeDays): Promise<AnalyticsDashboard> 
   };
 }
 
-// Cached for 5 minutes per range so the Google APIs are not hit on every page
-// load; the "Clear Cache" button busts ANALYTICS_TAG to force a fresh pull.
+// Cached 5 minutes per range; "Clear Cache" busts ANALYTICS_TAG.
 export async function getAnalyticsDashboard(
-  rangeDays: RangeDays = 30,
+  range: RangeKey = "30d",
 ): Promise<AnalyticsDashboard> {
   return unstable_cache(
-    () => loadDashboard(rangeDays),
-    ["analytics-dashboard", String(rangeDays)],
+    () => loadDashboard(range),
+    ["analytics-dashboard", range],
     { tags: [ANALYTICS_TAG], revalidate: 300 },
   )();
 }
