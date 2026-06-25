@@ -36,6 +36,14 @@ function sanitizeBody(html: string): string {
     },
     allowedClasses: {
       a: ["post-cta", "post-cta--outline"],
+      img: [
+        "img-small",
+        "img-medium",
+        "img-full",
+        "img-left",
+        "img-center",
+        "img-right",
+      ],
     },
     allowedSchemes: ["http", "https", "mailto", "tel"],
     // Open external links safely in a new tab.

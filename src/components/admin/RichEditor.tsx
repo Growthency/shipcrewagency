@@ -27,6 +27,10 @@ import {
   FileCode2,
   Eye,
   MousePointerClick,
+  ExternalLink,
+  Unlink,
+  Pencil,
+  Trash2,
 } from "lucide-react";
 import { useAdminUI } from "./AdminUI";
 import { COMPANY } from "@/lib/company";
@@ -93,6 +97,18 @@ export default function RichEditor({
   const savedSelectionRef = useRef<Range | null>(null);
   const [activeFormats, setActiveFormats] = useState<Set<string>>(new Set());
   const [viewMode, setViewMode] = useState<"visual" | "html">("visual");
+  // Inline popups for editing an existing link / image.
+  const [linkPop, setLinkPop] = useState<{
+    top: number;
+    left: number;
+    href: string;
+  } | null>(null);
+  const [imgPop, setImgPop] = useState<{ top: number; left: number } | null>(
+    null,
+  );
+  const linkElRef = useRef<HTMLAnchorElement | null>(null);
+  const imgElRef = useRef<HTMLImageElement | null>(null);
+  const replaceInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     onChangeRef.current = onChange;
@@ -351,6 +367,157 @@ export default function RichEditor({
     exec("insertHTML", html);
   };
 
+  // ---- inline link / image editing popups ----
+  const closestTag = useCallback(
+    (node: Node | null, tag: string): HTMLElement | null => {
+      let n: Node | null = node;
+      while (n && n !== editorRef.current) {
+        if (n.nodeType === 1 && (n as Element).tagName === tag)
+          return n as HTMLElement;
+        n = n.parentNode;
+      }
+      return null;
+    },
+    [],
+  );
+
+  const updateLinkPopup = useCallback(() => {
+    const sel = window.getSelection();
+    if (!sel || sel.rangeCount === 0 || !editorRef.current) return;
+    const node = sel.anchorNode;
+    // Focus moved to the popup / a modal — keep the current popup & ref.
+    if (!node || !editorRef.current.contains(node)) return;
+    const a = closestTag(node, "A") as HTMLAnchorElement | null;
+    if (a) {
+      linkElRef.current = a;
+      const r = a.getBoundingClientRect();
+      setLinkPop({
+        top: r.bottom + 6,
+        left: r.left,
+        href: a.getAttribute("href") || "",
+      });
+    } else {
+      setLinkPop(null);
+      linkElRef.current = null;
+    }
+  }, [closestTag]);
+
+  const reposition = useCallback(() => {
+    if (linkElRef.current) {
+      const r = linkElRef.current.getBoundingClientRect();
+      setLinkPop((p) => (p ? { ...p, top: r.bottom + 6, left: r.left } : p));
+    }
+    if (imgElRef.current) {
+      const r = imgElRef.current.getBoundingClientRect();
+      setImgPop((p) => (p ? { ...p, top: r.bottom + 6, left: r.left } : p));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (viewMode !== "visual") {
+      setLinkPop(null);
+      setImgPop(null);
+      return;
+    }
+    const onSel = () => updateLinkPopup();
+    document.addEventListener("selectionchange", onSel);
+    window.addEventListener("scroll", reposition, true);
+    window.addEventListener("resize", reposition);
+    return () => {
+      document.removeEventListener("selectionchange", onSel);
+      window.removeEventListener("scroll", reposition, true);
+      window.removeEventListener("resize", reposition);
+    };
+  }, [viewMode, updateLinkPopup, reposition]);
+
+  const editLinkUrl = async () => {
+    const a = linkElRef.current;
+    if (!a) return;
+    const url = await prompt({
+      title: "Edit Link",
+      label: "Link URL",
+      defaultValue: a.getAttribute("href") || "https://",
+      confirmLabel: "Save",
+    });
+    if (url == null) return;
+    a.setAttribute("href", url);
+    if (/^https?:\/\//i.test(url)) {
+      a.setAttribute("target", "_blank");
+      a.setAttribute("rel", "noopener noreferrer");
+    } else {
+      a.removeAttribute("target");
+      a.removeAttribute("rel");
+    }
+    setLinkPop((p) => (p ? { ...p, href: url } : p));
+    syncContent();
+  };
+  const openLinkUrl = () => {
+    const href = linkElRef.current?.getAttribute("href");
+    if (href) window.open(href, "_blank", "noopener,noreferrer");
+  };
+  const removeLink = () => {
+    const a = linkElRef.current;
+    const parent = a?.parentNode;
+    if (!a || !parent) return;
+    while (a.firstChild) parent.insertBefore(a.firstChild, a);
+    parent.removeChild(a);
+    linkElRef.current = null;
+    setLinkPop(null);
+    syncContent();
+  };
+
+  const IMG_SIZE = ["img-small", "img-medium", "img-full"];
+  const IMG_ALIGN = ["img-left", "img-center", "img-right"];
+  const setImgClass = (group: string[], cls: string) => {
+    const img = imgElRef.current;
+    if (!img) return;
+    group.forEach((c) => img.classList.remove(c));
+    img.classList.add(cls);
+    syncContent();
+  };
+  const editImgAlt = async () => {
+    const img = imgElRef.current;
+    if (!img) return;
+    const alt = await prompt({
+      title: "Image Alt Text",
+      label: "Alt text (for SEO & accessibility)",
+      defaultValue: img.getAttribute("alt") || "",
+      confirmLabel: "Save",
+    });
+    if (alt != null) {
+      img.setAttribute("alt", alt);
+      syncContent();
+    }
+  };
+  const deleteImg = () => {
+    imgElRef.current?.parentNode?.removeChild(imgElRef.current);
+    imgElRef.current = null;
+    setImgPop(null);
+    syncContent();
+  };
+  const replaceImg = () => replaceInputRef.current?.click();
+  const handleReplace = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    const img = imgElRef.current;
+    if (!file || !img) return;
+    setUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Upload failed");
+      img.setAttribute("src", data.url);
+      syncContent();
+      toast.success("Image replaced");
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Upload failed");
+    } finally {
+      setUploading(false);
+      if (replaceInputRef.current) replaceInputRef.current.value = "";
+    }
+  };
+
   const isActive = (fmt: string) => activeFormats.has(fmt);
 
   const Btn = ({
@@ -556,8 +723,98 @@ export default function RichEditor({
           }}
           onKeyUp={detectFormats}
           onMouseUp={detectFormats}
+          onClick={(e) => {
+            const t = e.target as HTMLElement;
+            if (t.tagName === "IMG") {
+              imgElRef.current = t as HTMLImageElement;
+              const r = t.getBoundingClientRect();
+              setImgPop({ top: r.bottom + 6, left: r.left });
+              setLinkPop(null);
+            } else {
+              setImgPop(null);
+              imgElRef.current = null;
+            }
+          }}
         />
       )}
+
+      {viewMode === "visual" && linkPop && (
+        <div
+          className="a-editor__pop"
+          style={{ top: linkPop.top, left: linkPop.left }}
+          onMouseDown={(e) => e.preventDefault()}
+        >
+          <span className="a-editor__pop-url" title={linkPop.href}>
+            {linkPop.href || "(no link)"}
+          </span>
+          <button type="button" className="a-editor__pop-btn" title="Open link" onClick={openLinkUrl}>
+            <ExternalLink size={14} />
+          </button>
+          <button type="button" className="a-editor__pop-btn" title="Edit link" onClick={editLinkUrl}>
+            <Pencil size={14} />
+          </button>
+          <button
+            type="button"
+            className="a-editor__pop-btn a-editor__pop-btn--danger"
+            title="Remove link"
+            onClick={removeLink}
+          >
+            <Unlink size={14} />
+          </button>
+        </div>
+      )}
+
+      {viewMode === "visual" && imgPop && (
+        <div
+          className="a-editor__pop"
+          style={{ top: imgPop.top, left: imgPop.left }}
+          onMouseDown={(e) => e.preventDefault()}
+        >
+          <button type="button" className="a-editor__pop-btn" title="Edit alt text" onClick={editImgAlt}>
+            Alt
+          </button>
+          <span className="a-editor__pop-sep" />
+          <button type="button" className="a-editor__pop-btn" title="Small" onClick={() => setImgClass(IMG_SIZE, "img-small")}>
+            S
+          </button>
+          <button type="button" className="a-editor__pop-btn" title="Medium" onClick={() => setImgClass(IMG_SIZE, "img-medium")}>
+            M
+          </button>
+          <button type="button" className="a-editor__pop-btn" title="Full width" onClick={() => setImgClass(IMG_SIZE, "img-full")}>
+            Full
+          </button>
+          <span className="a-editor__pop-sep" />
+          <button type="button" className="a-editor__pop-btn" title="Align left" onClick={() => setImgClass(IMG_ALIGN, "img-left")}>
+            <AlignLeft size={14} />
+          </button>
+          <button type="button" className="a-editor__pop-btn" title="Align center" onClick={() => setImgClass(IMG_ALIGN, "img-center")}>
+            <AlignCenter size={14} />
+          </button>
+          <button type="button" className="a-editor__pop-btn" title="Align right" onClick={() => setImgClass(IMG_ALIGN, "img-right")}>
+            <AlignRight size={14} />
+          </button>
+          <span className="a-editor__pop-sep" />
+          <button type="button" className="a-editor__pop-btn" title="Replace image" onClick={replaceImg}>
+            <Upload size={14} />
+          </button>
+          <button
+            type="button"
+            className="a-editor__pop-btn a-editor__pop-btn--danger"
+            title="Delete image"
+            onClick={deleteImg}
+          >
+            <Trash2 size={14} />
+          </button>
+        </div>
+      )}
+
+      <input
+        ref={replaceInputRef}
+        type="file"
+        accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml"
+        onChange={handleReplace}
+        style={{ display: "none" }}
+      />
     </div>
   );
 }
