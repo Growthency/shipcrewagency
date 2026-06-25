@@ -72,6 +72,19 @@ export async function GET(req: NextRequest) {
 
   const url = new URL(req.url);
 
+  // Distinct categories already used across posts (for the editor's picker).
+  if (url.searchParams.get("categories")) {
+    const { data } = await admin.from("blog_posts").select("category");
+    const categories = Array.from(
+      new Set(
+        (data ?? [])
+          .map((r) => String((r as { category?: string }).category ?? "").trim())
+          .filter(Boolean),
+      ),
+    ).sort((a, b) => a.localeCompare(b));
+    return NextResponse.json({ categories });
+  }
+
   const id = url.searchParams.get("id");
   if (id) {
     const { data, error } = await admin

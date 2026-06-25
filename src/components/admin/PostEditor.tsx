@@ -82,8 +82,23 @@ export default function PostEditor({ postId }: { postId?: number }) {
   const [error, setError] = useState("");
   const [autoSlug, setAutoSlug] = useState(!isEdit);
   const [editorKey, setEditorKey] = useState(0);
+  const [categories, setCategories] = useState<string[]>([]);
   const fileRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef("");
+
+  // Load the categories already in use so they can be picked from the list.
+  useEffect(() => {
+    let active = true;
+    fetch("/api/admin/posts?categories=1")
+      .then((r) => r.json())
+      .then((d) => {
+        if (active && Array.isArray(d.categories)) setCategories(d.categories);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const set = <K extends keyof PostForm>(key: K, val: PostForm[K]) =>
     setForm((f) => ({ ...f, [key]: val }));
@@ -426,13 +441,23 @@ export default function PostEditor({ postId }: { postId?: number }) {
                 list="post-categories"
               />
               <datalist id="post-categories">
-                <option value="Insights" />
-                <option value="Industry News" />
-                <option value="Crew Welfare" />
-                <option value="Compliance" />
-                <option value="Recruitment" />
-                <option value="Maritime Careers" />
+                {Array.from(
+                  new Set([
+                    ...categories,
+                    "Insights",
+                    "Industry News",
+                    "Crew Welfare",
+                    "Compliance",
+                    "Recruitment",
+                    "Maritime Careers",
+                  ]),
+                ).map((c) => (
+                  <option key={c} value={c} />
+                ))}
               </datalist>
+              <p className="a-hint">
+                Pick an existing category, or type a new name to create one.
+              </p>
             </div>
             <div className="a-field">
               <label className="a-label">Tag</label>

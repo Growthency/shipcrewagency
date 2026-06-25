@@ -26,8 +26,49 @@ import {
   Table,
   FileCode2,
   Eye,
+  MousePointerClick,
 } from "lucide-react";
 import { useAdminUI } from "./AdminUI";
+import { COMPANY } from "@/lib/company";
+
+// Tags kept when cleaning pasted content; everything else is unwrapped so a
+// paste from Word/Google Docs/another site loses its fonts, colours and inline
+// styles and adopts the blog's own typography (consistent across the post).
+const PASTE_ALLOWED = new Set([
+  "h1", "h2", "h3", "h4", "h5", "h6",
+  "p", "ul", "ol", "li",
+  "strong", "em", "b", "i", "u", "s", "sup", "sub",
+  "a", "blockquote", "br", "hr",
+  "table", "thead", "tbody", "tfoot", "tr", "th", "td", "caption",
+  "img", "figure", "figcaption", "code", "pre",
+]);
+
+function cleanPastedHtml(html: string): string {
+  const tmp = document.createElement("div");
+  tmp.innerHTML = html;
+  tmp
+    .querySelectorAll("script,style,meta,link,title,head,iframe,object")
+    .forEach((n) => n.remove());
+  const process = (node: Element) => {
+    Array.from(node.children).forEach((c) => process(c as Element));
+    const tag = node.tagName.toLowerCase();
+    Array.from(node.attributes).forEach((a) => {
+      const keep =
+        (tag === "a" && (a.name === "href" || a.name === "title")) ||
+        (tag === "img" && (a.name === "src" || a.name === "alt"));
+      if (!keep) node.removeAttribute(a.name);
+    });
+    if (!PASTE_ALLOWED.has(tag)) {
+      const parent = node.parentNode;
+      if (parent) {
+        while (node.firstChild) parent.insertBefore(node.firstChild, node);
+        parent.removeChild(node);
+      }
+    }
+  };
+  Array.from(tmp.children).forEach((c) => process(c as Element));
+  return tmp.innerHTML;
+}
 
 interface RichEditorProps {
   value: string;
@@ -148,18 +189,62 @@ export default function RichEditor({
 
   const insertLink = async () => {
     saveSelection();
+    const sel = window.getSelection();
+    const hasText = Boolean(sel && !sel.isCollapsed && sel.toString().trim());
     const url = await prompt({
       title: "Insert Link",
       label: "Link URL",
       defaultValue: "https://",
-      placeholder: "https://example.com",
-      confirmLabel: "Insert",
+      placeholder: "https://example.com  ·  /contact  ·  mailto:…",
+      confirmLabel: hasText ? "Insert" : "Next",
     });
-    if (url) {
+    if (!url) return;
+    if (hasText) {
       editorRef.current?.focus();
       restoreSelection();
       exec("createLink", url);
+      return;
     }
+    // No text selected — ask for the visible link text and insert an anchor.
+    const text = await prompt({
+      title: "Insert Link",
+      label: "Link text",
+      defaultValue: url,
+      confirmLabel: "Insert",
+    });
+    editorRef.current?.focus();
+    restoreSelection();
+    const safe = (text || url).replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    exec("insertHTML", `<a href="${url.replace(/"/g, "&quot;")}">${safe}</a>`);
+  };
+
+  // Insert a styled call-to-action button (defaults to the WhatsApp link).
+  const insertCta = async () => {
+    saveSelection();
+    const text = await prompt({
+      title: "Add CTA Button",
+      label: "Button text",
+      defaultValue: "Request Crew on WhatsApp",
+      confirmLabel: "Next",
+    });
+    if (!text) return;
+    const link = await prompt({
+      title: "Add CTA Button",
+      label: "Button link",
+      message:
+        "WhatsApp, phone or any URL. Examples: https://wa.me/8801626366030 · tel:+8801626366030 · mailto:info@shipcrewagency.com",
+      defaultValue: `https://wa.me/${COMPANY.whatsapp}`,
+      confirmLabel: "Insert",
+    });
+    if (!link) return;
+    editorRef.current?.focus();
+    restoreSelection();
+    const safeText = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const safeLink = link.replace(/"/g, "&quot;");
+    exec(
+      "insertHTML",
+      `<p><a class="post-cta" href="${safeLink}">${safeText}</a></p><p><br></p>`,
+    );
   };
 
   const insertImageUrl = async () => {
@@ -408,6 +493,10 @@ export default function RichEditor({
             onChange={handleFileUpload}
             style={{ display: "none" }}
           />
+          <Divider />
+          <Btn onClick={insertCta} title="Insert CTA button (WhatsApp / phone / link)">
+            <MousePointerClick />
+          </Btn>
         </div>
 
         <span className="a-spacer" />
@@ -448,6 +537,15 @@ export default function RichEditor({
           suppressContentEditableWarning
           data-placeholder={placeholder}
           className="a-editor__surface"
+          onPaste={(e) => {
+            const html = e.clipboardData.getData("text/html");
+            if (!html) return; // plain text — let the browser handle it
+            e.preventDefault();
+            editorRef.current?.focus();
+            document.execCommand("insertHTML", false, cleanPastedHtml(html));
+            syncContent();
+            detectFormats();
+          }}
           onInput={() => {
             syncContent();
             detectFormats();

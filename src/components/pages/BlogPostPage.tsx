@@ -10,31 +10,80 @@ import { getDict, href, type Lang } from "@/i18n";
 import { getPostBySlug, getRelatedPosts } from "@/lib/blog";
 import { formatDate, stripHtml } from "@/lib/utils";
 import { siteUrl } from "@/lib/seo";
+import { ShareBar } from "@/components/blog/ShareBar";
 
 function sanitizeBody(html: string): string {
   return sanitizeHtml(html, {
     allowedTags: [
-      "h2",
-      "h3",
-      "h4",
-      "p",
-      "ul",
-      "ol",
-      "li",
-      "strong",
-      "em",
-      "b",
-      "i",
-      "a",
-      "blockquote",
-      "br",
-      "hr",
+      "h1", "h2", "h3", "h4", "h5", "h6",
+      "p", "ul", "ol", "li",
+      "strong", "em", "b", "i", "u", "s", "del", "sup", "sub", "mark", "small",
+      "a", "blockquote", "br", "hr",
+      "table", "thead", "tbody", "tfoot", "tr", "th", "td", "caption", "colgroup", "col",
+      "img", "figure", "figcaption",
+      "div", "span", "code", "pre",
     ],
     allowedAttributes: {
-      a: ["href", "title", "target", "rel"],
+      a: ["href", "title", "target", "rel", "class"],
+      img: ["src", "alt", "title", "width", "height", "loading"],
+      th: ["colspan", "rowspan", "scope"],
+      td: ["colspan", "rowspan"],
+      "*": ["class", "id"],
+    },
+    allowedSchemes: ["http", "https", "mailto", "tel"],
+    // Open external links safely in a new tab.
+    transformTags: {
+      a: (tagName, attribs) => {
+        if (attribs.href && /^https?:\/\//i.test(attribs.href)) {
+          attribs.target = attribs.target || "_blank";
+          attribs.rel = "noopener noreferrer";
+        }
+        return { tagName, attribs };
+      },
     },
     disallowedTagsMode: "discard",
   });
+}
+
+// Slugify heading text into an anchor id.
+function headingId(text: string): string {
+  return (
+    text
+      .toLowerCase()
+      .replace(/<[^>]+>/g, "")
+      .replace(/[^a-z0-9\s-]/g, "")
+      .trim()
+      .replace(/\s+/g, "-")
+      .slice(0, 60) || "section"
+  );
+}
+
+// Inject ids onto h2/h3 and collect a table-of-contents list.
+function buildToc(html: string): {
+  html: string;
+  toc: { id: string; text: string; level: number }[];
+} {
+  const toc: { id: string; text: string; level: number }[] = [];
+  const used = new Set<string>();
+  const out = html.replace(
+    /<(h2|h3)(\s[^>]*)?>([\s\S]*?)<\/\1>/gi,
+    (match, tag: string, attrs: string | undefined, inner: string) => {
+      const text = inner.replace(/<[^>]+>/g, "").trim();
+      if (!text) return match;
+      const base = headingId(text);
+      let id = base;
+      let n = 2;
+      while (used.has(id)) id = `${base}-${n++}`;
+      used.add(id);
+      toc.push({ id, text, level: tag.toLowerCase() === "h3" ? 3 : 2 });
+      const attrStr = attrs ?? "";
+      const newAttrs = /\sid\s*=/i.test(attrStr)
+        ? attrStr
+        : `${attrStr} id="${id}"`;
+      return `<${tag}${newAttrs}>${inner}</${tag}>`;
+    },
+  );
+  return { html: out, toc };
 }
 
 export async function BlogPostPage({
@@ -49,8 +98,9 @@ export async function BlogPostPage({
 
   const t = getDict(lang);
   const related = await getRelatedPosts(lang, slug, 4);
-  const body = sanitizeBody(post.content);
+  const { html: body, toc } = buildToc(sanitizeBody(post.content));
   const dateLabel = formatDate(post.published_at || post.created_at, lang);
+  const shareUrl = siteUrl() + href(lang, `blog/${post.slug}`);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -131,7 +181,32 @@ export async function BlogPostPage({
                 <span>{post.category}</span>
               </div>
 
+              {toc.length >= 3 && (
+                <nav className="article__toc" aria-label={t.blog.tableOfContents}>
+                  <div className="article__toc-title">
+                    {t.blog.tableOfContents}
+                  </div>
+                  <ol>
+                    {toc.map((h) => (
+                      <li
+                        key={h.id}
+                        className={h.level === 3 ? "is-sub" : undefined}
+                      >
+                        <a href={`#${h.id}`}>{h.text}</a>
+                      </li>
+                    ))}
+                  </ol>
+                </nav>
+              )}
+
               <div dangerouslySetInnerHTML={{ __html: body }} />
+
+              <ShareBar
+                url={shareUrl}
+                title={post.title}
+                label={t.blog.sharePost}
+                lang={lang}
+              />
             </div>
 
             <aside className="article__sidebar">

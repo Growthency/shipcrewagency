@@ -1629,6 +1629,22 @@
   border-top: 1px solid var(--a-border);
   margin: 1.5em 0;
 }
+.a-editor__surface th {
+  color: var(--a-ink);
+}
+/* Preview CTA buttons inside the editor as they appear on the blog */
+.a-editor__surface .post-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+  padding: 11px 24px;
+  background: var(--a-cyan-400);
+  color: var(--a-navy-900);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 999px;
+}
 .a-editor__html {
   width: 100%;
   min-height: 420px;
