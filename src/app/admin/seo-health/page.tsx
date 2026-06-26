@@ -6,8 +6,8 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { readSeoAudit } from "@/lib/seo-audit/store";
-import type { Severity } from "@/lib/seo-audit/audit";
 import { SeoRescanButton } from "@/components/admin/SeoRescanButton";
+import { SeoHealthTabs } from "@/components/admin/SeoHealthTabs";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -17,12 +17,6 @@ function scoreLabel(score: number): string {
   if (score >= 75) return "Good";
   if (score >= 50) return "Needs work";
   return "Poor";
-}
-
-function sevIcon(s: Severity) {
-  if (s === "critical") return <XCircle size={16} className="sh-sev sh-sev--critical" />;
-  if (s === "warning") return <AlertTriangle size={16} className="sh-sev sh-sev--warning" />;
-  return <Info size={16} className="sh-sev sh-sev--info" />;
 }
 
 export default async function SeoHealthPage() {
@@ -105,78 +99,7 @@ export default async function SeoHealthPage() {
             <StatCard icon={<CheckCircle2 size={18} />} tone="passed" label="Pages Passed" value={audit.counts.passed} />
           </div>
 
-          {/* Category breakdown */}
-          <div className="a-card" style={{ marginBottom: 20 }}>
-            <div className="a-card__head">
-              <h2 className="a-card__title">Category breakdown</h2>
-            </div>
-            <div className="sh-cats">
-              {audit.categories.map((c) => (
-                <div className="sh-cat" key={c.key}>
-                  <div className="sh-cat__top">
-                    <span className="sh-cat__label">{c.label}</span>
-                    <span className="sh-cat__pct">{c.pct}%</span>
-                  </div>
-                  <div className="sh-bar">
-                    <span
-                      className={`sh-bar__fill${c.pct >= 90 ? "" : c.pct >= 70 ? " is-warn" : " is-bad"}`}
-                      style={{ width: `${c.pct}%` }}
-                    />
-                  </div>
-                  <div className="sh-cat__sub">
-                    {c.passed}/{c.total} checks passed
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Top issues */}
-          {audit.topIssues.length > 0 && (
-            <div className="a-card" style={{ marginBottom: 20 }}>
-              <div className="a-card__head">
-                <h2 className="a-card__title">Top issues</h2>
-              </div>
-              <div className="sh-issues">
-                {audit.topIssues.slice(0, 12).map((it) => (
-                  <div className="sh-issue" key={it.label}>
-                    {sevIcon(it.severity)}
-                    <div className="sh-issue__body">
-                      <div className="sh-issue__title">{it.label}</div>
-                      <div className="sh-issue__cat">{it.category}</div>
-                    </div>
-                    <div className="sh-issue__count">
-                      {it.count}
-                      <small>{it.count === 1 ? "page" : "pages"}</small>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Per-page list (worst first) */}
-          <div className="a-card">
-            <div className="a-card__head">
-              <h2 className="a-card__title">Pages ({audit.pages.length})</h2>
-              <span className="a-muted">Lowest-scoring first</span>
-            </div>
-            <div className="sh-pages">
-              {audit.pages.map((p) => (
-                <div className="sh-page" key={p.url}>
-                  <span className={`sh-page__score${p.score >= 90 ? " is-good" : p.score >= 70 ? " is-warn" : " is-bad"}`}>
-                    {p.score}
-                  </span>
-                  <span className="sh-page__url" title={p.url}>{p.url}</span>
-                  <span className="sh-page__issues">
-                    {p.issues.length === 0
-                      ? "No issues"
-                      : `${p.issues.length} issue${p.issues.length === 1 ? "" : "s"}`}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <SeoHealthTabs audit={audit} />
         </>
       )}
     </div>

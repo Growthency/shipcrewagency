@@ -13,12 +13,19 @@ export type PageIssue = { category: string; label: string; severity: Severity };
 
 export type PageResult = {
   url: string;
+  title: string;
   ok: boolean;
   score: number;
+  kb: number;
   passed: number;
   total: number;
+  critical: number;
+  warn: number;
+  info: number;
   issues: PageIssue[];
 };
+
+export type GlobalCheck = { name: string; passed: boolean; detail: string };
 
 export type CategoryStat = {
   key: string;
@@ -43,6 +50,7 @@ export type SeoAudit = {
   categories: CategoryStat[];
   topIssues: TopIssue[];
   pages: PageResult[];
+  globals: GlobalCheck[];
 };
 
 const CATEGORIES: { key: string; label: string }[] = [
@@ -164,7 +172,13 @@ async function fetchUrls(): Promise<string[]> {
   );
 }
 
-type Audited = { page: PageResult; checks: Check[] };
+type PageMeta = {
+  title: string;
+  description: string;
+  hasCanonical: boolean;
+  hasViewport: boolean;
+};
+type Audited = { page: PageResult; checks: Check[]; meta: PageMeta };
 
 async function auditOne(url: string): Promise<Audited | null> {
   try {
@@ -177,20 +191,90 @@ async function auditOne(url: string): Promise<Audited | null> {
     const issues: PageIssue[] = checks
       .filter((c) => !c.pass)
       .map((c) => ({ category: c.category, label: c.label, severity: c.severity }));
+    const metaMap = parseMetas(html);
+    const meta: PageMeta = {
+      title: titleText(html),
+      description: metaMap.get("description") ?? "",
+      hasCanonical: /<link[^>]+rel=["']canonical["']/i.test(html),
+      hasViewport: metaMap.has("viewport"),
+    };
     return {
       checks,
+      meta,
       page: {
         url: path,
+        title: meta.title,
         ok: !issues.some((i) => i.severity === "critical"),
         score: Math.round((passed / checks.length) * 100),
+        kb: Math.round(html.length / 1024),
         passed,
         total: checks.length,
+        critical: issues.filter((i) => i.severity === "critical").length,
+        warn: issues.filter((i) => i.severity === "warning").length,
+        info: issues.filter((i) => i.severity === "info").length,
         issues,
       },
     };
   } catch {
     return null;
   }
+}
+
+async function computeGlobals(
+  audited: Audited[],
+  broken: number,
+): Promise<GlobalCheck[]> {
+  const base = siteUrl();
+  const titles = audited.map((a) => a.meta.title).filter(Boolean);
+  const descs = audited.map((a) => a.meta.description).filter(Boolean);
+  const total = audited.length || 1;
+  const uniqueTitles =
+    titles.length > 0 && new Set(titles).size === titles.length;
+  const descPresent = descs.length >= Math.ceil(total * 0.8);
+  const allCanonical = audited.length > 0 && audited.every((a) => a.meta.hasCanonical);
+  const allViewport = audited.length > 0 && audited.every((a) => a.meta.hasViewport);
+
+  const head = async (path: string) => {
+    try {
+      const r = await fetch(`${base}${path}`, { cache: "no-store" });
+      return r.ok;
+    } catch {
+      return false;
+    }
+  };
+  const [robots, sitemap, faviconIco, iconSvg] = await Promise.all([
+    head("/robots.txt"),
+    head("/sitemap.xml"),
+    head("/favicon.ico"),
+    head("/icon.svg"),
+  ]);
+  const favicon = faviconIco || iconSvg;
+
+  let secCount = 0;
+  try {
+    const r = await fetch(base, { cache: "no-store" });
+    const has = (h: string) => r.headers.get(h) != null;
+    secCount = [
+      has("x-content-type-options"),
+      has("x-frame-options") || has("content-security-policy"),
+      has("referrer-policy") || has("strict-transport-security"),
+    ].filter(Boolean).length;
+  } catch {
+    /* leave 0 */
+  }
+
+  return [
+    { name: "Robots Txt", passed: robots, detail: robots ? "robots.txt is accessible" : "robots.txt not found" },
+    { name: "Sitemap Xml", passed: sitemap, detail: sitemap ? "sitemap.xml is accessible" : "sitemap.xml not found" },
+    { name: "Unique Titles", passed: uniqueTitles, detail: uniqueTitles ? "All page titles are unique" : "Some titles are duplicated or missing" },
+    { name: "Meta Descriptions", passed: descPresent, detail: descPresent ? "Meta descriptions present on most pages" : "Many pages are missing meta descriptions" },
+    { name: "HTTPS Enforced", passed: base.startsWith("https://"), detail: base.startsWith("https://") ? "All pages use HTTPS" : "Site is not served over HTTPS" },
+    { name: "Favicon", passed: favicon, detail: favicon ? "Favicon is present" : "No favicon found" },
+    { name: "No 404 Pages", passed: broken === 0, detail: broken === 0 ? "No broken pages found in sitemap" : `${broken} page(s) failed to load` },
+    { name: "Security Headers", passed: secCount >= 2, detail: `${secCount}/3 security headers present` },
+    { name: "Consistent Canonicals", passed: allCanonical, detail: allCanonical ? "All pages have proper canonical URLs" : "Some pages are missing canonical tags" },
+    { name: "Mobile Viewport", passed: allViewport, detail: allViewport ? "All pages set a mobile viewport" : "Some pages are missing the viewport meta" },
+  ];
 }
 
 async function mapLimit<T, R>(items: T[], limit: number, fn: (item: T) => Promise<R>): Promise<R[]> {
@@ -209,9 +293,9 @@ async function mapLimit<T, R>(items: T[], limit: number, fn: (item: T) => Promis
 
 export async function runSeoAudit(maxPages = 80): Promise<SeoAudit> {
   const urls = (await fetchUrls()).slice(0, maxPages);
-  const audited = (await mapLimit(urls, 6, auditOne)).filter(
-    (a): a is Audited => a !== null,
-  );
+  const raw = await mapLimit(urls, 6, auditOne);
+  const audited = raw.filter((a): a is Audited => a !== null);
+  const broken = raw.length - audited.length;
 
   const catTotals = new Map<string, { passed: number; total: number }>();
   for (const c of CATEGORIES) catTotals.set(c.key, { passed: 0, total: 0 });
@@ -261,6 +345,7 @@ export async function runSeoAudit(maxPages = 80): Promise<SeoAudit> {
   });
 
   const pages = audited.map((a) => a.page).sort((a, b) => a.score - b.score);
+  const globals = await computeGlobals(audited, broken);
 
   return {
     scannedAt: new Date().toISOString(),
@@ -275,5 +360,6 @@ export async function runSeoAudit(maxPages = 80): Promise<SeoAudit> {
     categories,
     topIssues: [...issueCounts.values()].sort((a, b) => b.count - a.count),
     pages,
+    globals,
   };
 }
