@@ -66,6 +66,16 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(result);
   }
 
+  if (action === "indexnow-one") {
+    const body = await req.json().catch(() => ({}));
+    const url = String(body.url ?? "").trim();
+    if (!/^https?:\/\//i.test(url)) {
+      return NextResponse.json({ error: "Invalid URL" }, { status: 400 });
+    }
+    const result = await submitIndexNow([url]);
+    return NextResponse.json(result);
+  }
+
   if (action === "sitemap") {
     if (!hasGscConfig()) {
       return NextResponse.json(

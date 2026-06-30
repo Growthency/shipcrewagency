@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Copy, Check, Zap } from "lucide-react";
+import { Copy, Check, Zap, Search, ExternalLink, Send } from "lucide-react";
 import { useAdminUI } from "./AdminUI";
-import type { IndexReport } from "@/lib/indexing/scan";
+import type { IndexReport, IndexPage } from "@/lib/indexing/scan";
 
 export function IndexReportView({
   report,
@@ -15,6 +15,8 @@ export function IndexReportView({
   const { toast } = useAdminUI();
   const [copied, setCopied] = useState<string | null>(null);
   const [indexing, setIndexing] = useState(false);
+  const [busyUrl, setBusyUrl] = useState<string | null>(null);
+  const [q, setQ] = useState("");
 
   const abs = (path: string) => `${origin}${path}`;
   const urlsForState = (state: string) =>
@@ -29,6 +31,25 @@ export function IndexReportView({
       setTimeout(() => setCopied((c) => (c === key ? null : c)), 1600);
     } catch {
       toast.error("Could not copy to clipboard");
+    }
+  };
+
+  const submitOne = async (path: string) => {
+    const full = abs(path);
+    setBusyUrl(path);
+    try {
+      const res = await fetch("/api/admin/indexing?action=indexnow-one", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: full }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || "Submit failed");
+      toast.success("Submitted to IndexNow");
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Submit failed");
+    } finally {
+      setBusyUrl(null);
     }
   };
 
@@ -53,8 +74,12 @@ export function IndexReportView({
   const C = 2 * Math.PI * R;
   const indexedArc = (report.indexRate / 100) * C;
 
-  const indexedPages = report.pages.filter((p) => p.indexed);
-  const notIndexedPages = report.pages.filter((p) => !p.indexed);
+  const term = q.trim().toLowerCase();
+  const match = (p: IndexPage) =>
+    !term || p.url.toLowerCase().includes(term) || p.state.toLowerCase().includes(term);
+  const indexedPages = report.pages.filter((p) => p.indexed && match(p));
+  const notIndexedPages = report.pages.filter((p) => !p.indexed && match(p));
+  const totalNotIndexed = report.pages.filter((p) => !p.indexed).length;
 
   return (
     <>
@@ -92,39 +117,51 @@ export function IndexReportView({
           <div className="a-card__head">
             <h2 className="a-card__title">Coverage breakdown</h2>
           </div>
-          <div className="ix-coverage">
-            {report.coverage.map((c) => {
-              const pct = report.total
-                ? Math.round((c.count / report.total) * 100)
-                : 0;
-              const key = `cov:${c.state}`;
-              return (
-                <button
-                  type="button"
-                  className="ix-cov ix-cov--btn"
-                  key={c.state}
-                  onClick={() => copy(urlsForState(c.state), key, c.state)}
-                  title="Click to copy these URLs"
-                >
-                  <span className="ix-cov__label">{c.state}</span>
-                  <div className="ix-cov__bar">
-                    <span className="ix-cov__fill" style={{ width: `${pct}%` }} />
-                  </div>
-                  <span className="ix-cov__count">
-                    {copied === key ? "Copied!" : `${c.count} (${pct}%)`}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-          <div className="ix-hint">
-            <Copy size={13} /> Click any row to copy its URLs
+          <div className="ix-pad">
+            <div className="ix-coverage">
+              {report.coverage.map((c) => {
+                const pct = report.total
+                  ? Math.round((c.count / report.total) * 100)
+                  : 0;
+                const key = `cov:${c.state}`;
+                return (
+                  <button
+                    type="button"
+                    className="ix-cov ix-cov--btn"
+                    key={c.state}
+                    onClick={() => copy(urlsForState(c.state), key, c.state)}
+                    title="Click to copy these URLs"
+                  >
+                    <span className="ix-cov__label">{c.state}</span>
+                    <div className="ix-cov__bar">
+                      <span className="ix-cov__fill" style={{ width: `${pct}%` }} />
+                    </div>
+                    <span className="ix-cov__count">
+                      {copied === key ? "Copied!" : `${c.count} (${pct}%)`}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+            <div className="ix-hint">
+              <Copy size={13} /> Click any row to copy its URLs
+            </div>
           </div>
         </div>
       </div>
 
-      {notIndexedPages.length > 0 && (
-        <div className="ix-allbar">
+      {/* Search + Index-all toolbar */}
+      <div className="ix-controls">
+        <div className="ix-search">
+          <Search size={15} />
+          <input
+            className="ix-search__input"
+            placeholder="Search pages…"
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+          />
+        </div>
+        {totalNotIndexed > 0 && (
           <button
             type="button"
             className="a-btn a-btn--cyan"
@@ -136,17 +173,20 @@ export function IndexReportView({
             ) : (
               <Zap size={15} />
             )}
-            Index All Not-Indexed ({notIndexedPages.length})
+            Index All Not-Indexed ({totalNotIndexed})
           </button>
-        </div>
-      )}
+        )}
+      </div>
 
-      {/* Two lists with copy-all */}
+      {/* Two lists with copy-all + per-row actions */}
       <div className="an-cols">
         <PageList
           title="Indexed Pages"
           tone="good"
           rows={indexedPages}
+          origin={origin}
+          busyUrl={busyUrl}
+          onSubmitOne={submitOne}
           copied={copied === "indexed"}
           onCopy={() =>
             copy(indexedPages.map((p) => abs(p.url)), "indexed", "indexed")
@@ -157,6 +197,9 @@ export function IndexReportView({
           title="Not Indexed Pages"
           tone="bad"
           rows={notIndexedPages}
+          origin={origin}
+          busyUrl={busyUrl}
+          onSubmitOne={submitOne}
           copied={copied === "notindexed"}
           onCopy={() =>
             copy(
@@ -176,17 +219,28 @@ function PageList({
   title,
   tone,
   rows,
+  origin,
+  busyUrl,
+  onSubmitOne,
   copied,
   onCopy,
   empty,
 }: {
   title: string;
   tone: "good" | "bad";
-  rows: { url: string; state: string }[];
+  rows: IndexPage[];
+  origin: string;
+  busyUrl: string | null;
+  onSubmitOne: (url: string) => void;
   copied: boolean;
   onCopy: () => void;
   empty: string;
 }) {
+  const inspectUrl = (path: string) =>
+    `https://search.google.com/search-console/inspect?resource_id=${encodeURIComponent(
+      `${origin}/`,
+    )}&id=${encodeURIComponent(`${origin}${path}`)}`;
+
   return (
     <div className="a-card">
       <div className="a-card__head">
@@ -206,16 +260,54 @@ function PageList({
       </div>
       {rows.length ? (
         <div className="ix-list">
-          {rows.map((p) => (
-            <div className="ix-row" key={p.url}>
-              <span className="ix-row__url" title={p.url}>
-                {p.url}
-              </span>
-              <span className={`ix-row__state ix-row__state--${tone}`}>
-                {p.state}
-              </span>
-            </div>
-          ))}
+          {rows.map((p, i) => {
+            const busy = busyUrl === p.url;
+            return (
+              <div className="ix-row" key={p.url}>
+                <span className="ix-row__num">{i + 1}</span>
+                <a
+                  className="ix-row__url"
+                  href={`${origin}${p.url}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={p.url}
+                >
+                  {p.url}
+                  <ExternalLink size={12} />
+                </a>
+                <span className={`ix-row__state ix-row__state--${tone}`}>
+                  {p.state}
+                </span>
+                <div className="ix-row__act">
+                  {tone === "bad" && (
+                    <a
+                      className="ix-act ix-act--google"
+                      href={inspectUrl(p.url)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Inspect in Google Search Console"
+                    >
+                      Google
+                    </a>
+                  )}
+                  <button
+                    type="button"
+                    className="ix-act ix-act--now"
+                    onClick={() => onSubmitOne(p.url)}
+                    disabled={busy}
+                    title="Submit this URL to IndexNow (Bing / Yandex)"
+                  >
+                    {busy ? (
+                      <span className="a-spin" style={{ width: 12, height: 12 }} />
+                    ) : (
+                      <Send size={12} />
+                    )}
+                    {tone === "good" ? "Reindex" : "IndexNow"}
+                  </button>
+                </div>
+              </div>
+            );
+          })}
         </div>
       ) : (
         <div className="an-nodata">{empty}</div>

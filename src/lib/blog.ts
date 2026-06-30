@@ -26,10 +26,16 @@ export async function getPublishedPosts(lang: PostLang): Promise<BlogPost[]> {
       .from("blog_posts")
       .select("*")
       .eq("language", lang)
-      .eq("status", "published")
+      .in("status", ["published", "scheduled"])
       .eq("show_on_blog", true);
     if (error || !data) return seed;
-    const dbPosts = data as BlogPost[];
+    // A scheduled post becomes visible once its publish time has passed.
+    const now = new Date().toISOString();
+    const dbPosts = (data as BlogPost[]).filter(
+      (p) =>
+        p.status === "published" ||
+        (p.status === "scheduled" && (p.published_at ?? "") <= now),
+    );
     const dbSlugs = new Set(dbPosts.map((p) => p.slug));
     const merged = [...dbPosts, ...seed.filter((s) => !dbSlugs.has(s.slug))];
     merged.sort((a, b) =>
@@ -55,15 +61,21 @@ export async function getPostBySlug(
         .select("*")
         .eq("language", lang)
         .eq("slug", slug)
-        .eq("status", "published")
         .maybeSingle();
       if (data) {
-        // best-effort view increment (non-blocking)
-        sb.from("blog_posts")
-          .update({ views: (data.views ?? 0) + 1 })
-          .eq("id", data.id)
-          .then(() => {});
-        return data as BlogPost;
+        const p = data as BlogPost;
+        const now = new Date().toISOString();
+        const visible =
+          p.status === "published" ||
+          (p.status === "scheduled" && (p.published_at ?? "") <= now);
+        if (visible) {
+          // best-effort view increment (non-blocking)
+          sb.from("blog_posts")
+            .update({ views: (p.views ?? 0) + 1 })
+            .eq("id", p.id)
+            .then(() => {});
+          return p;
+        }
       }
     } catch {
       /* fall through to seed */

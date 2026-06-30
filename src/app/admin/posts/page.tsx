@@ -10,6 +10,7 @@ import {
   ChevronRight,
   FileText,
   Languages,
+  ExternalLink,
 } from "lucide-react";
 import { useAdminUI } from "@/components/admin/AdminUI";
 
@@ -50,6 +51,26 @@ export default function AdminPostsPage() {
   const [language, setLanguage] = useState("all");
   const [status, setStatus] = useState("all");
   const [deleting, setDeleting] = useState<number | null>(null);
+  const [counts, setCounts] = useState<{
+    byStatus: Record<string, number>;
+    byLang: Record<string, number>;
+  }>({ byStatus: {}, byLang: {} });
+
+  const loadCounts = useCallback(() => {
+    fetch("/api/admin/posts?counts=1", { cache: "no-store" })
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.byStatus && d.byLang)
+          setCounts({ byStatus: d.byStatus, byLang: d.byLang });
+      })
+      .catch(() => {});
+  }, []);
+  useEffect(() => {
+    loadCounts();
+  }, [loadCounts]);
+
+  const sCount = (k: string) => counts.byStatus[k] ?? 0;
+  const lCount = (k: string) => counts.byLang[k] ?? 0;
 
   const load = useCallback(
     async (p: number) => {
@@ -101,6 +122,7 @@ export default function AdminPostsPage() {
       toast.success("Post deleted");
       setPosts((prev) => prev.filter((p) => p.id !== post.id));
       setTotal((t) => Math.max(0, t - 1));
+      loadCounts();
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Delete failed");
     } finally {
@@ -129,20 +151,20 @@ export default function AdminPostsPage() {
           value={language}
           onChange={(e) => setLanguage(e.target.value)}
         >
-          <option value="all">All languages</option>
-          <option value="en">English</option>
-          <option value="zh">中文</option>
+          <option value="all">All languages ({lCount("all")})</option>
+          <option value="en">English ({lCount("en")})</option>
+          <option value="zh">中文 ({lCount("zh")})</option>
         </select>
         <select
           className="a-select"
-          style={{ width: 170 }}
+          style={{ width: 190 }}
           value={status}
           onChange={(e) => setStatus(e.target.value)}
         >
-          <option value="all">All statuses</option>
-          <option value="draft">Draft</option>
-          <option value="published">Published</option>
-          <option value="scheduled">Scheduled</option>
+          <option value="all">All statuses ({sCount("all")})</option>
+          <option value="draft">Draft ({sCount("draft")})</option>
+          <option value="published">Published ({sCount("published")})</option>
+          <option value="scheduled">Scheduled ({sCount("scheduled")})</option>
         </select>
       </div>
 
@@ -194,6 +216,19 @@ export default function AdminPostsPage() {
                     <td>{fmtDate(post.created_at)}</td>
                     <td>
                       <div className="a-table__actions">
+                        <a
+                          href={
+                            post.language === "zh"
+                              ? `/zh/blog/${post.slug}`
+                              : `/blog/${post.slug}`
+                          }
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="a-iconbtn"
+                          title="View on website"
+                        >
+                          <ExternalLink />
+                        </a>
                         <Link
                           href={`/admin/posts/edit?id=${post.id}`}
                           className="a-iconbtn"

@@ -14,12 +14,13 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { useAdminUI } from "./AdminUI";
+import { CategoryPicker } from "./CategoryPicker";
 
 const RichEditor = dynamic(() => import("./RichEditor"), { ssr: false });
 
 type Lang = "en" | "zh";
 type Layout = "with-sidebar" | "full-page";
-type Status = "draft" | "published";
+type Status = "draft" | "published" | "scheduled";
 
 interface PostForm {
   language: Lang;
@@ -39,6 +40,7 @@ interface PostForm {
   is_premium: boolean;
   show_on_blog: boolean;
   status: Status;
+  published_at: string;
 }
 
 const EMPTY: PostForm = {
@@ -59,7 +61,17 @@ const EMPTY: PostForm = {
   is_premium: false,
   show_on_blog: true,
   status: "draft",
+  published_at: "",
 };
+
+// A stored UTC ISO timestamp -> the value a <input type="datetime-local">
+// expects (local wall-clock "YYYY-MM-DDTHH:mm").
+function toLocalInput(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  const local = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
+  return local.toISOString().slice(0, 16);
+}
 
 function slugify(text: string): string {
   return text
@@ -82,23 +94,8 @@ export default function PostEditor({ postId }: { postId?: number }) {
   const [error, setError] = useState("");
   const [autoSlug, setAutoSlug] = useState(!isEdit);
   const [editorKey, setEditorKey] = useState(0);
-  const [categories, setCategories] = useState<string[]>([]);
   const fileRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef("");
-
-  // Load the categories already in use so they can be picked from the list.
-  useEffect(() => {
-    let active = true;
-    fetch("/api/admin/posts?categories=1")
-      .then((r) => r.json())
-      .then((d) => {
-        if (active && Array.isArray(d.categories)) setCategories(d.categories);
-      })
-      .catch(() => {});
-    return () => {
-      active = false;
-    };
-  }, []);
 
   const set = <K extends keyof PostForm>(key: K, val: PostForm[K]) =>
     setForm((f) => ({ ...f, [key]: val }));
@@ -132,7 +129,16 @@ export default function PostEditor({ postId }: { postId?: number }) {
           layout: data.layout === "full-page" ? "full-page" : "with-sidebar",
           is_premium: Boolean(data.is_premium),
           show_on_blog: data.show_on_blog !== false,
-          status: data.status === "published" ? "published" : "draft",
+          published_at:
+            data.published_at && data.status === "scheduled"
+              ? toLocalInput(data.published_at)
+              : "",
+          status:
+            data.status === "published"
+              ? "published"
+              : data.status === "scheduled"
+                ? "scheduled"
+                : "draft",
         };
         setForm(loaded);
         contentRef.current = loaded.content;
@@ -191,6 +197,10 @@ export default function PostEditor({ postId }: { postId?: number }) {
       setError("Slug is required");
       return;
     }
+    if (!publish && form.status === "scheduled" && !form.published_at) {
+      setError("Pick a date and time to schedule this post.");
+      return;
+    }
     setError("");
     setSaving(true);
 
@@ -201,6 +211,10 @@ export default function PostEditor({ postId }: { postId?: number }) {
       slug,
       content: contentRef.current || form.content,
       status,
+      // Convert the local-time picker value to a real UTC timestamp.
+      published_at: form.published_at
+        ? new Date(form.published_at).toISOString()
+        : "",
     };
 
     try {
@@ -290,7 +304,7 @@ export default function PostEditor({ postId }: { postId?: number }) {
             onClick={() => save(false)}
             disabled={saving}
           >
-            <Save /> Save Draft
+            <Save /> {form.status === "scheduled" ? "Schedule" : "Save Draft"}
           </button>
           <button
             type="button"
@@ -414,8 +428,24 @@ export default function PostEditor({ postId }: { postId?: number }) {
               >
                 <option value="draft">Draft</option>
                 <option value="published">Published</option>
+                <option value="scheduled">Scheduled</option>
               </select>
             </div>
+            {form.status === "scheduled" && (
+              <div className="a-field">
+                <label className="a-label">Publish date &amp; time</label>
+                <input
+                  type="datetime-local"
+                  className="a-input"
+                  value={form.published_at}
+                  onChange={(e) => set("published_at", e.target.value)}
+                />
+                <p className="a-hint">
+                  The post goes live automatically at this time. Click{" "}
+                  <strong>Schedule</strong> to save it.
+                </p>
+              </div>
+            )}
             <div className="a-field" style={{ marginBottom: 0 }}>
               <label className="a-label">Language</label>
               <select
@@ -433,30 +463,13 @@ export default function PostEditor({ postId }: { postId?: number }) {
             <h3 className="a-section-title">Organize</h3>
             <div className="a-field">
               <label className="a-label">Category</label>
-              <input
-                className="a-input"
+              <CategoryPicker
                 value={form.category}
-                onChange={(e) => set("category", e.target.value)}
-                placeholder="Insights"
-                list="post-categories"
+                onChange={(v) => set("category", v)}
               />
-              <datalist id="post-categories">
-                {Array.from(
-                  new Set([
-                    ...categories,
-                    "Insights",
-                    "Industry News",
-                    "Crew Welfare",
-                    "Compliance",
-                    "Recruitment",
-                    "Maritime Careers",
-                  ]),
-                ).map((c) => (
-                  <option key={c} value={c} />
-                ))}
-              </datalist>
               <p className="a-hint">
-                Pick an existing category, or type a new name to create one.
+                Pick a category, add a new one, or remove unused ones — shared
+                across all devices.
               </p>
             </div>
             <div className="a-field">

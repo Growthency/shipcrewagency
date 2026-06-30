@@ -55,6 +55,19 @@ function slugify(input: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
+// Resolve the publish timestamp from status (+ a scheduled date if given).
+function publishedAtFor(status: string, raw: unknown): string | null {
+  if (status === "published") return new Date().toISOString();
+  if (status === "scheduled") {
+    if (typeof raw === "string" && raw) {
+      const d = new Date(raw);
+      if (!Number.isNaN(d.getTime())) return d.toISOString();
+    }
+    return new Date().toISOString();
+  }
+  return null;
+}
+
 function autoExcerpt(html: string): string {
   if (!html) return "";
   const text = html
@@ -83,6 +96,24 @@ export async function GET(req: NextRequest) {
       ),
     ).sort((a, b) => a.localeCompare(b));
     return NextResponse.json({ categories });
+  }
+
+  // Counts per status / language for the list-page filter dropdowns.
+  if (url.searchParams.get("counts")) {
+    const { data } = await admin.from("blog_posts").select("status, language");
+    const rows = (data ?? []) as { status?: string; language?: string }[];
+    const byStatus: Record<string, number> = {
+      all: rows.length,
+      draft: 0,
+      published: 0,
+      scheduled: 0,
+    };
+    const byLang: Record<string, number> = { all: rows.length, en: 0, zh: 0 };
+    for (const r of rows) {
+      if (r.status && r.status in byStatus) byStatus[r.status]++;
+      if (r.language && r.language in byLang) byLang[r.language]++;
+    }
+    return NextResponse.json({ byStatus, byLang });
   }
 
   const id = url.searchParams.get("id");
@@ -183,7 +214,7 @@ export async function POST(req: NextRequest) {
       meta_title: String(body.meta_title ?? "").trim() || null,
       meta_description: String(body.meta_description ?? "").trim() || null,
       layout: String(body.layout ?? "").trim() || "with-sidebar",
-      published_at: status === "published" ? new Date().toISOString() : null,
+      published_at: publishedAtFor(status, body.published_at),
     })
     .select()
     .single();
@@ -261,10 +292,10 @@ export async function PATCH(req: NextRequest) {
     updates.show_on_blog = body.show_on_blog;
   if (typeof body.status === "string") {
     updates.status = body.status;
-    if (body.status === "published") {
-      updates.published_at =
-        (typeof body.published_at === "string" && body.published_at) ||
-        new Date().toISOString();
+    if (body.status === "published" || body.status === "scheduled") {
+      updates.published_at = publishedAtFor(body.status, body.published_at);
+    } else {
+      updates.published_at = null;
     }
   }
 
