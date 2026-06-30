@@ -259,55 +259,76 @@ function PageList({
         )}
       </div>
       {rows.length ? (
-        <div className="ix-list">
-          {rows.map((p, i) => {
-            const busy = busyUrl === p.url;
-            return (
-              <div className="ix-row" key={p.url}>
-                <span className="ix-row__num">{i + 1}</span>
-                <a
-                  className="ix-row__url"
-                  href={`${origin}${p.url}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={p.url}
-                >
-                  {p.url}
-                  <ExternalLink size={12} />
-                </a>
-                <span className={`ix-row__state ix-row__state--${tone}`}>
-                  {p.state}
-                </span>
-                <div className="ix-row__act">
-                  {tone === "bad" && (
-                    <a
-                      className="ix-act ix-act--google"
-                      href={inspectUrl(p.url)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Inspect in Google Search Console"
-                    >
-                      Google
-                    </a>
-                  )}
-                  <button
-                    type="button"
-                    className="ix-act ix-act--now"
-                    onClick={() => onSubmitOne(p.url)}
-                    disabled={busy}
-                    title="Submit this URL to IndexNow (Bing / Yandex)"
-                  >
-                    {busy ? (
-                      <span className="a-spin" style={{ width: 12, height: 12 }} />
-                    ) : (
-                      <Send size={12} />
-                    )}
-                    {tone === "good" ? "Reindex" : "IndexNow"}
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+        <div className="ix-table-wrap">
+          <table className="a-table ix-table">
+            <thead>
+              <tr>
+                <th className="ix-th-num">#</th>
+                <th>URL</th>
+                <th>Status</th>
+                <th className="a-th-right">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((p, i) => {
+                const busy = busyUrl === p.url;
+                return (
+                  <tr key={p.url}>
+                    <td className="ix-td-num">{i + 1}</td>
+                    <td>
+                      <a
+                        className="ix-row__url"
+                        href={`${origin}${p.url}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={p.url}
+                      >
+                        <span>{p.url}</span>
+                        <ExternalLink size={12} />
+                      </a>
+                    </td>
+                    <td>
+                      <span className={`ix-row__state ix-row__state--${tone}`}>
+                        {p.state}
+                      </span>
+                    </td>
+                    <td className="a-th-right">
+                      <div className="ix-row__act">
+                        {tone === "bad" && (
+                          <a
+                            className="ix-act ix-act--google"
+                            href={inspectUrl(p.url)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Inspect in Google Search Console"
+                          >
+                            Google
+                          </a>
+                        )}
+                        <button
+                          type="button"
+                          className="ix-act ix-act--now"
+                          onClick={() => onSubmitOne(p.url)}
+                          disabled={busy}
+                          title="Submit this URL to IndexNow (Bing / Yandex)"
+                        >
+                          {busy ? (
+                            <span
+                              className="a-spin"
+                              style={{ width: 12, height: 12 }}
+                            />
+                          ) : (
+                            <Send size={12} />
+                          )}
+                          {tone === "good" ? "Reindex" : "IndexNow"}
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       ) : (
         <div className="an-nodata">{empty}</div>

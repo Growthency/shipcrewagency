@@ -3085,6 +3085,64 @@
   color: var(--a-ink);
 }
 
+/* Indexed / Not-indexed tables — #  URL  Status  Action (mushroom style) */
+.ix-table-wrap {
+  max-height: 460px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--a-success) var(--a-field);
+}
+.ix-table-wrap::-webkit-scrollbar {
+  width: 9px;
+}
+.ix-table-wrap::-webkit-scrollbar-track {
+  background: var(--a-field);
+}
+.ix-table-wrap::-webkit-scrollbar-thumb {
+  background: var(--a-success);
+  border-radius: 9px;
+  border: 2px solid var(--a-field);
+}
+.ix-table {
+  table-layout: fixed;
+}
+.ix-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--a-card, #fff);
+}
+.ix-table th.ix-th-num,
+.ix-table td.ix-td-num {
+  width: 38px;
+  text-align: center;
+  padding-left: 12px;
+  padding-right: 6px;
+}
+.ix-table td.ix-td-num {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--a-muted);
+  font-variant-numeric: tabular-nums;
+}
+.ix-table th:nth-child(3),
+.ix-table td:nth-child(3) {
+  width: 1%;
+  white-space: nowrap;
+}
+.ix-table th:last-child,
+.ix-table td:last-child {
+  width: 1%;
+  white-space: nowrap;
+}
+.ix-table .ix-row__url {
+  max-width: 100%;
+}
+.ix-table .ix-row__act {
+  justify-content: flex-end;
+}
+
 /* ===== Rank Tracker ===== */
 .rt-stats {
   display: grid;
