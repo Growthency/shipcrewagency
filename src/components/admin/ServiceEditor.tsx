@@ -257,7 +257,7 @@ export default function ServiceEditor({ slug }: { slug?: string }) {
       )}
 
       {/* Basics */}
-      <div className="a-card" style={{ marginBottom: 18 }}>
+      <div className="a-card a-card--pad" style={{ marginBottom: 18 }}>
         <div className="a-section-title">Basics</div>
         <div
           style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}
@@ -302,7 +302,7 @@ export default function ServiceEditor({ slug }: { slug?: string }) {
       </div>
 
       {/* English */}
-      <div className="a-card" style={{ marginBottom: 18 }}>
+      <div className="a-card a-card--pad" style={{ marginBottom: 18 }}>
         <div className="a-section-title">English page</div>
         <div
           style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}
@@ -353,7 +353,7 @@ export default function ServiceEditor({ slug }: { slug?: string }) {
       </div>
 
       {/* Chinese */}
-      <div className="a-card" style={{ marginBottom: 18 }}>
+      <div className="a-card a-card--pad" style={{ marginBottom: 18 }}>
         <div className="a-section-title">中文 (Chinese) page</div>
         <div
           style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}

@@ -666,9 +666,10 @@ export default function RichEditor({
           </Btn>
         </div>
 
-        {/* Toggle lives OUTSIDE the formatting group so it stays clickable
-            even while that group is disabled in HTML (raw) mode. */}
-        <Divider />
+        {/* Spacer pushes the toggle to the far-right end of the bar. It lives
+            OUTSIDE the formatting group so it stays clickable even while that
+            group is disabled in HTML (raw) mode. */}
+        <span className="a-spacer" />
         <button
           type="button"
           onMouseDown={(e) => {
