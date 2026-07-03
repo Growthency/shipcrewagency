@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { readSession } from "@/lib/auth/session";
 import { getSupabaseAdmin, hasSupabaseConfig } from "@/lib/supabase/server";
+import { SITE_SCRIPTS_TAG } from "@/lib/site-scripts";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -33,6 +34,7 @@ async function requireAdmin(): Promise<Guard> {
 const POSITIONS = new Set(["head", "body_start", "body_end"]);
 
 function refresh() {
+  revalidateTag(SITE_SCRIPTS_TAG);
   revalidatePath("/", "layout");
 }
 

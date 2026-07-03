@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import { siteUrl } from "@/lib/seo";
+import { getEnabledScripts } from "@/lib/site-scripts";
+import SiteScripts from "@/components/SiteScripts";
 import "./globals.css";
 import "./sections.css";
 import "./theme.css";
@@ -63,6 +65,7 @@ export default async function RootLayout({
 }) {
   const h = await headers();
   const lang = h.get("x-lang") === "zh" ? "zh-CN" : "en";
+  const siteScripts = await getEnabledScripts();
   return (
     <html lang={lang} className={`${display.variable} ${body.variable}`}>
       <head>
@@ -79,7 +82,10 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <SiteScripts items={siteScripts} />
+      </body>
     </html>
   );
 }
