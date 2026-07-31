@@ -11,6 +11,7 @@ import { getDict } from "@/i18n";
 import Image from "next/image";
 import { IMG, catImage } from "@/lib/media";
 import { COMPANY } from "@/lib/company";
+import { getPublishedPosts } from "@/lib/blog";
 
 const SVC_ICONS: IconName[] = [
   "users",
@@ -32,15 +33,13 @@ const WHY_ICONS: IconName[] = [
 ];
 const TRUST_ICONS: IconName[] = ["clock", "globe", "users", "zap", "shield"];
 const GLOBAL_ICONS: IconName[] = ["globe", "users", "zap", "shield"];
-const KNOW_LINKS = [
-  "blog/how-ship-crew-manning-works",
-  "blog/stcw-certification-explained",
-  "blog/emergency-crew-replacement",
-];
-
-export function HomePage({ lang }: { lang: Lang }) {
+export async function HomePage({ lang }: { lang: Lang }) {
   const t = getDict(lang);
   const h = t.home;
+
+  // Latest published articles feed the Knowledge Hub cards below, so the
+  // homepage always links to real, existing posts.
+  const knowPosts = (await getPublishedPosts(lang)).slice(0, 3);
 
   return (
     <>
@@ -369,51 +368,59 @@ export function HomePage({ lang }: { lang: Lang }) {
       </section>
 
       {/* ===================== KNOWLEDGE HUB ===================== */}
-      <section className="know section-pad">
-        <div className="container">
-          <SectionHeader tag={h.knowledge.tag} title={h.knowledge.title} text={h.knowledge.text} />
-          <Reveal>
-            <div className="know__grid">
-              <LocalizedLink lang={lang} to={KNOW_LINKS[0]} className="know-card">
-                <div className="know-card__top">
-                  <div className="know-card__tag">{h.knowledge.featured.tag}</div>
-                  <h3>{h.knowledge.featured.title}</h3>
-                </div>
-                <div className="know-card__body">
-                  <p>{h.knowledge.featured.text}</p>
-                  <span className="know-card__read">
-                    {t.common.readGuide}
-                    <Icon name="arrow-right" />
-                  </span>
-                </div>
-              </LocalizedLink>
-              {h.knowledge.cards.map((card, i) => (
+      {knowPosts.length > 0 && (
+        <section className="know section-pad">
+          <div className="container">
+            <SectionHeader tag={h.knowledge.tag} title={h.knowledge.title} text={h.knowledge.text} />
+            <Reveal>
+              <div className="know__grid">
                 <LocalizedLink
-                  key={card.title}
                   lang={lang}
-                  to={KNOW_LINKS[i + 1]}
+                  to={`blog/${knowPosts[0].slug}`}
                   className="know-card"
                 >
-                  <div className="know-card__body" style={{ padding: 32 }}>
-                    <span className="tag2">{card.tag}</span>
-                    <h3>{card.title}</h3>
-                    <p>{card.text}</p>
+                  <div className="know-card__top">
+                    <div className="know-card__tag">
+                      {knowPosts[0].tag || knowPosts[0].category || h.knowledge.featured.tag}
+                    </div>
+                    <h3>{knowPosts[0].title}</h3>
+                  </div>
+                  <div className="know-card__body">
+                    <p>{knowPosts[0].excerpt}</p>
                     <span className="know-card__read">
-                      {t.common.readArticle}
+                      {t.common.readGuide}
                       <Icon name="arrow-right" />
                     </span>
                   </div>
                 </LocalizedLink>
-              ))}
+                {knowPosts.slice(1, 3).map((post) => (
+                  <LocalizedLink
+                    key={post.slug}
+                    lang={lang}
+                    to={`blog/${post.slug}`}
+                    className="know-card"
+                  >
+                    <div className="know-card__body" style={{ padding: 32 }}>
+                      <span className="tag2">{post.tag || post.category}</span>
+                      <h3>{post.title}</h3>
+                      <p>{post.excerpt}</p>
+                      <span className="know-card__read">
+                        {t.common.readArticle}
+                        <Icon name="arrow-right" />
+                      </span>
+                    </div>
+                  </LocalizedLink>
+                ))}
+              </div>
+            </Reveal>
+            <div style={{ textAlign: "center", marginTop: 40 }}>
+              <Button lang={lang} to="blog" variant="outline-brand">
+                {h.knowledge.cta}
+              </Button>
             </div>
-          </Reveal>
-          <div style={{ textAlign: "center", marginTop: 40 }}>
-            <Button lang={lang} to="blog" variant="outline-brand">
-              {h.knowledge.cta}
-            </Button>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ===================== FINAL CTA ===================== */}
       <section className="final-cta">
