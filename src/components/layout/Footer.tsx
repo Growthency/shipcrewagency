@@ -150,7 +150,13 @@ export function Footer({ lang, dict }: { lang: Lang; dict: Dictionary }) {
                   {label}
                 </LocalizedLink>
               ) : (
-                <a key={label} href="/sitemap.xml" className="footer__bottom-link">
+                <a
+                  key={label}
+                  href="/sitemap.xml"
+                  className="footer__bottom-link"
+                  target="_blank"
+                  rel="noopener"
+                >
                   {label}
                 </a>
               ),

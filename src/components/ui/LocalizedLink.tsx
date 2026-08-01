@@ -7,10 +7,16 @@ type Props = Omit<ComponentProps<typeof Link>, "href"> & {
   to: string;
 };
 
-/** Next <Link> that resolves a path-key to the correct language tree. */
+/** Next <Link> that resolves a path-key to the correct language tree.
+ *  Internal links open in a new tab by default; pass target="_self" to opt out. */
 export function LocalizedLink({ lang, to, children, ...rest }: Props) {
   return (
-    <Link href={buildHref(lang, to)} {...rest}>
+    <Link
+      href={buildHref(lang, to)}
+      target="_blank"
+      rel="noopener"
+      {...rest}
+    >
       {children}
     </Link>
   );

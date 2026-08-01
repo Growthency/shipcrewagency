@@ -53,7 +53,13 @@ export function Button({
 
   if (to !== undefined) {
     return (
-      <Link href={buildHref(lang, to)} className={classes} style={style}>
+      <Link
+        href={buildHref(lang, to)}
+        className={classes}
+        style={style}
+        target="_blank"
+        rel="noopener"
+      >
         {inner}
       </Link>
     );

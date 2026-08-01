@@ -49,6 +49,8 @@ function DropdownItems({
                 href={buildHref(lang, c.to)}
                 className="dropdown__item"
                 style={style}
+                target="_blank"
+                rel="noopener"
               >
                 {inner}
               </Link>
@@ -92,6 +94,8 @@ function MobileItems({
               href={buildHref(lang, c.to)}
               className="mobile-nav__sub-link"
               style={depth > 0 ? { paddingLeft: 16 + depth * 14 } : undefined}
+              target="_blank"
+              rel="noopener"
             >
               {c.label}
             </Link>
@@ -258,6 +262,8 @@ export function SiteHeader({ lang, dict }: { lang: Lang; dict: Dictionary }) {
                   <Link
                     href={buildHref(lang, item.to)}
                     className="mobile-nav__link mobile-nav__link--grow"
+                    target="_blank"
+                    rel="noopener"
                   >
                     {item.label}
                   </Link>
@@ -292,6 +298,8 @@ export function SiteHeader({ lang, dict }: { lang: Lang; dict: Dictionary }) {
               <Link
                 href={buildHref(lang, item.to ?? "")}
                 className="mobile-nav__link"
+                target="_blank"
+                rel="noopener"
               >
                 {item.label}
               </Link>
